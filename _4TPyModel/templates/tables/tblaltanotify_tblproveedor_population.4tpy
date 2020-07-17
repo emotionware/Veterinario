@@ -1,0 +1,1 @@
+select * from tblaltanotify_tblproveedor order by IDALTANOTIFY_tblproveedor ASC 

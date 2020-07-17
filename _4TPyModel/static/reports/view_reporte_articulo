@@ -1,0 +1,36 @@
+{
+  "ReportVersion": "2020.1.1",
+  "ReportGuid": "dc3443ffa2b90ef48ea0a9eedf3db514",
+  "ReportName": "Report",
+  "ReportAlias": "Report",
+  "ReportFile": "view_reporte_articulo.mrt",
+  "ReportCreated": "/Date(1587519993000-0500)/",
+  "ReportChanged": "/Date(1587519993000-0500)/",
+  "EngineVersion": "EngineV2",
+  "CalculationMode": "Interpretation",
+  "ReportUnit": "Centimeters",
+  "PreviewSettings": 268435455,
+  "Pages": {
+    "0": {
+      "Ident": "StiPage",
+      "Name": "Page1",
+      "Guid": "8a880f1d3b4ddd999aedef0c0210f6c9",
+      "Interaction": {
+        "Ident": "StiInteraction"
+      },
+      "Border": ";;2;;;;;solid:Black",
+      "Brush": "solid:Transparent",
+      "PageWidth": 21,
+      "PageHeight": 29.7,
+      "Watermark": {
+        "TextBrush": "solid:50,0,0,0"
+      },
+      "Margins": {
+        "Left": 1,
+        "Right": 1,
+        "Top": 1,
+        "Bottom": 1
+      }
+    }
+  }
+}

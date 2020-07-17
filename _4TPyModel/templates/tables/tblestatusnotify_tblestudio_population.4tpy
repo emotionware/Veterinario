@@ -1,0 +1,1 @@
+select * from tblestatusnotify_tblestudio order by IDESTATUSNOTIFY_tblestudio ASC 

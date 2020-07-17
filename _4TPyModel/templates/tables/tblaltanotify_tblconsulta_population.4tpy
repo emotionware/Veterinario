@@ -1,0 +1,1 @@
+select * from tblaltanotify_tblconsulta order by IDALTANOTIFY_tblconsulta ASC 

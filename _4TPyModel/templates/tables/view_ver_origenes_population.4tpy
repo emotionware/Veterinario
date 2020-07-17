@@ -1,0 +1,1 @@
+select * from tblestatus_view_ver_origenes order by CAMPODISPLAY ASC 

@@ -1,0 +1,516 @@
+{
+  "ReportVersion": "2020.1.1",
+  "ReportGuid": "d39b63b61d812118abe3386524757c6a",
+  "ReportName": "Report",
+  "ReportAlias": "Report",
+  "ReportFile": "view_existencias_por_lote.mrt",
+  "ReportCreated": "/Date(1594940540000-0500)/",
+  "ReportChanged": "/Date(1594940540000-0500)/",
+  "EngineVersion": "EngineV2",
+  "CalculationMode": "Interpretation",
+  "ReportUnit": "Centimeters",
+  "PreviewSettings": 268435455,
+  "Dictionary": {
+    "DataSources": {
+      "0": {
+        "Ident": "StiDataTableSource",
+        "Name": "root",
+        "Alias": "root",
+        "Columns": {
+          "0": {
+            "Name": "CADUCIDAD",
+            "Index": -1,
+            "NameInSource": "CADUCIDAD",
+            "Alias": "CADUCIDAD",
+            "Type": "System.DateTime"
+          },
+          "1": {
+            "Name": "CANTIDAD",
+            "Index": -1,
+            "NameInSource": "CANTIDAD",
+            "Alias": "CANTIDAD",
+            "Type": "System.Decimal"
+          },
+          "2": {
+            "Name": "CODIGO",
+            "Index": -1,
+            "NameInSource": "CODIGO",
+            "Alias": "CODIGO",
+            "Type": "System.String"
+          },
+          "3": {
+            "Name": "DIAS_RESTANTES",
+            "Index": -1,
+            "NameInSource": "DIAS_RESTANTES",
+            "Alias": "DIAS_RESTANTES",
+            "Type": "System.Decimal"
+          },
+          "4": {
+            "Name": "IDARTICULO",
+            "Index": -1,
+            "NameInSource": "IDARTICULO",
+            "Alias": "IDARTICULO",
+            "Type": "System.Decimal"
+          },
+          "5": {
+            "Name": "LOTE",
+            "Index": -1,
+            "NameInSource": "LOTE",
+            "Alias": "LOTE",
+            "Type": "System.String"
+          },
+          "6": {
+            "Name": "NOMBRE_ARTICULO",
+            "Index": -1,
+            "NameInSource": "NOMBRE_ARTICULO",
+            "Alias": "NOMBRE_ARTICULO",
+            "Type": "System.String"
+          }
+        },
+        "NameInSource": "displayquery?query=view_existencias_por_lote.root"
+      }
+    },
+    "Databases": {
+      "0": {
+        "Ident": "StiJsonDatabase",
+        "Name": "displayquery?query=view_existencias_por_lote",
+        "Alias": "displayquery?query=view_existencias_por_lote",
+        "PathData": "../../displayquery?query=view_existencias_por_lote"
+      }
+    }
+  },
+  "Pages": {
+    "0": {
+      "Ident": "StiPage",
+      "Name": "Page1",
+      "Guid": "116d59109ab84ab24dc3f08c345dd151",
+      "Interaction": {
+        "Ident": "StiInteraction"
+      },
+      "Border": ";;2;;;;;solid:Black",
+      "Brush": "solid:Transparent",
+      "Components": {
+        "0": {
+          "Ident": "StiReportTitleBand",
+          "Name": "ReportTitleBand1",
+          "ClientRectangle": "0,0.4,19,3",
+          "Interaction": {
+            "Ident": "StiInteraction"
+          },
+          "Border": ";;;;;;;solid:Black",
+          "Brush": "solid:Transparent",
+          "Components": {
+            "0": {
+              "Ident": "StiImage",
+              "Name": "Image1",
+              "ClientRectangle": "16.2,0.2,2.6,2.6",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:Transparent",
+              "Stretch": true,
+              "ImageBytes": "data:image/png;base64,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"
+            },
+            "1": {
+              "Ident": "StiText",
+              "Name": "Text1",
+              "Guid": "2c3f5894000702dd7f9a99d97bfd07bb",
+              "ClientRectangle": "0,1.8,10.2,1",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "EXISTENCIAS POR LOTE"
+              },
+              "Font": ";24;;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:Black",
+              "Type": "Expression"
+            }
+          }
+        },
+        "1": {
+          "Ident": "StiHeaderBand",
+          "Name": "Headerroot",
+          "ClientRectangle": "0,4.2,19,0.8",
+          "Interaction": {
+            "Ident": "StiInteraction"
+          },
+          "Border": ";;;;;;;solid:Black",
+          "Brush": "solid:Transparent",
+          "Components": {
+            "0": {
+              "Ident": "StiText",
+              "Name": "Headerroot_IDARTICULO",
+              "Guid": "06cfd9f051ec0cb60bea2a8bbd988f76",
+              "ClientRectangle": "0,0,2.8,0.8",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "ID"
+              },
+              "VertAlignment": "Center",
+              "Font": ";10;Bold;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:Black",
+              "TextOptions": {
+                "WordWrap": true
+              },
+              "Type": "Expression"
+            },
+            "1": {
+              "Ident": "StiText",
+              "Name": "Headerroot_NOMBRE_ARTICULO",
+              "Guid": "b729d5aaa339c7f05bebca57b2281b76",
+              "ClientRectangle": "1.4,0,4.2,0.8",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "NOMBRE_ARTICULO"
+              },
+              "VertAlignment": "Center",
+              "Font": ";10;Bold;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:Black",
+              "TextOptions": {
+                "WordWrap": true
+              }
+            },
+            "2": {
+              "Ident": "StiText",
+              "Name": "Headerroot_CODIGO",
+              "Guid": "3173e3a5341dc1a9107135be35bed658",
+              "ClientRectangle": "5.6,0,1.6,0.8",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "CODIGO"
+              },
+              "VertAlignment": "Center",
+              "Font": ";10;Bold;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:Black",
+              "TextOptions": {
+                "WordWrap": true
+              }
+            },
+            "3": {
+              "Ident": "StiText",
+              "Name": "Headerroot_LOTE",
+              "Guid": "dab691beaaceecbb6c9ea58fda566dbc",
+              "ClientRectangle": "7.2,0,2.8,0.8",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "LOTE"
+              },
+              "VertAlignment": "Center",
+              "Font": ";10;Bold;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:Black",
+              "TextOptions": {
+                "WordWrap": true
+              }
+            },
+            "4": {
+              "Ident": "StiText",
+              "Name": "Headerroot_CADUCIDAD",
+              "Guid": "5952075dd8321b5a54f50b2c2531b911",
+              "ClientRectangle": "10,0,2.6,0.8",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "CADUCIDAD"
+              },
+              "VertAlignment": "Center",
+              "Font": ";10;Bold;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:Black",
+              "TextOptions": {
+                "WordWrap": true
+              }
+            },
+            "5": {
+              "Ident": "StiText",
+              "Name": "Headerroot_DIAS_RESTANTES",
+              "Guid": "1435d1191cff5f838e4ca1a4bd85e618",
+              "ClientRectangle": "12.6,0,3.4,0.8",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "DIAS_RESTANTES"
+              },
+              "VertAlignment": "Center",
+              "Font": ";10;Bold;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:Black",
+              "TextOptions": {
+                "WordWrap": true
+              }
+            },
+            "6": {
+              "Ident": "StiText",
+              "Name": "Headerroot_CANTIDAD",
+              "Guid": "5d7b33aa3824c4389e49f5f28c3354b2",
+              "ClientRectangle": "16,0,3,0.8",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "CANTIDAD"
+              },
+              "VertAlignment": "Center",
+              "Font": ";10;Bold;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:Black",
+              "TextOptions": {
+                "WordWrap": true
+              }
+            }
+          }
+        },
+        "2": {
+          "Ident": "StiDataBand",
+          "Name": "Dataroot",
+          "ClientRectangle": "0,5.8,19,0.8",
+          "Interaction": {
+            "Ident": "StiBandInteraction"
+          },
+          "Border": ";;;;;;;solid:Black",
+          "Brush": "solid:Transparent",
+          "Components": {
+            "0": {
+              "Ident": "StiText",
+              "Name": "Dataroot_IDARTICULO",
+              "Guid": "846c85ed1b247aa772ad24c990588294",
+              "CanGrow": true,
+              "ClientRectangle": "0,0,1.4,0.8",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{root.IDARTICULO}"
+              },
+              "VertAlignment": "Center",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:Black",
+              "TextOptions": {
+                "WordWrap": true
+              }
+            },
+            "1": {
+              "Ident": "StiText",
+              "Name": "Dataroot_NOMBRE_ARTICULO",
+              "Guid": "b5098f5894d9433faebb458bdee024c6",
+              "CanGrow": true,
+              "ClientRectangle": "1.4,0,4.2,0.8",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{root.NOMBRE_ARTICULO}"
+              },
+              "VertAlignment": "Center",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:Black",
+              "TextOptions": {
+                "WordWrap": true
+              }
+            },
+            "2": {
+              "Ident": "StiText",
+              "Name": "Dataroot_CODIGO",
+              "Guid": "c8d0841509647b0e3de46be0e51f2907",
+              "CanGrow": true,
+              "ClientRectangle": "5.6,0,1.6,0.8",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{root.CODIGO}"
+              },
+              "VertAlignment": "Center",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:Black",
+              "TextOptions": {
+                "WordWrap": true
+              }
+            },
+            "3": {
+              "Ident": "StiText",
+              "Name": "Dataroot_LOTE",
+              "Guid": "05378f10603129e585098c150a4c8285",
+              "CanGrow": true,
+              "ClientRectangle": "7.2,0,2.8,0.8",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{root.LOTE}"
+              },
+              "VertAlignment": "Center",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:Black",
+              "TextOptions": {
+                "WordWrap": true
+              }
+            },
+            "4": {
+              "Ident": "StiText",
+              "Name": "Dataroot_CADUCIDAD",
+              "Guid": "8fa219f0e93f4cf2a23c78a135929e7a",
+              "CanGrow": true,
+              "ClientRectangle": "10,0,2.6,0.8",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{root.CADUCIDAD}"
+              },
+              "HorAlignment": "Center",
+              "VertAlignment": "Center",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:Black",
+              "TextOptions": {
+                "WordWrap": true
+              },
+              "TextFormat": {
+                "Ident": "StiDateFormatService"
+              }
+            },
+            "5": {
+              "Ident": "StiText",
+              "Name": "Dataroot_DIAS_RESTANTES",
+              "Guid": "82482c0d8ed9c77b7a2cca3767a894b9",
+              "CanGrow": true,
+              "ClientRectangle": "12.6,0,3.4,0.8",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{root.DIAS_RESTANTES}"
+              },
+              "HorAlignment": "Center",
+              "VertAlignment": "Center",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:Black",
+              "TextOptions": {
+                "WordWrap": true
+              }
+            },
+            "6": {
+              "Ident": "StiText",
+              "Name": "Dataroot_CANTIDAD",
+              "Guid": "822e7c16677d6c76342730d672a2a085",
+              "CanGrow": true,
+              "ClientRectangle": "16,0,3,0.8",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{root.CANTIDAD}"
+              },
+              "HorAlignment": "Center",
+              "VertAlignment": "Center",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:Black",
+              "TextOptions": {
+                "WordWrap": true
+              }
+            }
+          },
+          "DataSourceName": "root"
+        },
+        "3": {
+          "Ident": "StiReportSummaryBand",
+          "Name": "ReportSummaryBand1",
+          "ClientRectangle": "0,7.4,19,1.2",
+          "Interaction": {
+            "Ident": "StiInteraction"
+          },
+          "Border": ";;;;;;;solid:Black",
+          "Brush": "solid:Transparent",
+          "Components": {
+            "0": {
+              "Ident": "StiText",
+              "Name": "Text2",
+              "Guid": "d37dc04be38c0f1589c9d70c2c56c8ad",
+              "CanGrow": true,
+              "ClientRectangle": "16,0.19,3,0.8",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "{Sum(Dataroot,root.CANTIDAD)}"
+              },
+              "HorAlignment": "Center",
+              "VertAlignment": "Center",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:Black",
+              "TextOptions": {
+                "WordWrap": true
+              },
+              "Type": "Totals"
+            },
+            "1": {
+              "Ident": "StiText",
+              "Name": "Text3",
+              "Guid": "bea2741feaef4f5c6c294b56426aa64e",
+              "ClientRectangle": "12.6,0.2,3,0.8",
+              "Interaction": {
+                "Ident": "StiInteraction"
+              },
+              "Text": {
+                "Value": "TOTAL"
+              },
+              "HorAlignment": "Right",
+              "VertAlignment": "Center",
+              "Font": ";10;Bold;",
+              "Border": ";;;;;;;solid:Black",
+              "Brush": "solid:Transparent",
+              "TextBrush": "solid:Black",
+              "TextOptions": {
+                "WordWrap": true
+              },
+              "Type": "Expression"
+            }
+          }
+        }
+      },
+      "PageWidth": 21,
+      "PageHeight": 29.7,
+      "Watermark": {
+        "TextBrush": "solid:50,0,0,0"
+      },
+      "Margins": {
+        "Left": 1,
+        "Right": 1,
+        "Top": 1,
+        "Bottom": 1
+      }
+    }
+  }
+}

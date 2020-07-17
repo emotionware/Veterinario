@@ -1,0 +1,1 @@
+select * from tblestatusnotify_tbltiporecordatorio order by IDESTATUSNOTIFY_tbltiporecordatorio ASC 

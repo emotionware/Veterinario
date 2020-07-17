@@ -1,0 +1,1 @@
+select * from tblaltanotify_tblprocessdeta order by IDALTANOTIFY_tblprocessdeta ASC 

@@ -1,0 +1,1 @@
+select * from tblaltanotify_tbltipoarticulo order by IDALTANOTIFY_tbltipoarticulo ASC 

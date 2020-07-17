@@ -1,0 +1,477 @@
+{
+  "ReportVersion": "2020.1.1",
+  "ReportGuid": "0ca52751e64317dbf56c077405ca31b7",
+  "ReportName": "Report",
+  "ReportAlias": "Report",
+  "ReportFile": "productividad.mrt",
+  "ReportCreated": "/Date(1589904799000-0500)/",
+  "ReportChanged": "/Date(1589904799000-0500)/",
+  "EngineVersion": "EngineV2",
+  "CalculationMode": "Interpretation",
+  "ReportUnit": "Centimeters",
+  "PreviewSettings": 268435455,
+  "Dictionary": {
+    "DataSources": {
+      "0": {
+        "Ident": "StiDataTableSource",
+        "Name": "root",
+        "Alias": "root",
+        "Columns": {
+          "0": {
+            "Name": "ACCION",
+            "Index": -1,
+            "NameInSource": "ACCION",
+            "Alias": "ACCION",
+            "Type": "System.String"
+          },
+          "1": {
+            "Name": "DIA",
+            "Index": -1,
+            "NameInSource": "DIA",
+            "Alias": "DIA",
+            "Type": "System.Decimal"
+          },
+          "2": {
+            "Name": "EJERCICIO",
+            "Index": -1,
+            "NameInSource": "EJERCICIO",
+            "Alias": "EJERCICIO",
+            "Type": "System.Decimal"
+          },
+          "3": {
+            "Name": "FECHA",
+            "Index": -1,
+            "NameInSource": "FECHA",
+            "Alias": "FECHA",
+            "Type": "System.DateTime"
+          },
+          "4": {
+            "Name": "HORA",
+            "Index": -1,
+            "NameInSource": "HORA",
+            "Alias": "HORA",
+            "Type": "System.String"
+          },
+          "5": {
+            "Name": "NAME",
+            "Index": -1,
+            "NameInSource": "NAME",
+            "Alias": "NAME",
+            "Type": "System.String"
+          },
+          "6": {
+            "Name": "PERIODO",
+            "Index": -1,
+            "NameInSource": "PERIODO",
+            "Alias": "PERIODO",
+            "Type": "System.Decimal"
+          },
+          "7": {
+            "Name": "TABLA",
+            "Index": -1,
+            "NameInSource": "TABLA",
+            "Alias": "TABLA",
+            "Type": "System.String"
+          },
+          "8": {
+            "Name": "TIPO",
+            "Index": -1,
+            "NameInSource": "TIPO",
+            "Alias": "TIPO",
+            "Type": "System.String"
+          }
+        },
+        "NameInSource": "displayquery?query=view_productividad.root"
+      }
+    },
+    "Databases": {
+      "0": {
+        "Ident": "StiJsonDatabase",
+        "Name": "displayquery?query=view_productividad",
+        "Alias": "displayquery?query=view_productividad",
+        "PathData": "../../displayquery?query=view_productividad"
+      }
+    }
+  },
+  "Pages": {
+    "0": {
+      "Ident": "StiDashboard",
+      "Name": "Dashboard1",
+      "Guid": "3fba6bd38b76b348bca5e3c9f8dfc912",
+      "Brush": "solid:Transparent",
+      "Components": {
+        "0": {
+          "Ident": "StiChartElement",
+          "Name": "ChartElement1",
+          "Guid": "353d33cda21a52a5794c022a2e6e7d68",
+          "ClientRectangle": "0,40,600,280",
+          "Border": ";;;;",
+          "Values": {
+            "0": {
+              "Ident": "ValueChartMeter",
+              "Key": "658df364d4441f43c10719abb77bead7",
+              "Expression": "Count(root.ACCION)",
+              "Label": "ACCION"
+            }
+          },
+          "Arguments": {
+            "0": {
+              "Ident": "ArgumentChartMeter",
+              "Key": "c73867fb5d3f6c5fd1e5d80bbdf53fa2",
+              "Expression": "root.EJERCICIO",
+              "Label": "EJERCICIO"
+            },
+            "1": {
+              "Ident": "ArgumentChartMeter",
+              "Key": "698f918cbbfae22516740a8514fe1b87",
+              "Expression": "root.PERIODO",
+              "Label": "PERIODO"
+            },
+            "2": {
+              "Ident": "ArgumentChartMeter",
+              "Key": "b99b470f4becb67a225a97675813bbed",
+              "Expression": "root.DIA",
+              "Label": "DIA"
+            }
+          },
+          "DashboardInteraction": {
+            "Ident": "Chart",
+            "OnHover": "ShowToolTip",
+            "OnClick": "ApplyFilter",
+            "HyperlinkDestination": "NewTab"
+          },
+          "Title": {
+            "Text": "Chart",
+            "Visible": false
+          },
+          "ArgumentFormat": {
+            "Ident": "StiGeneralFormatService"
+          },
+          "ValueFormat": {
+            "Ident": "StiGeneralFormatService"
+          },
+          "Area": {
+            "GridLinesHor": {
+              "Color": "Transparent",
+              "Visible": true
+            },
+            "GridLinesVert": {
+              "Color": "Transparent"
+            },
+            "InterlacingHor": {
+              "Color": "Transparent"
+            },
+            "InterlacingVert": {
+              "Color": "Transparent"
+            }
+          },
+          "Labels": {
+            "Position": "None"
+          }
+        },
+        "1": {
+          "Ident": "StiChartElement",
+          "Name": "ChartElement2",
+          "Guid": "32fb603edc11df9fe18d189eee5a8007",
+          "ClientRectangle": "600,40,340,280",
+          "Border": ";;;;",
+          "Values": {
+            "0": {
+              "Ident": "ValueChartMeter",
+              "Key": "658df364d4441f43c10719abb77bead7",
+              "Expression": "Count(root.ACCION)",
+              "Label": "ACCION",
+              "SeriesType": "Pie"
+            }
+          },
+          "Arguments": {
+            "0": {
+              "Ident": "ArgumentChartMeter",
+              "Key": "671cd883349875b4e03ac8fb94f20dd3",
+              "Expression": "root.NAME",
+              "Label": "NAME"
+            }
+          },
+          "DashboardInteraction": {
+            "Ident": "Chart",
+            "OnHover": "ShowToolTip",
+            "OnClick": "ApplyFilter",
+            "HyperlinkDestination": "NewTab"
+          },
+          "Title": {
+            "Text": "Chart",
+            "Visible": false
+          },
+          "ArgumentFormat": {
+            "Ident": "StiGeneralFormatService"
+          },
+          "ValueFormat": {
+            "Ident": "StiGeneralFormatService"
+          },
+          "Area": {
+            "GridLinesHor": {
+              "Color": "Transparent",
+              "Visible": true
+            },
+            "GridLinesVert": {
+              "Color": "Transparent"
+            },
+            "InterlacingHor": {
+              "Color": "Transparent"
+            },
+            "InterlacingVert": {
+              "Color": "Transparent"
+            }
+          },
+          "Labels": {
+            "Position": "Center"
+          }
+        },
+        "2": {
+          "Ident": "StiChartElement",
+          "Name": "ChartElement3",
+          "Guid": "f32c3be227e8e751bcaf95a425e20c9a",
+          "ClientRectangle": "0,320,420,280",
+          "Border": ";;;;",
+          "Values": {
+            "0": {
+              "Ident": "ValueChartMeter",
+              "Key": "658df364d4441f43c10719abb77bead7",
+              "Expression": "Count(root.ACCION)",
+              "Label": "ACCION",
+              "SeriesType": "Pie"
+            }
+          },
+          "Arguments": {
+            "0": {
+              "Ident": "ArgumentChartMeter",
+              "Key": "ee0f07ed3c21793d61e72bc05ba7edbf",
+              "Expression": "root.TABLA",
+              "Label": "TABLA"
+            }
+          },
+          "DashboardInteraction": {
+            "Ident": "Chart",
+            "OnHover": "ShowToolTip",
+            "OnClick": "ApplyFilter",
+            "HyperlinkDestination": "NewTab"
+          },
+          "Title": {
+            "Text": "Chart",
+            "Visible": false
+          },
+          "ArgumentFormat": {
+            "Ident": "StiGeneralFormatService"
+          },
+          "ValueFormat": {
+            "Ident": "StiGeneralFormatService"
+          },
+          "Area": {
+            "GridLinesHor": {
+              "Color": "Transparent",
+              "Visible": true
+            },
+            "GridLinesVert": {
+              "Color": "Transparent"
+            },
+            "InterlacingHor": {
+              "Color": "Transparent"
+            },
+            "InterlacingVert": {
+              "Color": "Transparent"
+            }
+          },
+          "Labels": {
+            "Position": "Center"
+          }
+        },
+        "3": {
+          "Ident": "StiTableElement",
+          "Name": "TableElement1",
+          "Guid": "1e08674aa65b71c78798014eadcbdcb6",
+          "ClientRectangle": "420,320,520,280",
+          "Border": ";;;;",
+          "Columns": {
+            "0": {
+              "Ident": "DimensionColumn",
+              "Key": "28956fe2389d5c6d40c13529053fbb10",
+              "Expression": "root.ACCION",
+              "Label": "ACCION",
+              "DashboardInteraction": {
+                "Ident": "TableColumn",
+                "OnHover": "None",
+                "OnClick": "None",
+                "HyperlinkDestination": "NewTab"
+              }
+            },
+            "1": {
+              "Ident": "DimensionColumn",
+              "Key": "a566dc7480d0d486f5dc10090fb39d33",
+              "Expression": "root.TABLA",
+              "Label": "TABLA",
+              "DashboardInteraction": {
+                "Ident": "TableColumn",
+                "OnHover": "None",
+                "OnClick": "None",
+                "HyperlinkDestination": "NewTab"
+              }
+            },
+            "2": {
+              "Ident": "DimensionColumn",
+              "Key": "185f36d118cc64dd50957a64facfe43c",
+              "Expression": "root.FECHA",
+              "Label": "FECHA",
+              "HorAlignment": "Center",
+              "TextFormat": {
+                "Ident": "StiDateFormatService"
+              },
+              "DashboardInteraction": {
+                "Ident": "TableColumn",
+                "OnHover": "None",
+                "OnClick": "None",
+                "HyperlinkDestination": "NewTab"
+              }
+            },
+            "3": {
+              "Ident": "DimensionColumn",
+              "Key": "f9c99189220259cb01177ea6a4e7e257",
+              "Expression": "root.HORA",
+              "Label": "HORA",
+              "DashboardInteraction": {
+                "Ident": "TableColumn",
+                "OnHover": "None",
+                "OnClick": "None",
+                "HyperlinkDestination": "NewTab"
+              }
+            }
+          },
+          "HeaderFont": ";10;;",
+          "FooterFont": ";10;;",
+          "Title": {
+            "Text": "Table",
+            "Visible": false
+          },
+          "DashboardInteraction": {
+            "Ident": "Table",
+            "OnHover": "ShowToolTip",
+            "OnClick": "ApplyFilter",
+            "HyperlinkDestination": "NewTab"
+          }
+        },
+        "4": {
+          "Ident": "StiTreeViewElement",
+          "Name": "TreeViewElement1",
+          "Guid": "080f1aa7b79f9badb0d7278029dd8c5e",
+          "ClientRectangle": "1080,40,120,280",
+          "Border": ";;;;",
+          "KeyMeters": {
+            "0": {
+              "Ident": "KeyTreeViewMeter",
+              "Key": "9f4cd380f3ca3662d691cf2c50693a1a",
+              "Expression": "root.EJERCICIO",
+              "Label": "EJERCICIO"
+            },
+            "1": {
+              "Ident": "KeyTreeViewMeter",
+              "Key": "58d666180c159bc0fb964a6c3c77755f",
+              "Expression": "root.PERIODO",
+              "Label": "PERIODO"
+            },
+            "2": {
+              "Ident": "KeyTreeViewMeter",
+              "Key": "09ef2c7474a0232065cbf966ed0efc1f",
+              "Expression": "root.DIA",
+              "Label": "DIA"
+            }
+          },
+          "Title": {
+            "Text": "Tree View",
+            "Visible": false
+          }
+        },
+        "5": {
+          "Ident": "StiTreeViewElement",
+          "Name": "TreeViewElement2",
+          "Guid": "6456cf8ea26a7414f772864f381c7a26",
+          "ClientRectangle": "940,40,140,280",
+          "Border": ";;;;",
+          "KeyMeters": {
+            "0": {
+              "Ident": "KeyTreeViewMeter",
+              "Key": "b7f8d25e4a868c237f1690181a677761",
+              "Expression": "root.NAME",
+              "Label": "NAME"
+            }
+          },
+          "Title": {
+            "Text": "Tree View",
+            "Visible": false
+          }
+        },
+        "6": {
+          "Ident": "StiTreeViewElement",
+          "Name": "TreeViewElement3",
+          "Guid": "fa85ae4d96105d909957f7390479c3d4",
+          "ClientRectangle": "1080,320,120,280",
+          "Border": ";;;;",
+          "KeyMeters": {
+            "0": {
+              "Ident": "KeyTreeViewMeter",
+              "Key": "be6c2ed0400283e22ec86fd043a877ab",
+              "Expression": "root.TABLA",
+              "Label": "TABLA"
+            }
+          },
+          "Title": {
+            "Text": "Tree View",
+            "Visible": false
+          }
+        },
+        "7": {
+          "Ident": "StiTreeViewElement",
+          "Name": "TreeViewElement4",
+          "Guid": "0586bd39c2eb1003b067954eeb47cce9",
+          "ClientRectangle": "940,320,140,280",
+          "Border": ";;;;",
+          "KeyMeters": {
+            "0": {
+              "Ident": "KeyTreeViewMeter",
+              "Key": "a11574fbd168ebe854df77295e4a8629",
+              "Expression": "root.TIPO",
+              "Label": "TIPO"
+            }
+          },
+          "Title": {
+            "Text": "Tree View",
+            "Visible": false
+          }
+        },
+        "8": {
+          "Ident": "StiTextElement",
+          "Name": "TextElement1",
+          "Guid": "8b5516ce93c88aec5f824cdc7c2a8160",
+          "ClientRectangle": "0,0,1200,40",
+          "Padding": {
+            "Left": 0,
+            "Top": 0,
+            "Right": 0,
+            "Bottom": 0
+          },
+          "Border": ";;;;",
+          "DashboardInteraction": {
+            "Ident": "Text",
+            "OnHover": "ShowToolTip",
+            "OnClick": "OpenHyperlink",
+            "HyperlinkDestination": "NewTab"
+          },
+          "Text": "<font face=\"Arial\" size=\"20\"><text-align=\"Center\"><b><i>PRODUCTIVIDAD</i></b></text-align></font>",
+          "Title": {
+            "Text": "Text",
+            "Visible": false
+          }
+        }
+      },
+      "Border": ";;2;;;;;solid:Black"
+    }
+  }
+}

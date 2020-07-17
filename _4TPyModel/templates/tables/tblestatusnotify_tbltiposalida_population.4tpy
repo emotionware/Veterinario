@@ -1,0 +1,1 @@
+select * from tblestatusnotify_tbltiposalida order by IDESTATUSNOTIFY_tbltiposalida ASC 

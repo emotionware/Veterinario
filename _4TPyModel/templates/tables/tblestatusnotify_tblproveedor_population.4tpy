@@ -1,0 +1,1 @@
+select * from tblestatusnotify_tblproveedor order by IDESTATUSNOTIFY_tblproveedor ASC 

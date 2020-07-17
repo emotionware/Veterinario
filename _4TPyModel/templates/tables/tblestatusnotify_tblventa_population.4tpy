@@ -1,0 +1,1 @@
+select * from tblestatusnotify_tblventa order by IDESTATUSNOTIFY_tblventa ASC 

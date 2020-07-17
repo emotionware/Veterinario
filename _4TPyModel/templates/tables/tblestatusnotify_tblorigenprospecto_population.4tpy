@@ -1,0 +1,1 @@
+select * from tblestatusnotify_tblorigenprospecto order by IDESTATUSNOTIFY_tblorigenprospecto ASC 

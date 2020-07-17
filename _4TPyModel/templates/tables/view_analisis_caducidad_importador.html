@@ -1,0 +1,647 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Análisis de Caducidad</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- bootstrap theme -->
+    <link rel="stylesheet" href="/static/themes/cerulean/bootstrap.css" media="screen">
+
+    <!-- add one of the jQWidgets styles -->
+    <link rel="stylesheet"
+          href="/static/jqwidgets/styles/jqx.base.css" type="text/css" />
+
+    <!-- Themes for jqwidget-->
+    <link rel="stylesheet" href="/static/jqwidgets/styles/jqx.darkblue.css" type="text/css" />
+    <link rel="stylesheet" href="/static/jqwidgets/styles/jqx.material.css" type="text/css" />
+    <link rel="stylesheet" href="/static/jqwidgets/styles/jqx.material-green.css" type="text/css" />
+    <link rel="stylesheet" href="/static/jqwidgets/styles/jqx.material-purple.css" type="text/css" />
+
+
+
+    <link rel="stylesheet" href="/static/jqwidgets/styles/jqx.shinyblack.css" type="text/css" />
+
+    <link rel="stylesheet" href="/static/jqwidgets/styles/jqx.ui-lightness.css" type="text/css" />
+    <link rel="stylesheet" href="/static/jqwidgets/styles/jqx.ui-start.css" type="text/css" />
+    <link rel="stylesheet" href="/static/jqwidgets/styles/jqx.ui-redmond.css" type="text/css" />
+    <link rel="stylesheet" href="/static/jqwidgets/styles/jqx.ui-sunny.css" type="text/css" />
+
+
+    <!--Localization-->
+    <script type="text/javascript" src="/static/jqwidgets/globalization/globalize.js"></script>
+
+
+
+    <!-- add the jQuery script -->
+    <script src="/static/scripts/jquery.min.js"></script>
+    <!-- add the jQWidgets framework -->
+    <script type="text/javascript" src="/static/jqwidgets/jqxcore.js"></script>
+    <!-- add one or more widgets -->
+    <script type="text/javascript" src="/static/jqwidgets/jqx-all.js"></script>
+
+
+    <!--Js Demos-->
+    <script type="text/javascript" src="/static/scripts/demos.js"></script>
+
+    <!--Exportadores-->
+    <script type="text/javascript" src="/static/jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="/static/jqwidgets/jqxgrid.edit.js"></script>
+    <script type="text/javascript" src="/static/jqwidgets/jqxgrid.columnsresize.js"></script>
+    <script type="text/javascript" src="/static/jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="/static/jqwidgets/jqxdata.export.js"></script>
+    <script type="text/javascript" src="/static/jqwidgets/jqxgrid.export.js"></script>
+    <script type="text/javascript" src="/static/jqwidgets/jqxexport.js"></script>
+    <script type="text/javascript" src="/static/jqwidgets/jqxgrid.sort.js"></script>
+
+
+
+    <!-- JSZip -->
+    <script type="text/javascript" src="/static/scripts/jszip.min.js"></script>
+
+
+    <!-- Cookie Control -->
+    <script src="/static/scripts/js.cookie.js"></script>
+
+
+    <script type="text/javascript" src="/static/jqwidgets/jqxdata.export.js"></script>
+
+
+    <script type="text/javascript" src="/static/jqwidgets/jqxdata.js"></script>
+
+
+    <style type="text/css">
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0px;
+            padding: 0px;
+            overflow: hidden;
+        }
+    </style>
+
+    <style>
+
+
+        @font-face {
+            font-family: pompadour;
+            src: url(/static/fonts/02_APompadourTextSample.ttf);
+        }
+
+
+
+        html {
+            visibility: hidden;
+        }
+    </style>
+
+
+    <style>
+
+
+        a:link {
+            color: white;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: oldlace;
+            text-decoration: none;
+        }
+
+        button {
+            border-radius: 4px;
+        }
+    </style>
+
+
+    <script>
+
+
+        theme = Cookies.get('theme');
+
+        if (theme == null || theme == '' || theme == 'start') {
+
+            Cookies.set('theme', 'darkblue', { expires: 90 });
+
+        }
+
+
+
+
+
+
+
+
+        $(document).ready(function () {
+            document.getElementsByTagName("html")[0].style.visibility = "visible";
+        });
+
+
+
+
+        //check log in/////////////
+        if (Cookies.get('username') != null && Cookies.get('esadmin') != null && Cookies.get('token') != null) {
+            //Show the page
+
+        }
+        else {
+            //Redirect to login
+            window.open("login", "_self");
+        }
+
+
+    </script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+
+
+            // renderer for grid cells.
+            var numberrenderer = function (row, column, value) {
+                return '<div style="text-align: center; margin-top: 5px;">' + (1 + value) + '</div>';
+            }
+            // create Grid datafields and columns arrays.
+            var datafields = [
+
+
+
+                {name: 'IDARTICULO', type: 'string'},{name: 'CODIGO', type: 'string'},{name: 'NOMBRE_ARTICULO', type: 'string'},{name: 'LOTE', type: 'string'},{name: 'CANTIDAD', type: 'string'},{name: 'CADUCIDAD', type: 'string'},{name: 'DIAS_RESTANTES', type: 'string'},{name: 'CATEGORIA1', type: 'string'},{name: 'CATEGORIA2', type: 'string'}
+
+
+            ];
+        var columns = [
+
+
+
+              {text: 'IDARTICULO', datafield: 'IDARTICULO', theme:theme ,  columntype: 'text' , width: '110'},{text: 'CODIGO', datafield: 'CODIGO', theme:theme ,  columntype: 'text' , width: '110'},{text: 'NOMBRE_ARTICULO', datafield: 'NOMBRE_ARTICULO', theme:theme ,  columntype: 'text' , width: '110'},{text: 'LOTE', datafield: 'LOTE', theme:theme ,  columntype: 'text' , width: '110'},{text: 'CANTIDAD', datafield: 'CANTIDAD', theme:theme ,  columntype: 'text' , width: '110'},{text: 'CADUCIDAD', theme:theme  ,datafield: 'CADUCIDAD', theme:theme ,  columntype: 'string' , width: '110'},{text: 'DIAS_RESTANTES', datafield: 'DIAS_RESTANTES', theme:theme ,  columntype: 'text' , width: '110'},{text: 'CATEGORIA1', datafield: 'CATEGORIA1', theme:theme ,  columntype: 'text' , width: '110'},{text: 'CATEGORIA2', datafield: 'CATEGORIA2', theme:theme ,  columntype: 'text' , width: '110'}
+
+
+        ];
+            for (var i = 0; i < 26; i++) {
+                var text = String.fromCharCode(65 + i);
+                if (i == 0) {
+                    var cssclass = 'jqx-widget-header';
+                    if (theme != '') cssclass += ' jqx-widget-header-' + theme;
+                    columns[columns.length] = { pinned: true, exportable: false, text: "", columntype: 'number', cellclassname: cssclass, cellsrenderer: numberrenderer };
+                }
+                datafields[datafields.length] = { name: text };
+                columns[columns.length] = { text: text, datafield: text, width: 60, align: 'center' };
+            }
+            var source =
+            {
+                unboundmode: true,
+                totalrecords: 100,
+                datafields: datafields,
+                updaterow: function (rowid, rowdata) {
+                    // synchronize with the server - send update command
+                }
+            };
+            var dataAdapter = new $.jqx.dataAdapter(source);
+            // initialize jqxGrid
+            $("#grid").jqxGrid(
+                {
+                    width: '100%',
+                    height:'450',
+                    source: dataAdapter,
+                    editable: true,
+                    columnsresize: true,
+                    selectionmode: 'multiplecellsadvanced',
+                    columns: columns
+                });
+
+        var linkrenderer = function (row, column, value) {
+            if (value.indexOf('#') != -1) {
+                value = value.substring(0, value.indexOf('#'));
+            }
+            var format = { target: '"_blank"', style: 'border-radius: 4px;' };
+            var html = $.jqx.dataFormat.formatlink(value, format);
+            return html;
+        }
+
+
+
+        $("#grid").on('cellendedit', function (event) {
+            // event arguments.
+            var args = event.args;
+            // column data field.
+            var dataField = event.args.datafield;
+            // row's bound index.
+            var rowBoundIndex = event.args.rowindex;
+            // cell value
+            var value = args.value;
+            // cell old value.
+            var oldvalue = args.oldvalue;
+            // row's data.
+            var rowData = args.row;
+
+            var elvalor = '';
+
+            if (dataField == 'IDARTICULO' && value!=null  ) {
+
+                //leer datos en la fila - volcar 
+
+$.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  IDARTICULO  from view_analisis_caducidad where IDVIEW_ANALISIS_CADUCIDAD=" + value }).then(function (data) { $("#grid").jqxGrid('setcellvalue', rowBoundIndex, "IDARTICULO", String(data).replace("None",""));  $("#mensaje").val("Leyendo registros...espere..." + data);     });    $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  CODIGO  from view_analisis_caducidad where IDVIEW_ANALISIS_CADUCIDAD=" + value }).then(function (data) { $("#grid").jqxGrid('setcellvalue', rowBoundIndex, "CODIGO", String(data).replace("None",""));  $("#mensaje").val("Leyendo registros...espere..." + data);     });    $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  NOMBRE_ARTICULO  from view_analisis_caducidad where IDVIEW_ANALISIS_CADUCIDAD=" + value }).then(function (data) { $("#grid").jqxGrid('setcellvalue', rowBoundIndex, "NOMBRE_ARTICULO", String(data).replace("None",""));  $("#mensaje").val("Leyendo registros...espere..." + data);     });    $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  LOTE  from view_analisis_caducidad where IDVIEW_ANALISIS_CADUCIDAD=" + value }).then(function (data) { $("#grid").jqxGrid('setcellvalue', rowBoundIndex, "LOTE", String(data).replace("None",""));  $("#mensaje").val("Leyendo registros...espere..." + data);     });    $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  CANTIDAD  from view_analisis_caducidad where IDVIEW_ANALISIS_CADUCIDAD=" + value }).then(function (data) { $("#grid").jqxGrid('setcellvalue', rowBoundIndex, "CANTIDAD", String(data).replace("None",""));  $("#mensaje").val("Leyendo registros...espere..." + data);     });    $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  concat(CADUCIDAD,' +06:00' ) from view_analisis_caducidad where IDVIEW_ANALISIS_CADUCIDAD=" + value }).then(function (data) { $("#grid").jqxGrid('setcellvalue', rowBoundIndex, "CADUCIDAD", String(data).replace("None",""));  $("#mensaje").val("Leyendo registros...espere..." + data);     });   $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  DIAS_RESTANTES  from view_analisis_caducidad where IDVIEW_ANALISIS_CADUCIDAD=" + value }).then(function (data) { $("#grid").jqxGrid('setcellvalue', rowBoundIndex, "DIAS_RESTANTES", String(data).replace("None",""));  $("#mensaje").val("Leyendo registros...espere..." + data);     });    $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  CATEGORIA1  from view_analisis_caducidad where IDVIEW_ANALISIS_CADUCIDAD=" + value }).then(function (data) { $("#grid").jqxGrid('setcellvalue', rowBoundIndex, "CATEGORIA1", String(data).replace("None",""));  $("#mensaje").val("Leyendo registros...espere..." + data);     });    $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  CATEGORIA2  from view_analisis_caducidad where IDVIEW_ANALISIS_CADUCIDAD=" + value }).then(function (data) { $("#grid").jqxGrid('setcellvalue', rowBoundIndex, "CATEGORIA2", String(data).replace("None",""));  $("#mensaje").val("Leyendo registros...espere..." + data);     });   
+
+
+              //  $("#grid").jqxGrid('setcellvalue', rowBoundIndex, "NOMBRE_TAREA",'CAPULLO'  ); 
+       
+
+            }
+
+        });
+
+
+
+
+
+            var url_string = window.location.href;
+            var url = new URL(url_string);
+            var indices = url.searchParams.get("indices");
+            
+        if (indices != null) {
+
+            //precargando
+               partes = String(indices).split(",");
+
+
+
+               var arrayLength = partes.length;
+               for (var i = 0; i < arrayLength; i++) {
+                   console.log(partes[i]);
+
+                   var rowID = $('#grid').jqxGrid('getrowid', partes[i]);
+                   var data = $('#grid').jqxGrid('getrowdatabyid', rowID);
+
+                  $("#grid").jqxGrid('setcellvalue', i, "IDARTICULO", partes[i]);
+
+                   var value = partes[i];
+                   var rowBoundIndex = i;
+
+
+                   $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  IDARTICULO  from view_analisis_caducidad where IDVIEW_ANALISIS_CADUCIDAD=" + value }).then(function (data) { $("#grid").jqxGrid('setcellvalue', rowBoundIndex, "IDARTICULO", String(data).replace("None",""));  $("#mensaje").val("Leyendo registros...espere..." + data);     });    $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  CODIGO  from view_analisis_caducidad where IDVIEW_ANALISIS_CADUCIDAD=" + value }).then(function (data) { $("#grid").jqxGrid('setcellvalue', rowBoundIndex, "CODIGO", String(data).replace("None",""));  $("#mensaje").val("Leyendo registros...espere..." + data);     });    $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  NOMBRE_ARTICULO  from view_analisis_caducidad where IDVIEW_ANALISIS_CADUCIDAD=" + value }).then(function (data) { $("#grid").jqxGrid('setcellvalue', rowBoundIndex, "NOMBRE_ARTICULO", String(data).replace("None",""));  $("#mensaje").val("Leyendo registros...espere..." + data);     });    $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  LOTE  from view_analisis_caducidad where IDVIEW_ANALISIS_CADUCIDAD=" + value }).then(function (data) { $("#grid").jqxGrid('setcellvalue', rowBoundIndex, "LOTE", String(data).replace("None",""));  $("#mensaje").val("Leyendo registros...espere..." + data);     });    $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  CANTIDAD  from view_analisis_caducidad where IDVIEW_ANALISIS_CADUCIDAD=" + value }).then(function (data) { $("#grid").jqxGrid('setcellvalue', rowBoundIndex, "CANTIDAD", String(data).replace("None",""));  $("#mensaje").val("Leyendo registros...espere..." + data);     });    $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  concat(CADUCIDAD,' +06:00' ) from view_analisis_caducidad where IDVIEW_ANALISIS_CADUCIDAD=" + value }).then(function (data) { $("#grid").jqxGrid('setcellvalue', rowBoundIndex, "CADUCIDAD", String(data).replace("None",""));  $("#mensaje").val("Leyendo registros...espere..." + data);     });   $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  DIAS_RESTANTES  from view_analisis_caducidad where IDVIEW_ANALISIS_CADUCIDAD=" + value }).then(function (data) { $("#grid").jqxGrid('setcellvalue', rowBoundIndex, "DIAS_RESTANTES", String(data).replace("None",""));  $("#mensaje").val("Leyendo registros...espere..." + data);     });    $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  CATEGORIA1  from view_analisis_caducidad where IDVIEW_ANALISIS_CADUCIDAD=" + value }).then(function (data) { $("#grid").jqxGrid('setcellvalue', rowBoundIndex, "CATEGORIA1", String(data).replace("None",""));  $("#mensaje").val("Leyendo registros...espere..." + data);     });    $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  CATEGORIA2  from view_analisis_caducidad where IDVIEW_ANALISIS_CADUCIDAD=" + value }).then(function (data) { $("#grid").jqxGrid('setcellvalue', rowBoundIndex, "CATEGORIA2", String(data).replace("None",""));  $("#mensaje").val("Leyendo registros...espere..." + data);     });   
+
+
+            }
+
+
+
+        }
+
+
+
+
+
+
+        $("#Afectar").jqxButton({ theme: theme });
+        $("#Afectar").click(function () {
+
+            //parse files check if there is any selected field inside
+            var cells = $('#grid').jqxGrid('getselectedcells');
+
+            var cellInfo = "";
+            for (var i = 0; i < cells.length; i++) {
+                var cell = cells[i];
+              //  cellInfo += "\nRow: " + cell.rowindex + ", " + cell.datafield;
+
+                //check if first columnd of every selected row is empty
+
+                var valorid= $('#grid').jqxGrid('getcellvalue', cell.rowindex, 'IDARTICULO');
+                var value = $('#grid').jqxGrid('getcellvalue', cell.rowindex, cell.datafield);
+
+
+                if (valorid == '') {
+                    //insert
+                   // alert('insert' + cell.rowindex);
+
+
+
+
+                      var cadenainsert = '';
+                    cadenainsert = cadenainsert + ' insert into view_analisis_caducidad (IDARTICULO,CODIGO,NOMBRE_ARTICULO,LOTE,CANTIDAD,CADUCIDAD,DIAS_RESTANTES,CATEGORIA1,CATEGORIA2) values (';
+
+                    cadenainsert = cadenainsert + "'" + $('#grid').jqxGrid('getcellvalue', cell.rowindex, 'IDARTICULO') + "'" + ","  + "'" + $('#grid').jqxGrid('getcellvalue', cell.rowindex, 'CODIGO') + "'" + ","  + "'" + $('#grid').jqxGrid('getcellvalue', cell.rowindex, 'NOMBRE_ARTICULO') + "'" + ","  + "'" + $('#grid').jqxGrid('getcellvalue', cell.rowindex, 'LOTE') + "'" + ","  + "'" + $('#grid').jqxGrid('getcellvalue', cell.rowindex, 'CANTIDAD') + "'" + ","  + "'" + formatDate( new Date( checarnulos( 'date',   $('#grid').jqxGrid('getcellvalue', cell.rowindex, 'CADUCIDAD')) ).toISOString() )  + "'" + ","  + "'" + $('#grid').jqxGrid('getcellvalue', cell.rowindex, 'DIAS_RESTANTES') + "'" + ","  + "'" + $('#grid').jqxGrid('getcellvalue', cell.rowindex, 'CATEGORIA1') + "'" + ","  + "'" + $('#grid').jqxGrid('getcellvalue', cell.rowindex, 'CATEGORIA2') + "'" + ","  ;
+
+               // cadenainsert = cadenainsert + ' where IDARTICULO=' + $('#grid').jqxGrid('getcellvalue', cell.rowindex, "IDARTICULO");
+
+
+                cadenainsert = cadenainsert + ')';
+
+                cadenainsert = cadenainsert.replace(',)', ')');
+
+                cadenainsert = cadenainsert.replace("'undefined'", "Null");
+               
+                console.log(cadenainsert);
+
+               
+
+
+                //guardando
+                $.ajax({
+                     async:false,
+                    url: "/sqlexec2" + '?idusername=' + Cookies.get('idusername') + '&tablename=view_analisis_caducidad&sentencia=' + cadenainsert
+                }).then(function (data) {
+
+                     //recuperando el id para la primer columna
+                    $("#grid").jqxGrid('setcellvalue', cell.rowindex, "IDARTICULO", data);
+
+
+                     $('#mensaje').val(data);
+
+
+                    //recuperando datos
+                    var value = data;
+                var rowBoundIndex = cell.rowindex;
+                    $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  IDARTICULO  from view_analisis_caducidad where IDVIEW_ANALISIS_CADUCIDAD=" + value }).then(function (data) { $("#grid").jqxGrid('setcellvalue', rowBoundIndex, "IDARTICULO", String(data).replace("None",""));  $("#mensaje").val("Leyendo registros...espere..." + data);     });    $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  CODIGO  from view_analisis_caducidad where IDVIEW_ANALISIS_CADUCIDAD=" + value }).then(function (data) { $("#grid").jqxGrid('setcellvalue', rowBoundIndex, "CODIGO", String(data).replace("None",""));  $("#mensaje").val("Leyendo registros...espere..." + data);     });    $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  NOMBRE_ARTICULO  from view_analisis_caducidad where IDVIEW_ANALISIS_CADUCIDAD=" + value }).then(function (data) { $("#grid").jqxGrid('setcellvalue', rowBoundIndex, "NOMBRE_ARTICULO", String(data).replace("None",""));  $("#mensaje").val("Leyendo registros...espere..." + data);     });    $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  LOTE  from view_analisis_caducidad where IDVIEW_ANALISIS_CADUCIDAD=" + value }).then(function (data) { $("#grid").jqxGrid('setcellvalue', rowBoundIndex, "LOTE", String(data).replace("None",""));  $("#mensaje").val("Leyendo registros...espere..." + data);     });    $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  CANTIDAD  from view_analisis_caducidad where IDVIEW_ANALISIS_CADUCIDAD=" + value }).then(function (data) { $("#grid").jqxGrid('setcellvalue', rowBoundIndex, "CANTIDAD", String(data).replace("None",""));  $("#mensaje").val("Leyendo registros...espere..." + data);     });    $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  concat(CADUCIDAD,' +06:00' ) from view_analisis_caducidad where IDVIEW_ANALISIS_CADUCIDAD=" + value }).then(function (data) { $("#grid").jqxGrid('setcellvalue', rowBoundIndex, "CADUCIDAD", String(data).replace("None",""));  $("#mensaje").val("Leyendo registros...espere..." + data);     });   $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  DIAS_RESTANTES  from view_analisis_caducidad where IDVIEW_ANALISIS_CADUCIDAD=" + value }).then(function (data) { $("#grid").jqxGrid('setcellvalue', rowBoundIndex, "DIAS_RESTANTES", String(data).replace("None",""));  $("#mensaje").val("Leyendo registros...espere..." + data);     });    $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  CATEGORIA1  from view_analisis_caducidad where IDVIEW_ANALISIS_CADUCIDAD=" + value }).then(function (data) { $("#grid").jqxGrid('setcellvalue', rowBoundIndex, "CATEGORIA1", String(data).replace("None",""));  $("#mensaje").val("Leyendo registros...espere..." + data);     });    $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  CATEGORIA2  from view_analisis_caducidad where IDVIEW_ANALISIS_CADUCIDAD=" + value }).then(function (data) { $("#grid").jqxGrid('setcellvalue', rowBoundIndex, "CATEGORIA2", String(data).replace("None",""));  $("#mensaje").val("Leyendo registros...espere..." + data);     });   
+
+
+
+                });
+
+
+
+                $('#mensaje').val('Guardado Terminado');
+
+
+
+                }
+
+                if (valorid != '') {
+                    //update
+
+                    //  alert('update' + cell.rowindex);
+
+
+                    var cadenaupdate = '';
+                    cadenaupdate = cadenaupdate + ' update view_analisis_caducidad set ';
+
+                    cadenaupdate = cadenaupdate + 'IDARTICULO=' + "'" + String($('#grid').jqxGrid('getcellvalue', cell.rowindex, 'IDARTICULO')).replace('null','').replace('undefined','') + "'" + ","  + 'CODIGO=' + "'" + String($('#grid').jqxGrid('getcellvalue', cell.rowindex, 'CODIGO')).replace('null','').replace('undefined','') + "'" + ","  + 'NOMBRE_ARTICULO=' + "'" + String($('#grid').jqxGrid('getcellvalue', cell.rowindex, 'NOMBRE_ARTICULO')).replace('null','').replace('undefined','') + "'" + ","  + 'LOTE=' + "'" + String($('#grid').jqxGrid('getcellvalue', cell.rowindex, 'LOTE')).replace('null','').replace('undefined','') + "'" + ","  + 'CANTIDAD=' + "'" + String($('#grid').jqxGrid('getcellvalue', cell.rowindex, 'CANTIDAD')).replace('null','').replace('undefined','') + "'" + ","  + 'CADUCIDAD=' + "'" + formatDate( new Date( $('#grid').jqxGrid('getcellvalue', cell.rowindex, 'CADUCIDAD')  ).toISOString() )  + "'" + ","  + 'DIAS_RESTANTES=' + "'" + String($('#grid').jqxGrid('getcellvalue', cell.rowindex, 'DIAS_RESTANTES')).replace('null','').replace('undefined','') + "'" + ","  + 'CATEGORIA1=' + "'" + String($('#grid').jqxGrid('getcellvalue', cell.rowindex, 'CATEGORIA1')).replace('null','').replace('undefined','') + "'" + ","  + 'CATEGORIA2=' + "'" + String($('#grid').jqxGrid('getcellvalue', cell.rowindex, 'CATEGORIA2')).replace('null','').replace('undefined','') + "'" + ","  ;
+
+                cadenaupdate = cadenaupdate + ' where IDARTICULO=' + $('#grid').jqxGrid('getcellvalue', cell.rowindex, "IDARTICULO");
+
+            cadenaupdate = cadenaupdate.replace(', where', ' where ');
+
+
+
+
+            cadenaupdate = cadenaupdate.replace("=''", "=Null");
+
+
+                console.log(cadenaupdate);
+
+
+                
+
+                //guardando
+            $.ajax({
+                     async:false,
+                    url: "/sqlexec" + '?idobjeto=' + valorid + '&tablename=view_analisis_caducidad&sentencia=' + cadenaupdate
+                }).then(function (data) {
+
+                    var res = data;
+
+                    $('#mensaje').val('Afectando ID ' + valorid);
+
+                });
+
+
+
+            }
+
+
+             $('#mensaje').val('Guardado Terminado');
+
+        }
+
+        });
+
+
+
+
+
+
+        });
+
+        function checarnulos(tipo,valor) {
+
+            if (tipo == 'date') {
+
+                if (valor == null || valor=='') {
+
+                    return '1970-01-01T12:00:00Z';
+                    
+            }
+
+            }
+
+           
+            if (tipo != 'date') {
+
+                if (valor == null) {
+
+                    return '';
+                    
+            }
+
+            }
+
+
+        }
+
+
+ function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
+
+    </script>
+
+</head>
+<body class='default'>
+
+
+    <div id="zonamenu">
+        <div id='jqxMenu'>
+    <ul>
+    	 
+    	
+        <li><a href="javascript:addtabplustitle('home','Home')">Home</a></li>
+        
+         
+          
+         
+        
+        
+        
+        
+         <li>Clientes
+         <ul>
+         	<li><a href="javascript:addtabplus('rendergrid?grid=tables/tblprospecto')">Clientes</a></li>
+         	<li>Vistas
+         	<ul>
+         		 
+         	<li><a href="javascript:addtabplus('/static/stimulsoft/reportviewer.html?reporte=view_estatus_prospectos.mrt')">Estatus</a></li>
+         		<li><a href="javascript:addtabplus('/static/stimulsoft/reportviewer.html?reporte=view_ver_origenes.mrt')">Origenes</a></li>
+         	</ul>
+         	</li>
+         </ul>
+         
+         </li>
+          
+          
+          
+          
+          <li>Ventas
+         <ul>
+         	<li><a href="javascript:addtabplus('rendergrid?grid=tables/tblcotizacion')">Ventas</a></li>
+         	<li>Vistas
+         	<ul>
+         		<li><a href="javascript:addtabplus('static/stimulsoft/reportviewer.html?reporte=view_estatus_tblcotizacion.mrt')">Estatus</a></li>
+          	<li><a href="javascript:addtabplus('static/stimulsoft/reportviewer.html?reporte=view_canal_comercial.mrt')">Canales Comerciales</a></li>
+         	</ul>
+         	</li>
+         </ul>
+         </li>
+          
+          <li>Almacenes
+          <ul>
+          	 <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblalmacen')">Almacén</a></li>
+          	  <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblcompraenca')">Compras</a></li>
+          	 <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblarticulo')">Artículos</a></li>
+          	  <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblentrada')">Entradas</a></li>
+          	   <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblsalida')">Salidas</a></li>
+          	    <li><a href="javascript:addtabplus('rendergrid?grid=tables/tbltipoentrada')">Tipo Entrada</a></li>
+          	     <li><a href="javascript:addtabplus('rendergrid?grid=tables/tbltiposalida')">Tipo Salida</a></li>
+          	      <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblkardex')">Kardex</a></li>
+          	           <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblproveedor')">Proveedores</a></li>
+          </ul>
+          </li>
+          
+        
+            <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblagente')">Agentes</a></li>
+          
+              <li><a href="javascript:addtabplus('rendergrid?grid=tables/tbldocumento')">Documentos</a></li>
+             
+             
+             
+             <li>Reportes Vet
+             
+             <ul>
+             	
+   <li><a href="javascript:addtabplus('/static/stimulsoft/reportviewer.html?reporte=view_existencia_general')">Existencia General</a></li>
+<li><a href="javascript:addtabplus('/static/stimulsoft/reportviewer.html?reporte=view_existencias_por_lote')">Existencia por Lotes</a></li>
+<li><a href="javascript:addtabplus('/static/stimulsoft/dashboardviewer.html?dashboard=view_analisis_caducidad')">Análisis de la Caducidad</a></li> 
+           
+           
+           
+           
+             </ul>
+             
+             </li>
+             
+             
+           
+             <li>Config
+             <ul>
+  <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblmascota')">Mascota</a></li>                	
+ <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblespecie')">Especie</a></li>   
+ <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblraza')">Raza</a></li>   
+
+  
+             </ul>
+             </li>             
+             
+             
+           <li>Reportes
+           <ul>
+           	<li><a href="javascript:addtabplus('/static/stimulsoft/reportviewer.html?reporte=view_recordatorios.mrt')" >Recordatorios</a></li>
+           	<li><a href="javascript:addtabplus('/static/stimulsoft/reportviewer.html?cuerpo=&asunto=&para=&reporte=catalogoarticulos.mrt')" >Catálogo Artículos</a></li>
+           <li><a href="javascript:addtabplus('/static/stimulsoft/reportviewer.html?cuerpo=&asunto=&para=&reporte=vtascerradas.mrt')" >Vtas Cerradas</a></li>
+           <li><a href="javascript:addtabplus('/static/stimulsoft/reportviewer.html?cuerpo=&asunto=&para=&reporte=deudaactiva.mrt')" >Deuda Activa</a></li>
+           <li><a href="javascript:addtabplus('/static/stimulsoft/dashboardviewer.html?dashboard=productividad.mrt')" >Productividad</a></li>
+        <li><a href="javascript:addtabplus('/static/pivot/index.html?query=view_reporte_cotizacion&perspectiva=general')" target="_blank" >Pivot Gral Operaciones</a></li>
+        
+           
+           </ul>
+           </li>
+       
+         	<li><a href="javascript:addtabplus('adminzone')">Admin Zona</a></li>
+         	<li><a href="javascript:addtabplus('login')">Login</a></li>
+            </ul>
+        </li>
+     
+     
+      
+        
+      
+    </ul>
+</div>
+
+
+<script type="text/javascript">
+
+
+    theme = Cookies.get('theme');
+
+    if (theme == null || theme == '' || theme == 'start') {
+
+        Cookies.set('theme', 'darkblue', { expires: 90 });
+
+    }
+
+    
+
+
+    $(document).ready(function () {
+        $("#jqxMenu").jqxMenu({ width: '100%', height: '30px', theme: theme });
+        var centerItems = function () {
+            var firstItem = $($("#jqxMenu ul:first").children()[0]);
+            firstItem.css('margin-left', 0);
+            var width = 0;
+            var borderOffset = 2;
+            $.each($("#jqxMenu ul:first").children(), function () {
+                width += $(this).outerWidth(true) + borderOffset;
+            });
+            var menuWidth = $("#jqxMenu").outerWidth();
+            firstItem.css('margin-left', (menuWidth / 2) - (width / 2));
+        }
+        centerItems();
+        $(window).resize(function () {
+            centerItems();
+        });
+    });
+</script>
+    </div>
+
+
+    <div id='jqxWidget'>
+        <div id="encabezado">
+
+            <input id="mensaje" type="text" style="width:100%;height:20px;"  />
+
+        </div>
+        <div id="grid"></div>
+        <div style='margin-top: 20px;'>
+            <div style='float: left;'>
+               
+
+                <input type="button" value="Afectar" id='Afectar' />
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,1 @@
+select * from tblestatusnotify_view_analisis_caducidad order by IDESTATUSNOTIFY_view_analisis_caducidad ASC 

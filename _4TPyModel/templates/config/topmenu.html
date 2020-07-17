@@ -1,0 +1,150 @@
+<div id='jqxMenu'>
+    <ul>
+    	 
+    	
+        <li><a href="javascript:addtabplustitle('home','Home')">Home</a></li>
+        
+         
+          
+         
+        
+        
+        
+        
+         <li>Clientes
+         <ul>
+         	<li><a href="javascript:addtabplus('rendergrid?grid=tables/tblprospecto')">Clientes</a></li>
+         	<li>Vistas
+         	<ul>
+         		 
+         	<li><a href="javascript:addtabplus('/static/stimulsoft/reportviewer.html?reporte=view_estatus_prospectos.mrt')">Estatus</a></li>
+         		<li><a href="javascript:addtabplus('/static/stimulsoft/reportviewer.html?reporte=view_ver_origenes.mrt')">Origenes</a></li>
+         	</ul>
+         	</li>
+         </ul>
+         
+         </li>
+          
+          
+          
+          
+          <li>Ventas
+         <ul>
+         	<li><a href="javascript:addtabplus('rendergrid?grid=tables/tblcotizacion')">Ventas</a></li>
+         	<li>Vistas
+         	<ul>
+         		<li><a href="javascript:addtabplus('static/stimulsoft/reportviewer.html?reporte=view_estatus_tblcotizacion.mrt')">Estatus</a></li>
+          	<li><a href="javascript:addtabplus('static/stimulsoft/reportviewer.html?reporte=view_canal_comercial.mrt')">Canales Comerciales</a></li>
+         	</ul>
+         	</li>
+         </ul>
+         </li>
+          
+          <li>Almacenes
+          <ul>
+          	 <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblalmacen')">Almacén</a></li>
+          	  <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblcompraenca')">Compras</a></li>
+          	 <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblarticulo')">Artículos</a></li>
+          	  <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblentrada')">Entradas</a></li>
+          	   <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblsalida')">Salidas</a></li>
+          	    <li><a href="javascript:addtabplus('rendergrid?grid=tables/tbltipoentrada')">Tipo Entrada</a></li>
+          	     <li><a href="javascript:addtabplus('rendergrid?grid=tables/tbltiposalida')">Tipo Salida</a></li>
+          	      <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblkardex')">Kardex</a></li>
+          	           <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblproveedor')">Proveedores</a></li>
+          </ul>
+          </li>
+          
+        
+            <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblagente')">Agentes</a></li>
+          
+              <li><a href="javascript:addtabplus('rendergrid?grid=tables/tbldocumento')">Documentos</a></li>
+             
+             
+             
+             <li>Reportes Vet
+             
+             <ul>
+             	
+   <li><a href="javascript:addtabplus('/static/stimulsoft/reportviewer.html?reporte=view_existencia_general')">Existencia General</a></li>
+<li><a href="javascript:addtabplus('/static/stimulsoft/reportviewer.html?reporte=view_existencias_por_lote')">Existencia por Lotes</a></li>
+<li><a href="javascript:addtabplus('/static/stimulsoft/dashboardviewer.html?dashboard=view_analisis_caducidad')">Análisis de la Caducidad</a></li> 
+           
+           
+           
+           
+             </ul>
+             
+             </li>
+             
+             
+           
+             <li>Config
+             <ul>
+  <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblmascota')">Mascota</a></li>                	
+ <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblespecie')">Especie</a></li>   
+ <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblraza')">Raza</a></li>   
+
+  
+             </ul>
+             </li>             
+             
+             
+           <li>Reportes
+           <ul>
+           	<li><a href="javascript:addtabplus('/static/stimulsoft/reportviewer.html?reporte=view_recordatorios.mrt')" >Recordatorios</a></li>
+           	<li><a href="javascript:addtabplus('/static/stimulsoft/reportviewer.html?cuerpo=&asunto=&para=&reporte=catalogoarticulos.mrt')" >Catálogo Artículos</a></li>
+           <li><a href="javascript:addtabplus('/static/stimulsoft/reportviewer.html?cuerpo=&asunto=&para=&reporte=vtascerradas.mrt')" >Vtas Cerradas</a></li>
+           <li><a href="javascript:addtabplus('/static/stimulsoft/reportviewer.html?cuerpo=&asunto=&para=&reporte=deudaactiva.mrt')" >Deuda Activa</a></li>
+           <li><a href="javascript:addtabplus('/static/stimulsoft/dashboardviewer.html?dashboard=productividad.mrt')" >Productividad</a></li>
+        <li><a href="javascript:addtabplus('/static/pivot/index.html?query=view_reporte_cotizacion&perspectiva=general')" target="_blank" >Pivot Gral Operaciones</a></li>
+        
+           
+           </ul>
+           </li>
+       
+         	<li><a href="javascript:addtabplus('adminzone')">Admin Zona</a></li>
+         	<li><a href="javascript:addtabplus('login')">Login</a></li>
+            </ul>
+        </li>
+     
+     
+      
+        
+      
+    </ul>
+</div>
+
+
+<script type="text/javascript">
+
+
+    theme = Cookies.get('theme');
+
+    if (theme == null || theme == '' || theme == 'start') {
+
+        Cookies.set('theme', 'darkblue', { expires: 90 });
+
+    }
+
+    
+
+
+    $(document).ready(function () {
+        $("#jqxMenu").jqxMenu({ width: '100%', height: '30px', theme: theme });
+        var centerItems = function () {
+            var firstItem = $($("#jqxMenu ul:first").children()[0]);
+            firstItem.css('margin-left', 0);
+            var width = 0;
+            var borderOffset = 2;
+            $.each($("#jqxMenu ul:first").children(), function () {
+                width += $(this).outerWidth(true) + borderOffset;
+            });
+            var menuWidth = $("#jqxMenu").outerWidth();
+            firstItem.css('margin-left', (menuWidth / 2) - (width / 2));
+        }
+        centerItems();
+        $(window).resize(function () {
+            centerItems();
+        });
+    });
+</script>

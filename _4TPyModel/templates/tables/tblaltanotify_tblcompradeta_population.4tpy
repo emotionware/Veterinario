@@ -1,0 +1,1 @@
+select * from tblaltanotify_tblcompradeta order by IDALTANOTIFY_tblcompradeta ASC 

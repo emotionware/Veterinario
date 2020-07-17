@@ -1,0 +1,21 @@
+<script>
+	
+ 
+// Describe esta función...
+function verificararticulo() {
+  elvalor=$('#IDARTICULO').val();
+  
+  window.open(('/rendergrid?grid=tables/tblkardex&campofiltro=IDARTICULO&idobjetofiltro=' + String(  elvalor.value )),'_blank');}
+
+ 
+$(document).ready(function () {
+var element = document.createElement("Button");
+element.innerHTML = 'Verificar Artículo';
+element.setAttribute("onclick", 'verificararticulo' + "();return false;");
+element.setAttribute("style",'color:black;position:relative;left:253px;top:0px');
+document.getElementById('top_IDARTICULO').appendChild(element);})
+
+	
+	
+	
+</script>

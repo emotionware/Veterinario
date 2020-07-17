@@ -1,0 +1,1 @@
+select * from tblestatusnotify_tblalmacen order by IDESTATUSNOTIFY_tblalmacen ASC 

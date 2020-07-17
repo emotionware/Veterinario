@@ -1,0 +1,1 @@
+select * from tblaltanotify_tblperfilpuesto order by IDALTANOTIFY_tblperfilpuesto ASC 

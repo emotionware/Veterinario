@@ -1,0 +1,1 @@
+select * from tblaltanotify_tblabono order by IDALTANOTIFY_tblabono ASC 

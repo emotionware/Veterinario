@@ -1,0 +1,1 @@
+select * from tblaltanotify_tblaspectoperfil order by IDALTANOTIFY_tblaspectoperfil ASC 

@@ -1,0 +1,1 @@
+select * from tblestatusnotify_tblpivotformat order by IDESTATUSNOTIFY_tblpivotformat ASC 

@@ -1,0 +1,1 @@
+select * from tblaltanotify_tblcategoriaproceso order by IDALTANOTIFY_tblcategoriaproceso ASC 

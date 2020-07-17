@@ -1,0 +1,1 @@
+select * from tblaltanotify_tblalmacen order by IDALTANOTIFY_tblalmacen ASC 

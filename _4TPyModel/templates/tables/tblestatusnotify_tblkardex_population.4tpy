@@ -1,0 +1,1 @@
+select * from tblestatusnotify_tblkardex order by IDESTATUSNOTIFY_tblkardex ASC 

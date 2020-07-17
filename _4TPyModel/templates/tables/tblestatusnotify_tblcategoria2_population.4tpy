@@ -1,0 +1,1 @@
+select * from tblestatusnotify_tblcategoria2 order by IDESTATUSNOTIFY_tblcategoria2 ASC 

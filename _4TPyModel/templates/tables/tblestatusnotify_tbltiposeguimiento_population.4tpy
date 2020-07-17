@@ -1,0 +1,1 @@
+select * from tblestatusnotify_tbltiposeguimiento order by IDESTATUSNOTIFY_tbltiposeguimiento ASC 

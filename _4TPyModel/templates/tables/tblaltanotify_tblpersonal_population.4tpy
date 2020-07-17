@@ -1,0 +1,1 @@
+select * from tblaltanotify_tblpersonal order by IDALTANOTIFY_tblpersonal ASC 

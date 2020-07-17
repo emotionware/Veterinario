@@ -1,0 +1,6 @@
+hostx="localhost"
+userx="root"
+passwdx="ks2106"
+databasex="veterinario"
+portx="3306"
+GMTZone="+06:00"

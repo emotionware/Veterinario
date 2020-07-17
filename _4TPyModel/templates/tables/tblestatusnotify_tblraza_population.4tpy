@@ -1,0 +1,1 @@
+select * from tblestatusnotify_tblraza order by IDESTATUSNOTIFY_tblraza ASC 

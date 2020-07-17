@@ -1,0 +1,1 @@
+select * from tblaltanotify_tblrecordatorio order by IDALTANOTIFY_tblrecordatorio ASC 

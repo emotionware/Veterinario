@@ -1,0 +1,1 @@
+select * from tblestatusnotify_tblcompraenca order by IDESTATUSNOTIFY_tblcompraenca ASC 

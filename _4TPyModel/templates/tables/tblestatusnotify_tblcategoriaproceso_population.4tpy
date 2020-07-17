@@ -1,0 +1,1 @@
+select * from tblestatusnotify_tblcategoriaproceso order by IDESTATUSNOTIFY_tblcategoriaproceso ASC 

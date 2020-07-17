@@ -1,0 +1,1 @@
+select * from tblaltanotify_tblcategoria1 order by IDALTANOTIFY_tblcategoria1 ASC 

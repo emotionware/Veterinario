@@ -1,0 +1,1 @@
+select cast( IDARTICULO as UNSIGNED) as  IDARTICULO ,CODIGO,NOMBRE_ARTICULO,LOTE,CANTIDAD,CONVERT_TZ(CADUCIDAD,'+00:00','+06:00') as CADUCIDAD ,DIAS_RESTANTES,CATEGORIA1,CATEGORIA2, concat('<a style="color:blue;" href="javascript:modoedicion(',IDARTICULO,');">Editar</a>') as EDITAR from view_analisis_caducidad  order by IDARTICULO desc

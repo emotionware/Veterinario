@@ -1,0 +1,1 @@
+select * from tblaltanotify_tblestudio order by IDALTANOTIFY_tblestudio ASC 

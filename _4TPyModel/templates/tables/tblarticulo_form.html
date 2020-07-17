@@ -1,0 +1,1574 @@
+﻿<!DOCTYPE html>
+
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Form Artículo</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- bootstrap theme -->
+    <link rel="stylesheet" href="/static/themes/cerulean/bootstrap.css" media="screen">
+
+    <!-- add one of the jQWidgets styles -->
+    <link rel="stylesheet"
+          href="/static/jqwidgets/styles/jqx.base.css" type="text/css" />
+
+    <!-- Themes for jqwidget-->
+    <link rel="stylesheet" href="/static/jqwidgets/styles/jqx.darkblue.css" type="text/css" />
+
+
+
+
+    <link rel="stylesheet" href="/static/jqwidgets/styles/jqx.shinyblack.css" type="text/css" />
+
+    <link rel="stylesheet" href="/static/jqwidgets/styles/jqx.ui-lightness.css" type="text/css" />
+    <link rel="stylesheet" href="/static/jqwidgets/styles/jqx.ui-start.css" type="text/css" />
+    <link rel="stylesheet" href="/static/jqwidgets/styles/jqx.ui-redmond.css" type="text/css" />
+    <link rel="stylesheet" href="/static/jqwidgets/styles/jqx.ui-sunny.css" type="text/css" />
+    <link rel="stylesheet" href="/static/jqwidgets/styles/jqx.ui-le-frog.css" type="text/css" />
+
+    <!--Localization-->
+    <script type="text/javascript" src="/static/jqwidgets/globalization/globalize.js"></script>
+
+    <!-- add the jQuery script -->
+    <script src="/static/scripts/jquery.min.js"></script>
+    <!-- add the jQWidgets framework -->
+    <script type="text/javascript" src="/static/jqwidgets/jqxcore.js"></script>
+    <!-- add one or more widgets -->
+    <script type="text/javascript" src="/static/jqwidgets/jqx-all.js"></script>
+
+    <!-- add one or more widgets -->
+    <script type="text/javascript" src="/static/scripts/moment.js"></script>
+
+    <!--Localization-->
+    <script type="text/javascript" src="/static/simulate/libs/bililiteRange.js"></script>
+    <script type="text/javascript" src="/static/simulate/libs/jquery.simulate.js"></script>
+    <script type="text/javascript" src="/static/simulate/src/jquery.simulate.drag-n-drop.js"></script>
+    <script type="text/javascript" src="/static/simulate/src/jquery.simulate.ext.js"></script>
+    <script type="text/javascript" src="/static/simulate/src/jquery.simulate.key-combo.js"></script>
+    <script type="text/javascript" src="/static/simulate/src/jquery.simulate.key-sequence.js"></script>
+
+
+
+    <!-- Add the stylesheet to the head -->
+<link rel="stylesheet" type="text/css" href="/static/clippy/build/clippy.css" media="all">
+
+<!-- Clippy.js -->
+<script src="/static/clippy/build/clippy.min.js"></script>
+
+
+
+    <style>
+        iframe{
+    overflow:hidden;
+}
+    </style>
+
+    <style>
+
+
+        @font-face {
+            font-family: pompadour;
+            src: url('/static/fonts/02_APompadourTextSample.ttf');
+        }
+
+
+        .ocultar {
+            visibility: hidden;
+            display: none
+        }
+
+        .ajustarposicion {
+            position: relative;
+            left: 10px;
+        }
+
+        html {
+            visibility: hidden;
+        }
+
+
+    </style>
+
+    <!--Js Demos-->
+    <script type="text/javascript" src="/static/scripts/demos.js"></script>
+
+    <!--Exportadores-->
+    <script type="text/javascript" src="/static/jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="/static/jqwidgets/jqxgrid.columnsresize.js"></script>
+    <script type="text/javascript" src="/static/jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="/static/jqwidgets/jqxdata.export.js"></script>
+    <script type="text/javascript" src="/static/jqwidgets/jqxgrid.export.js"></script>
+    <script type="text/javascript" src="/static/jqwidgets/jqxexport.js"></script>
+    <script type="text/javascript" src="/static/jqwidgets/jqxgrid.sort.js"></script>
+
+    <!-- JSZip -->
+    <script type="text/javascript" src="/static/scripts/jszip.min.js"></script>
+
+    <!-- Cookie Control -->
+    <script src="/static/scripts/js.cookie.js"></script>
+
+    <script type="text/javascript" src="/static/jqwidgets/jqxdata.export.js"></script>
+
+    <script type="text/javascript" src="/static/jqwidgets/jqxdata.js"></script>
+
+   
+		<script type='text/javascript'>
+
+			var eldestino='';
+		var recognition = new webkitSpeechRecognition();
+		recognition.onresult = function(event) {
+			console.log('result');
+		  	var saidText = "";
+		  	for (var i = event.resultIndex; i < event.results.length; i++) {
+		        if (event.results[i].isFinal) {
+		            saidText = event.results[i][0].transcript;
+		        } else {
+		            saidText += event.results[i][0].transcript;
+		        }
+		    }
+
+
+if (eldestino=='action'){
+
+                 $.ajax({
+                        url: "/voiceaction" + '?voice=' + saidText
+                    }).then(function (data) {
+
+//window.open(data,'_self');
+window.parent.parent.addtabplus(data);
+
+                    });
+
+} else{
+
+
+
+
+
+            if( document.getElementById(eldestino).getAttribute("type")==null  ) {
+    try {
+       document.getElementById(eldestino + "TextArea").value = document.getElementById(eldestino + "TextArea").value + ' ' + saidText;
+      }
+    catch ( e ) {
+          $('#' + eldestino + '.jqx-input').jqxNumberInput('val', saidText  );
+      }
+
+            }
+                else
+            {
+                document.getElementById(eldestino).value = saidText;
+
+            }
+
+
+       }
+
+
+
+
+
+		}
+
+
+		function startRecording(destino){
+			eldestino=destino;
+			recognition.start();
+		}
+
+
+
+
+
+		</script>
+
+
+    <script>
+
+
+
+
+
+        //validando permisos
+        $(document).ready(function () {
+            $.ajax({
+                url: "/validaracceso" + '?idusername=' + Cookies.get('idusername') + '&tablename=tblarticulo'
+            }).then(function (data) {
+
+
+                //checando que hacer
+                if (data == '00') {
+
+                    //Redirect to no autorizaddo
+                    window.open("noautorizado?tablename=tblarticulo", "_self");
+                }
+
+                if (data == '10') {
+                    // alert('MOSTRAR Y NO GUARDAR');
+                    aviso("SOLO TIENE PERMISO DE LECTURA EN ESTA PÁGINA");
+
+                    //deshabilitar botón guardar
+                    document.getElementById("tablabotones").style.visibility = "hidden";
+                    document.getElementById("elimregs").style.visibility = "hidden";
+                }
+
+                if (data == '11') {
+                    // alert('MOSTRAR Y GUARDAR');
+                }
+
+                if (data == '01') {
+
+                    //Redirect to no autorizaddo
+                    window.open("noautorizado?tablename=tblarticulo", "_self");
+                }
+
+            });
+        });
+
+
+
+
+        //Cargando datos del objeto
+        var url_string = window.location.href;
+        var url = new URL(url_string);
+        var idobjeto = url.searchParams.get("idobjeto");
+
+
+
+        if (idobjeto != null && idobjeto != 'null'  && idobjeto != ''  && idobjeto != ' '  ) {
+        //validando permisos de pertenencia a estructura de grupos
+        $(document).ready(function () {
+            $.ajax({                
+
+                url: "/validapropiedad" + '?idobjeto=' + idobjeto + '&tipouser=' + Cookies.get('tipouser') + '&idusername=' + Cookies.get('idusername') + '&esadmin=' + Cookies.get('esadmin') + '&tablename=tblarticulo'
+
+            }).then(function (data) {
+
+
+                
+
+                if (data == '0') {
+
+                    //Redirect to no autorizaddo
+                    window.open("noautorizado?tablename=tblarticulo", "_self");
+
+                }
+ 
+
+            });
+        });
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        theme = Cookies.get('theme');
+
+          if (theme == null || theme == '' || theme == 'start') {
+
+             Cookies.set('theme', 'darkblue', { expires: 90 });
+
+        }
+
+
+
+
+
+        //check log in/////////////
+        if (Cookies.get('username') != null && Cookies.get('esadmin') != null && Cookies.get('token') != null) {
+            //Show the page
+
+        }
+        else {
+            //Redirect to login
+            window.open("login", "_self");
+        }
+
+
+
+
+        //check ADMIN/////////////
+        soloadmin = '';
+        if (soloadmin == 'true' && Cookies.get('esadmin') != '1') {
+
+            //Redirect to no autorizaddo
+            window.open("noautorizado?tablename=tblarticulo", "_self");
+
+        };
+
+
+
+
+        //validando TOKEN  Cookies.get('token')
+             $(document).ready(function () {
+                 $.ajax({
+                        url: "/validartoken" + '?token=' + Cookies.get('token')
+                    }).then(function (data) {
+
+                       // if (data=='valido'){}
+
+                     if (data=='novalido'){
+                            window.open("login", "_self");
+                        }
+
+                    });
+                 });
+
+
+
+
+
+
+
+
+function simulateWrapper(target, type, options) {
+
+            switch (type) {
+                case "key-sequence":
+                    options.delay = $('#sequence-delay').val();
+                    break;
+                case "drag":
+                case "drag-n-drop":
+                    logMouseMove = true;
+                    var interpolationType = $('#drag-interpolation-type').val(),
+                        delayType = $('#drag-delay-type').val();
+                    var shakyValue = $('#drag-shaky').val();
+                    options.interpolation = {
+                        shaky: (shakyValue.toLowerCase() === "true") ? true : parseInt(shakyValue)
+                    };
+                    options.interpolation[interpolationType] = $('#drag-interpolation').val();
+                    options.interpolation[delayType] = $('#drag-delay').val();
+                    break;
+            }
+
+            //$eventLog.append("####### Simulating "+type+" #######");
+            //$eventLog.incIndentation();
+
+            function simulationEnd() {
+                logMouseMove = false;
+                //$eventLog.decIndentation();
+                //$eventLog.append("################################");
+            }
+
+            switch (type) {
+                case "key-sequence":
+
+                    $(document).one("simulate-keySequence", simulationEnd);
+                    break;
+                case "drag":
+                    $(document).one("simulate-drag", simulationEnd);
+                    break;
+                case "drag-n-drop":
+                case "drop":
+                    $(document).one("simulate-drop", simulationEnd);
+                    break;
+            }
+
+            $(target).simulate(type, options);
+
+            if (type === "key-combo") {
+                simulationEnd();
+            }
+        }
+
+
+
+    </script>
+
+
+
+
+
+
+  
+
+
+
+
+
+
+    
+
+
+
+
+<script>
+  
+</script>
+
+
+
+
+</head>
+<body>
+
+
+
+    <script>
+
+        function cargardatos() {
+             //Cargando datos del objeto
+            var url_string = window.location.href;
+            var url = new URL(url_string);
+            var idobjeto = url.searchParams.get("idobjeto");
+
+            if (idobjeto != null) {
+
+                        var gjson;
+                        gjson = getJSON("getidobject?tabla=tblarticulo&idobjeto=" + idobjeto);
+
+                        obj = JSON.parse(gjson);
+
+                          //asignando valores a los objetos cliente
+
+                             $('#IDARTICULO').jqxInput('val',  obj['IDARTICULO']);
+$('#COMPONENTE_PRINCIPAL').jqxTextArea('val',  obj['COMPONENTE_PRINCIPAL']);
+$('#IDTIPOARTICULO').jqxInput('val',  obj['IDTIPOARTICULO']);
+ $(document).ready(function () {$.ajax({ url: '/quierodisplay' + '?idobjeto=' +  obj['IDTIPOARTICULO'] + '&tablename=' + 'tblTIPOARTICULO' }).then(function (data) {document.getElementById('bottom_IDTIPOARTICULO').innerHTML = data;});}); 
+  $('#CODIGO').jqxInput('val',  obj['CODIGO']);
+$('#NOMBRE_ARTICULO').jqxInput('val',  obj['NOMBRE_ARTICULO']);
+$('#DESCRIPCION').jqxTextArea('val',  obj['DESCRIPCION']);
+$('#OBSERVACIONES').jqxTextArea('val',  obj['OBSERVACIONES']);
+var number_PORC_IVA=obj['PORC_IVA'];
+  if (number_PORC_IVA==null) {number_PORC_IVA=0}    
+  $('#PORC_IVA').jqxNumberInput('val', number_PORC_IVA  );
+ $('#bottom_PORC_IVA').html( numberWithCommas(obj['PORC_IVA']) );var number_PRECIO_NETO=obj['PRECIO_NETO'];
+  if (number_PRECIO_NETO==null) {number_PRECIO_NETO=0}    
+  $('#PRECIO_NETO').jqxNumberInput('val', number_PRECIO_NETO  );
+ $('#bottom_PRECIO_NETO').html( numberWithCommas(obj['PRECIO_NETO']) );var number_IMPORTE_IVA=obj['IMPORTE_IVA'];
+  if (number_IMPORTE_IVA==null) {number_IMPORTE_IVA=0}    
+  $('#IMPORTE_IVA').jqxNumberInput('val', number_IMPORTE_IVA  );
+ $('#bottom_IMPORTE_IVA').html( numberWithCommas(obj['IMPORTE_IVA']) );var number_PRECIO_LISTA=obj['PRECIO_LISTA'];
+  if (number_PRECIO_LISTA==null) {number_PRECIO_LISTA=0}    
+  $('#PRECIO_LISTA').jqxNumberInput('val', number_PRECIO_LISTA  );
+ $('#bottom_PRECIO_LISTA').html( numberWithCommas(obj['PRECIO_LISTA']) );$('#IDCATEGORIA1').jqxInput('val',  obj['IDCATEGORIA1']);
+ $(document).ready(function () {$.ajax({ url: '/quierodisplay' + '?idobjeto=' +  obj['IDCATEGORIA1'] + '&tablename=' + 'tblCATEGORIA1' }).then(function (data) {document.getElementById('bottom_IDCATEGORIA1').innerHTML = data;});}); 
+  $('#IDCATEGORIA2').jqxInput('val',  obj['IDCATEGORIA2']);
+ $(document).ready(function () {$.ajax({ url: '/quierodisplay' + '?idobjeto=' +  obj['IDCATEGORIA2'] + '&tablename=' + 'tblCATEGORIA2' }).then(function (data) {document.getElementById('bottom_IDCATEGORIA2').innerHTML = data;});}); 
+  $('#IDESTATUS_tblarticulo').jqxInput('val',  obj['IDESTATUS_tblarticulo']);
+ $(document).ready(function () {$.ajax({ url: '/quierodisplay' + '?idobjeto=' +  obj['IDESTATUS_tblarticulo'] + '&tablename=' + 'tblESTATUS_tblarticulo' }).then(function (data) {document.getElementById('bottom_IDESTATUS_tblarticulo').innerHTML = data;});}); 
+  $('#IDPROVEEDOR').jqxInput('val',  obj['IDPROVEEDOR']);
+ $(document).ready(function () {$.ajax({ url: '/quierodisplay' + '?idobjeto=' +  obj['IDPROVEEDOR'] + '&tablename=' + 'tblPROVEEDOR' }).then(function (data) {document.getElementById('bottom_IDPROVEEDOR').innerHTML = data;});}); 
+  $('#MARCA').jqxInput('val',  obj['MARCA']);
+$('#ELIMINADO').jqxCheckBox('val',  obj['ELIMINADO']);
+$('#BLOQUEADO').jqxCheckBox('val',  obj['BLOQUEADO']);
+var date_FECHAALTA=new Date(obj['FECHAALTA']);
+ date_FECHAALTA.setDate(date_FECHAALTA.getDate() + 1);    
+  $('#FECHAALTA').jqxDateTimeInput({value: date_FECHAALTA  });
+$('#PROPIETARIO').jqxInput('val',  obj['PROPIETARIO']);
+
+
+                            /*creando el nombre del campo llave de esta tabla en Js
+                            var elnombre ='tblarticulo'
+                            elnombre = elnombre.replace("tbl", "");
+                            elnombre = "ID" + elnombre
+                            elnombre = elnombre.toUpperCase();*/
+
+                             $('#IDOBJECT').jqxInput('val', idobjeto);
+                }
+        }
+
+                function cargardatos2(elobjeto) {
+            var idobjeto = elobjeto;
+
+            if (idobjeto != null) {
+
+                        var gjson;
+                        gjson = getJSON("getidobject?tabla=tblarticulo&idobjeto=" + idobjeto);
+
+                        obj = JSON.parse(gjson);
+
+                          //asignando valores a los objetos cliente
+
+                             $('#IDARTICULO').jqxInput('val',  obj['IDARTICULO']);
+$('#COMPONENTE_PRINCIPAL').jqxTextArea('val',  obj['COMPONENTE_PRINCIPAL']);
+$('#IDTIPOARTICULO').jqxInput('val',  obj['IDTIPOARTICULO']);
+ $(document).ready(function () {$.ajax({ url: '/quierodisplay' + '?idobjeto=' +  obj['IDTIPOARTICULO'] + '&tablename=' + 'tblTIPOARTICULO' }).then(function (data) {document.getElementById('bottom_IDTIPOARTICULO').innerHTML = data;});}); 
+  $('#CODIGO').jqxInput('val',  obj['CODIGO']);
+$('#NOMBRE_ARTICULO').jqxInput('val',  obj['NOMBRE_ARTICULO']);
+$('#DESCRIPCION').jqxTextArea('val',  obj['DESCRIPCION']);
+$('#OBSERVACIONES').jqxTextArea('val',  obj['OBSERVACIONES']);
+var number_PORC_IVA=obj['PORC_IVA'];
+  if (number_PORC_IVA==null) {number_PORC_IVA=0}    
+  $('#PORC_IVA').jqxNumberInput('val', number_PORC_IVA  );
+ $('#bottom_PORC_IVA').html( numberWithCommas(obj['PORC_IVA']) );var number_PRECIO_NETO=obj['PRECIO_NETO'];
+  if (number_PRECIO_NETO==null) {number_PRECIO_NETO=0}    
+  $('#PRECIO_NETO').jqxNumberInput('val', number_PRECIO_NETO  );
+ $('#bottom_PRECIO_NETO').html( numberWithCommas(obj['PRECIO_NETO']) );var number_IMPORTE_IVA=obj['IMPORTE_IVA'];
+  if (number_IMPORTE_IVA==null) {number_IMPORTE_IVA=0}    
+  $('#IMPORTE_IVA').jqxNumberInput('val', number_IMPORTE_IVA  );
+ $('#bottom_IMPORTE_IVA').html( numberWithCommas(obj['IMPORTE_IVA']) );var number_PRECIO_LISTA=obj['PRECIO_LISTA'];
+  if (number_PRECIO_LISTA==null) {number_PRECIO_LISTA=0}    
+  $('#PRECIO_LISTA').jqxNumberInput('val', number_PRECIO_LISTA  );
+ $('#bottom_PRECIO_LISTA').html( numberWithCommas(obj['PRECIO_LISTA']) );$('#IDCATEGORIA1').jqxInput('val',  obj['IDCATEGORIA1']);
+ $(document).ready(function () {$.ajax({ url: '/quierodisplay' + '?idobjeto=' +  obj['IDCATEGORIA1'] + '&tablename=' + 'tblCATEGORIA1' }).then(function (data) {document.getElementById('bottom_IDCATEGORIA1').innerHTML = data;});}); 
+  $('#IDCATEGORIA2').jqxInput('val',  obj['IDCATEGORIA2']);
+ $(document).ready(function () {$.ajax({ url: '/quierodisplay' + '?idobjeto=' +  obj['IDCATEGORIA2'] + '&tablename=' + 'tblCATEGORIA2' }).then(function (data) {document.getElementById('bottom_IDCATEGORIA2').innerHTML = data;});}); 
+  $('#IDESTATUS_tblarticulo').jqxInput('val',  obj['IDESTATUS_tblarticulo']);
+ $(document).ready(function () {$.ajax({ url: '/quierodisplay' + '?idobjeto=' +  obj['IDESTATUS_tblarticulo'] + '&tablename=' + 'tblESTATUS_tblarticulo' }).then(function (data) {document.getElementById('bottom_IDESTATUS_tblarticulo').innerHTML = data;});}); 
+  $('#IDPROVEEDOR').jqxInput('val',  obj['IDPROVEEDOR']);
+ $(document).ready(function () {$.ajax({ url: '/quierodisplay' + '?idobjeto=' +  obj['IDPROVEEDOR'] + '&tablename=' + 'tblPROVEEDOR' }).then(function (data) {document.getElementById('bottom_IDPROVEEDOR').innerHTML = data;});}); 
+  $('#MARCA').jqxInput('val',  obj['MARCA']);
+$('#ELIMINADO').jqxCheckBox('val',  obj['ELIMINADO']);
+$('#BLOQUEADO').jqxCheckBox('val',  obj['BLOQUEADO']);
+var date_FECHAALTA=new Date(obj['FECHAALTA']);
+ date_FECHAALTA.setDate(date_FECHAALTA.getDate() + 1);    
+  $('#FECHAALTA').jqxDateTimeInput({value: date_FECHAALTA  });
+$('#PROPIETARIO').jqxInput('val',  obj['PROPIETARIO']);
+
+
+                            /*creando el nombre del campo llave de esta tabla en Js
+                            var elnombre ='tblarticulo'
+                            elnombre = elnombre.replace("tbl", "");
+                            elnombre = "ID" + elnombre
+                            elnombre = elnombre.toUpperCase();*/
+
+                             $('#IDOBJECT').jqxInput('val', idobjeto);
+                }
+        }
+
+         function getJSON(url) {
+        var resp ;
+        var xmlHttp ;
+
+        resp  = '' ;
+        xmlHttp = new XMLHttpRequest();
+
+        if(xmlHttp != null)
+        {
+            xmlHttp.open( "GET", url, false );
+            xmlHttp.send( null );
+            resp = xmlHttp.responseText;
+
+            resp = resp.substring(1);
+            resp = resp.substring(0, resp.length - 2);
+
+        }
+
+        return resp ;
+        }
+
+        function convertJson(formData){
+            var unindexed_array = formData;
+            var indexed_array = {};
+
+            $.map(unindexed_array, function(n, i){
+                indexed_array[n['name']] = n['value'];
+            });
+
+            return indexed_array;
+        }
+
+        function replaceAll(str, find, replace) {
+    return str.replace(new RegExp(find, 'g'), replace);
+        }
+
+        $(document).ready(function () {
+$('#theform').on('validationSuccess', function (event) {
+    toJson();
+});
+});
+        function procesarguardado() {
+
+            if ($('#BLOQUEADO').val() != true) {
+
+                $('#theform').jqxValidator('validate');
+
+            } else {
+
+                aviso('Registro Bloqueado - No puede modificarse');
+
+            }
+
+        }
+
+         function procesarguardado2() {
+
+                $('#theform').jqxValidator('validate');
+
+        }
+
+        function aviso(mensaje) {
+
+                document.getElementById('textonotificacion').innerHTML = mensaje;
+                $("#notificar").jqxNotification("open");
+
+        }
+
+        function toJson() {
+
+            var obj = [];
+
+            $('#theform input, #theform textarea, #theform select').each(
+				function(index){
+								var input = $(this);
+
+					laclave = input.attr('name');
+                    lakey = input.val();
+
+                    if (typeof lakey != 'object') {
+                          if (lakey.includes("'")){
+								        var newval='';
+								        newval=replaceAll(lakey,"'","_aptphe_");
+								        newval=replaceAll(lakey,"&","_and_");
+								        lakey=newval;
+                            }
+
+                           if (moment(lakey, "DD/MM/YYYY", true).isValid()) {
+
+						         lakey = lakey.replace(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/, "$3-$2-$1");
+
+                            }
+
+}
+
+                     var objTEMP = {};
+
+                    if (typeof lakey === 'string') {
+
+                        objTEMP[laclave] = lakey;
+                        obj.push(objTEMP);
+
+                    }
+                    else {
+
+                        objTEMP[laclave] = lakey.value;
+                        obj.push(objTEMP);
+
+                    }
+
+					//alert('Type: ' + input.attr('type') + 'Name: ' + input.attr('name') + 'Value: ' + input.val());
+				}
+			);
+
+	console.log(obj);
+
+//alert(JSON.stringify(obj));
+        var formData = JSON.stringify(obj);   //$("#theform").serializeArray();
+
+
+
+        formData=replaceAll(formData,"&","_and_");
+
+
+            console.log(formData);
+
+            //determinar si guardar o update
+
+            //if (document.getElementById("IDOBJECT").value != null) { updaterecord(convertJson(formData));  }
+
+            if ($('#IDOBJECT').val() != '') { updaterecord(formData); }
+            if ($('#IDOBJECT').val() == '' ) { guardarrecord(formData);  }
+
+        }
+
+        function numberWithCommas(n) {
+            if (n != null) {
+    var parts=n.toString().split(".");
+            return parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (parts[1] ? "." + parts[1] : "");
+
+}
+}
+
+    function notificarcambioestatus(idobjetox) {
+
+        $.ajax({
+            async: true,
+            url: "/notificarcambioestatus" + '?tabla=tblarticulo&idobjeto=' + $('#IDOBJECT').val() + "&idestatus=" + $('#IDESTATUS_tblarticulo').val()
+                    }).then(function (data) {
+
+                        var a = data;
+
+                    });
+
+        }
+
+        function notificaralta(idobjetox) {
+
+            $.ajax({
+                 async: true,
+                        url: "/notificaralta" + '?tabla=tblarticulo&idobjeto=' +  $('#IDOBJECT').val()
+                    }).then(function (data) {
+
+                        var a = data;
+
+                    });
+
+        }
+
+        function guardarrecord(datos) {
+
+           // alert(JSON.stringify(datos));
+
+                   $(document).ready(function () {
+                    $.ajax({
+                        url: "/saverecord" + '?objeto=' + datos + '&idusername=' + Cookies.get('idusername') + '&usuario=' + Cookies.get('username') + '&tipomov=nuevo&idobjeto=' +  $('#IDOBJECT').val()  + '&tabla=tblarticulo&campokey=IDARTICULO'
+                    ,
+    error: function (request, error) {
+        console.log(arguments);
+        alert("No se guardó, hubo un error: verifique los datos que capturó. Confirme que no intenta registrar valores en campos que no admiten duplicados  ");
+    }
+
+                    }).then(function (data) {
+
+                       // alert(data);
+                        console.log(data);
+
+                        //recuperando el ultimo ID de esta tabla
+                         $(document).ready(function () {
+                    $.ajax({
+                        url: "/dameultimoid" + '?tablename=tblarticulo'
+                    }).then(function (data) {
+
+                        $("#IDOBJECT").jqxInput('val', data);
+                        $("#IDARTICULO").jqxInput('val', data) ;
+
+                        notificaralta( $('#IDOBJECT').val() );
+                        notificarcambioestatus( $('#IDOBJECT').val() );
+
+                        aviso('El Registro ha sido guardado');
+
+                        cargardatos2(data);
+
+                        actualizardatos();
+
+                    });
+                         });
+
+                    });
+                });
+
+        }
+
+        function updaterecord(datos) {
+
+           // alert(JSON.stringify(datos));
+
+                   $(document).ready(function () {
+                    $.ajax({
+                        url: "/saverecord" + '?objeto=' + datos + '&idusername=' + Cookies.get('idusername') + '&usuario=' + Cookies.get('username') + '&tipomov=update&idobjeto=' + $('#IDOBJECT').val()  + '&tabla=tblarticulo&campokey=IDARTICULO'
+                    }).then(function (data) {
+
+                       // alert(data);
+                        console.log(data);
+
+                        aviso('El Registro ha sido actualizado');
+
+                        notificarcambioestatus( $('#IDOBJECT').val() );
+
+                        cargardatos2($('#IDARTICULO').val() );
+
+                        actualizardatos();
+
+                    });
+                });
+
+        }
+
+        function clonarregistro(){
+
+            $("#IDOBJECT").jqxInput('val', '');
+            $("#IDARTICULO").jqxInput('val', '');
+
+            aviso("Pulse Guardar para terminar el proceso de clonación.");
+
+        }
+
+        function nuevoregistro() {
+            var url_string = window.location.href;
+            var url = new URL(url_string);
+            var vistadetalle = url.searchParams.get("vistadetalle");
+            var campofiltro = url.searchParams.get("campo1");
+            var idobjetofiltro = url.searchParams.get("valor1");
+            if (vistadetalle == 'true') {
+                window.open('formrender?vistadetalle=true&campo1=' + campofiltro + '&valor1=' + idobjetofiltro + '&form=tables/tblarticulo_form', '_self');
+            } else {
+                window.open('formrender?form=tables/tblarticulo_form','_self');
+            }
+        }
+
+        //rendergrid?grid=tables/tblarticulo
+        function regresarx() {
+            var url_string = window.location.href;
+            var url = new URL(url_string);
+            var vistadetalle = url.searchParams.get("vistadetalle");
+            var campofiltro = url.searchParams.get("campo1");
+            var idobjetofiltro = url.searchParams.get("valor1");
+            if (vistadetalle == 'true') {
+                window.open('rendergrid?vistadetalle=true&campofiltro=' + campofiltro + '&idobjetofiltro=' + idobjetofiltro + '&grid=tables/tblarticulo', '_self');
+            } else {
+                window.open('rendergrid?grid=tables/tblarticulo','_self');
+            }
+        }
+
+        function actualizardatos() {
+
+
+            //ejecutar refrescador
+                $.ajax({
+                        url: "/refrescador" + '?tabla=tblarticulo&idobjeto=' + $('#IDOBJECT').val()
+                    }).then(function (data) {
+
+                        aviso("Datos recalculados");
+
+                    });
+
+
+
+
+
+            var url_string = window.location.href;
+            var url = new URL(url_string);
+            var vistadetalle = url.searchParams.get("vistadetalle");
+            var campofiltro = url.searchParams.get("campo1");
+            var idobjetofiltro = url.searchParams.get("valor1");
+
+        var tienehijos = false;
+
+        if (tienehijos == true) {
+            if ($('#IDARTICULO').val() != '') {
+                window.open('formrender?form=tables/tblarticulo_form&campo1=' + campofiltro + '&vistadetalle=true&valor1=' + idobjetofiltro + '&idobjeto=' + $('#IDARTICULO').val()  , '_self');
+            }
+            else {
+            }
+        }
+        else {
+                cargardatos2($('#IDARTICULO').val());
+        }
+
+        checaradjuntos();
+
+        }
+
+        function eliminarregistro() {
+
+            $('#ELIMINADO').jqxCheckBox('val',  true);
+
+        }
+
+        function bloquear() {
+
+            $('#BLOQUEADO').jqxCheckBox('val', true);
+            setTimeout(() => { procesarguardado2(); }, 1000);
+
+        }
+
+        function desbloquear() {
+
+            $('#BLOQUEADO').jqxCheckBox('val',  false);
+            setTimeout(() => { procesarguardado2(); }, 1000);
+
+        }
+
+        function openid() {
+
+            var elid = prompt("Escriba el ID del elemento");
+            window.open('formrender?form=tables/tblarticulo_form&idobjeto=' + elid, '_self');
+
+        }
+    </script>
+    <div id="zonamenu">
+
+    </div>
+
+    <!--Titulo de la pagina-->
+    <div id="zonatitulo">
+        <h5 id="titulopagina" style="position:relative; top:5px;left:10px"> <table><tr><td> <a href="home"> <img src="/static/iconos/form.png" height="32" />  </a>    </td></td><td>Form Artículo</td><td>/Id:</td><td><input class="inputx_idobject" id="IDOBJECT" type="text" style="width:125px;height:23px;font-size:19px;border-width: 0px;color:#2fa4e7;font-weight: 500;" /></td></tr></table></h5>
+    </div>
+
+    <!--Zona de Botones-->
+    ﻿<script type="text/javascript">
+        $(document).ready(function () {
+            // Create jqxButton widgets.
+            $("#Button1").jqxButton({ textPosition: "center", width: 120, theme: theme });
+            $("#Button2").jqxButton({ textPosition: "center", width: 120, theme: theme });
+            $("#Button3").jqxButton({ textPosition: "center", width: 120, theme: theme });
+            $("#Button4").jqxButton({ textPosition: "center", width: 120, theme: theme });
+            $("#Button5").jqxButton({ textPosition: "center", width: 120, theme: theme });
+            $("#Button6").jqxButton({ textPosition: "center", width: 120, theme: theme });
+            $("#Button7").jqxButton({ textPosition: "center", width: 120, theme: theme });
+            $("#Button8").jqxButton({ textPosition: "center", width: 120, theme: theme });
+            $("#Button9").jqxButton({ textPosition: "center", width: 120, theme: theme });
+
+
+
+            $('#Button1').on('click', function () {
+
+
+            });
+            $('#Button2').on('click', function () {
+
+
+
+            });
+            $('#Button3').on('click', function () {   });
+            $('#Button4').on('click', function () {   });
+            $('#Button5').on('click', function () {
+
+
+            });
+            $('#Button6').on('click', function () {
+
+            });
+            $('#Button7').on('click', function () {   });
+            $('#Button8').on('click', function () {   });
+            $('#Button9').on('click', function () {   });
+
+
+
+        });
+</script>
+
+<div style="position:relative;left:700px;top:-35px;display:none">
+    <table>
+        <tr>
+            <td><input type="button" style="visibility:hidden;position:relative;top:13px;" value="Nuevo..." id='Button1' /></td>
+            <td><input type="button" style="visibility:hidden;position:relative;top:13px;" value="TextButton" id='Button2' /></td>
+            <td><input type="button" style="visibility:hidden;position:relative;top:13px;" value="TextButton" id='Button3' /></td>
+            <td><input type="button" style="visibility:hidden;position:relative;top:13px;" value="TextButton" id='Button4' /></td>
+            <td><input type="button" style="visibility:hidden;position:relative;top:13px;" value="TextButton" id='Button5' /></td>
+            <td><input type="button" style="visibility:hidden;position:relative;top:13px;" value="TextButton" id='Button6' /></td>
+            <td><input type="button" style="visibility:hidden;position:relative;top:13px;" value="TextButton" id='Button7' /></td>
+            <td><input type="button" style="visibility:hidden;position:relative;top:13px;" value="TextButton" id='Button8' /></td>
+            <td><input type="button" style="visibility:hidden;position:relative;top: 13px;"value="TextButton" id='Button9' /></td>
+        </tr>
+    </table>
+</div>
+
+    <!--Form-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            
+
+         // Create jqxTabs.
+            $('#tabs').jqxTabs({ autoHeight: true, width: '97%', position: 'top', theme: theme });
+
+         $('#tabs').on('tabclick', function (event) {
+     var tabclicked = event.args.item;
+
+             var nombrex = 'hijo_' + (tabclicked-2);
+
+             
+
+         });
+
+            $("#IDARTICULO").jqxInput({  theme:theme , disabled:true, height: 25, width: 250 });
+$("#COMPONENTE_PRINCIPAL").jqxTextArea({ theme:theme , disabled:false, height: 100, width: 250 });
+$("#IDTIPOARTICULO").jqxInput({theme:theme , disabled:false, dropDownWidth: 500, height: 25, width: 250, displayMember:"CAMPODISPLAY", valueMember:"IDTIPOARTICULO",source: function (query, response) {var dataAdapter = new $.jqx.dataAdapter({datatype: "json",datafields:[{ name: "CAMPODISPLAY" },{ name: "IDTIPOARTICULO" }],url: "populator?campofiltro=null&idobjetofiltro=null&tablename=tblTIPOARTICULO",data:{style: "full",maxRows: 25}},{autoBind: true,formatData: function (data) {data.CAMPODISPLAY_startsWith = query;return data;},loadComplete: function (data) {if (data.length > 0) {response($.map(data, function (item) {document.getElementById("bottom_IDTIPOARTICULO").innerHTML=""; return {label: item.CAMPODISPLAY,value: item.IDTIPOARTICULO}}));}}});}});    
+$("#CODIGO").jqxInput({  theme:theme , disabled:false, height: 25, width: 250 });
+$("#NOMBRE_ARTICULO").jqxInput({  theme:theme , disabled:false, height: 25, width: 250 });
+$("#DESCRIPCION").jqxTextArea({ theme:theme , disabled:false, height: 100, width: 250 });
+$("#OBSERVACIONES").jqxTextArea({ theme:theme , disabled:false, height: 100, width: 250 });
+$("#PORC_IVA").jqxNumberInput({ theme:theme , disabled:false,max: 999999999999, digits: 25, height: 25, width: 250, inputMode:"simple", spinButtons: true });
+$("#PRECIO_NETO").jqxNumberInput({ theme:theme , disabled:false,max: 999999999999, digits: 25, height: 25, width: 250, inputMode:"simple", spinButtons: true });
+$("#IMPORTE_IVA").jqxNumberInput({ theme:theme , disabled:true,max: 999999999999, digits: 25, height: 25, width: 250, inputMode:"simple", spinButtons: true });
+$("#PRECIO_LISTA").jqxNumberInput({ theme:theme , disabled:true,max: 999999999999, digits: 25, height: 25, width: 250, inputMode:"simple", spinButtons: true });
+$("#IDCATEGORIA1").jqxInput({theme:theme , disabled:false, dropDownWidth: 500, height: 25, width: 250, displayMember:"CAMPODISPLAY", valueMember:"IDCATEGORIA1",source: function (query, response) {var dataAdapter = new $.jqx.dataAdapter({datatype: "json",datafields:[{ name: "CAMPODISPLAY" },{ name: "IDCATEGORIA1" }],url: "populator?campofiltro=null&idobjetofiltro=null&tablename=tblCATEGORIA1",data:{style: "full",maxRows: 25}},{autoBind: true,formatData: function (data) {data.CAMPODISPLAY_startsWith = query;return data;},loadComplete: function (data) {if (data.length > 0) {response($.map(data, function (item) {document.getElementById("bottom_IDCATEGORIA1").innerHTML=""; return {label: item.CAMPODISPLAY,value: item.IDCATEGORIA1}}));}}});}});    
+$("#IDCATEGORIA2").jqxInput({theme:theme , disabled:false, dropDownWidth: 500, height: 25, width: 250, displayMember:"CAMPODISPLAY", valueMember:"IDCATEGORIA2",source: function (query, response) {var dataAdapter = new $.jqx.dataAdapter({datatype: "json",datafields:[{ name: "CAMPODISPLAY" },{ name: "IDCATEGORIA2" }],url: "populator?campofiltro=null&idobjetofiltro=null&tablename=tblCATEGORIA2",data:{style: "full",maxRows: 25}},{autoBind: true,formatData: function (data) {data.CAMPODISPLAY_startsWith = query;return data;},loadComplete: function (data) {if (data.length > 0) {response($.map(data, function (item) {document.getElementById("bottom_IDCATEGORIA2").innerHTML=""; return {label: item.CAMPODISPLAY,value: item.IDCATEGORIA2}}));}}});}});    
+$("#IDESTATUS_tblarticulo").jqxInput({theme:theme , disabled:false, dropDownWidth: 500, height: 25, width: 250, displayMember:"CAMPODISPLAY", valueMember:"IDESTATUS_tblarticulo",source: function (query, response) {var dataAdapter = new $.jqx.dataAdapter({datatype: "json",datafields:[{ name: "CAMPODISPLAY" },{ name: "IDESTATUS_tblarticulo" }],url: "populator?campofiltro=null&idobjetofiltro=null&tablename=tblESTATUS_tblarticulo",data:{style: "full",maxRows: 25}},{autoBind: true,formatData: function (data) {data.CAMPODISPLAY_startsWith = query;return data;},loadComplete: function (data) {if (data.length > 0) {response($.map(data, function (item) {document.getElementById("bottom_IDESTATUS_tblarticulo").innerHTML=""; return {label: item.CAMPODISPLAY,value: item.IDESTATUS_tblarticulo}}));}}});}});    
+$("#IDPROVEEDOR").jqxInput({theme:theme , disabled:false, dropDownWidth: 500, height: 25, width: 250, displayMember:"CAMPODISPLAY", valueMember:"IDPROVEEDOR",source: function (query, response) {var dataAdapter = new $.jqx.dataAdapter({datatype: "json",datafields:[{ name: "CAMPODISPLAY" },{ name: "IDPROVEEDOR" }],url: "populator?campofiltro=null&idobjetofiltro=null&tablename=tblPROVEEDOR",data:{style: "full",maxRows: 25}},{autoBind: true,formatData: function (data) {data.CAMPODISPLAY_startsWith = query;return data;},loadComplete: function (data) {if (data.length > 0) {response($.map(data, function (item) {document.getElementById("bottom_IDPROVEEDOR").innerHTML=""; return {label: item.CAMPODISPLAY,value: item.IDPROVEEDOR}}));}}});}});    
+$("#MARCA").jqxInput({  theme:theme , disabled:false, height: 25, width: 250 });
+$("#ELIMINADO").jqxCheckBox({ hasThreeStates:false, theme:theme , disabled:true,height: 25, width: 250 });
+$("#BLOQUEADO").jqxCheckBox({ hasThreeStates:false, theme:theme , disabled:true,height: 25, width: 250 });
+$("#FECHAALTA").jqxDateTimeInput({ theme:theme ,disabled:true, height: 25, width: 250 });
+$("#PROPIETARIO").jqxInput({  theme:theme , disabled:false, height: 25, width: 250 });
+
+
+            $("#IDOBJECT").jqxInput({ height: 23, width: 125 });
+
+             $('#theform').jqxValidator({ hintType: 'label', rules: [{ input: '#IDTIPOARTICULO', message: 'Campo requerido', action: 'keyup, blur', rule: 'required' },{ input: '#CODIGO', message: 'Campo requerido', action: 'keyup, blur', rule: 'required' },{ input: '#NOMBRE_ARTICULO', message: 'Campo requerido', action: 'keyup, blur', rule: 'required' }]});
+
+          cargardatos();
+
+        });
+    </script>
+
+    <script>
+
+         $(document).ready(function () {
+
+           
+
+
+
+
+
+             $("#button_grid").jqxButton({ textPosition: "center", width: 80, theme: theme });
+            $("#button_nuevo").jqxButton({ textPosition: "center", width: 80, theme: theme });
+            $("#button_guardar").jqxButton({ textPosition: "center", width: 80, theme: theme });
+            $("#button_actualizar").jqxButton({ textPosition: "center", width: 80, theme: theme });
+            $("#button_bloquear").jqxButton({ textPosition: "center", width: 80, theme: theme });
+            $("#button_desbloquear").jqxButton({ textPosition: "center", width: 80, theme: theme });
+            $("#button_clonar").jqxButton({ textPosition: "center", width: 80, theme: theme });
+            $("#button_ir_id").jqxButton({ textPosition: "center", width: 80, theme: theme });
+            $("#button_eliminar").jqxButton({ textPosition: "center", width: 80, theme: theme });
+            $("#button_config").jqxButton({ textPosition: "center", width: 80   , theme: theme });
+
+
+
+
+        });
+
+
+
+
+
+
+
+    </script>
+
+    <div style="position:relative;top:0px;" id='tabs'>
+        <ul>
+            <li style="margin-left: 30px;">Formulario</li>
+            <li>Adjuntos & Notas</li>
+
+            
+
+
+
+        </ul>
+
+
+
+        <div>
+
+            <div style="position:relative;left:30px;top:8px">
+                <table  id="tablabotones">
+                    <tr>
+
+
+
+                        <td   >
+                            <a id="botonregresar" href="javascript:regresarx();">
+
+                                <input type="button" id="button_grid" value="Ir al Grid" />
+                            </a>
+                        </td>
+
+
+
+                          <td>
+                            <a href="javascript: nuevoregistro();">
+                                <input type="button" id="button_nuevo" value="Nuevo" />
+                            </a>
+                        </td>
+
+
+                        <td    >
+                            <a href="javascript:procesarguardado();">
+                              <input type="button" id="button_guardar" value="Guardar" />
+                            </a>
+                        </td>
+
+
+
+                        <td>
+                            <a href="javascript:actualizardatos();">
+                              <input type="button" id="button_actualizar" value="Actualizar" />
+                            </a>
+                        </td>
+
+                        <td>
+                            <a href="javascript:bloquear();">
+                            <input type="button" id="button_bloquear" value="Bloquear" />
+                            </a>
+                        </td>
+
+                        <td>
+                            <a href="javascript:desbloquear();">
+                                <input type="button" id="button_desbloquear" value="Desbloquear" />
+                            </a>
+                        </td>
+
+                        <td>
+                            <a href="javascript: clonarregistro();">
+                           <input type="button" id="button_clonar" value="Clonar" />
+                            </a>
+                        </td>
+
+                        <td>
+                            <a href="javascript: openid();">
+                      <input type="button" id="button_ir_id" value="Id al ID" />
+                            </a>
+                        </td>
+
+                        <td  id="elimregs"   >
+                            <a href="javascript: eliminarregistro();">
+                             <input type="button" id="button_eliminar" value="Eliminar" />
+                            </a>
+                        </td>
+
+                         <td>
+                            <a target="_self" href="javascript:window.parent.parent.addtabplus('configcampos?tablename=tblarticulo')">
+                                <input type="button" id="button_config" value="Config" />
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <hr />
+            <form id="theform" name="theform">
+                <table valign="top">
+                    <tr valign="top">
+                        <td valign="top"> <table class="ajustarposicion"><tr valign='top'   ><td  colspan='3'  ><h5>A. DATOS</h5> </tr><div  style="position:relative;left:10px" id="campoIDARTICULO" ><tr   class="filatop_IDARTICULO"  ><td><div id="top_IDARTICULO" /></td><td> <div id="slider" />  </td><td></td></tr><tr   class="filahalf_IDARTICULO" ><td class="caption_Id" >Id</td><td><input disabled  name="IDARTICULO" style="" class="input_IDARTICULO"  type="text" tabindex="1" id="IDARTICULO"/> </td><td> <div id="left_IDARTICULO" /> </td></tr><tr  class="filabottom_IDARTICULO" ><td><div id="bottom_IDARTICULO" /></td><td><div  style="font-size:10px;margin-bottom: 5px;font-style: italic;color: navy;font-variant: all-small-caps;;" ></div></td><td></td></tr></div>
+<div  style="position:relative;left:10px" id="campoCOMPONENTE_PRINCIPAL" ><tr   class="filatop_COMPONENTE_PRINCIPAL"  ><td><div id="top_COMPONENTE_PRINCIPAL" /></td><td></td><td></td></tr><tr   class="filahalf_COMPONENTE_PRINCIPAL" ><td valign="Top" class="caption_ComponentePrincipal" >Componente Principal</td><td> <textarea   name="COMPONENTE_PRINCIPAL"   style=""  class="input_COMPONENTE_PRINCIPAL" tabindex="2" id="COMPONENTE_PRINCIPAL"></textarea></td><td><a href='javascript:startRecording("COMPONENTE_PRINCIPAL");' > <img id="microphone_COMPONENTE_PRINCIPAL" src="/static/iconos/mic.png"  /> </a> <div id="left_COMPONENTE_PRINCIPAL" /> </td></tr><tr  class="filabottom_COMPONENTE_PRINCIPAL" ><td><div id="bottom_COMPONENTE_PRINCIPAL" /></td><td><div  style="font-size:10px;margin-bottom: 5px;font-style: italic;color: navy;font-variant: all-small-caps;;" ></div> </td><td></td></tr></div>
+<script>    function formadeabrir_IDTIPOARTICULO(){ if ($("#IDTIPOARTICULO").attr("data-value")!=null) { window.open("formrender?form=tables/tbltipoarticulo_form&idobjeto=" + $("#IDTIPOARTICULO").attr("data-value") ,"_blank"); } else { window.open("rendergrid?grid=tables/tbltipoarticulo","_blank"); }  }</script>  <script>   $(document).ready(function () { $("#combodown_IDTIPOARTICULO").click(function () { $('#IDTIPOARTICULO').focus();$('#IDTIPOARTICULO').val('');$('#IDTIPOARTICULO').focus();   simulateWrapper('#IDTIPOARTICULO', "key-sequence", {sequence: " "});           });});</script><div  style="position:relative;left:10px" id="campoIDTIPOARTICULO" ><tr   class="filatop_IDTIPOARTICULO"  ><td><div id="top_IDTIPOARTICULO" /></td><td></td><td></td></tr><tr   class="filahalf_IDTIPOARTICULO" ><td class="caption_TipoArtículo" >Tipo Artículo</td><td> <input  name="IDTIPOARTICULO"  style="border-style: solid; border-top-width:0px; border-left-width:0px; border-right-width:0px; border-color: coral;"    class="input_IDTIPOARTICULO"  type="text" tabindex="3" id="IDTIPOARTICULO"/> </td><td> <img id="combodown_IDTIPOARTICULO" src="/static/iconos/dropdown.png" height="25px" width="25px" /><a href="javascript:formadeabrir_IDTIPOARTICULO(); " ><img  id="comboleft_IDTIPOARTICULO"  src="/static/iconos/adelante.png" height="25px" width="25px" /></a></td><td><div id="left_IDTIPOARTICULO" /> </td></tr><tr  class="filabottom_IDTIPOARTICULO" ><td></td><td><div  style="font-size:10px;margin-bottom: 5px;font-style: italic;color: navy;font-variant: all-small-caps;;" > </div><div id="bottom_IDTIPOARTICULO" /></td><td>    </td></tr></div>
+ <div  style="position:relative;left:10px" id="campoCODIGO" ><tr   class="filatop_CODIGO"  ><td><div id="top_CODIGO" /></td><td></td><td></td></tr><tr   class="filahalf_CODIGO" ><td class="caption_Código" >Código</td><td><input   name="CODIGO" style="border-style: solid; border-top-width:0px; border-left-width:0px; border-right-width:0px; border-color: coral;" class="input_CODIGO"  type="text" tabindex="4" id="CODIGO"/> </td><td>  <a href='javascript:startRecording("CODIGO");' > <img id="microphone_CODIGO" src="/static/iconos/mic.png"  /> </a>  <div id="left_CODIGO" /> </td></tr><tr  class="filabottom_CODIGO" ><td><div id="bottom_CODIGO" /></td><td><div  style="font-size:10px;margin-bottom: 5px;font-style: italic;color: navy;font-variant: all-small-caps;;" ></div></td><td></td></tr></div>
+<div  style="position:relative;left:10px" id="campoNOMBRE_ARTICULO" ><tr   class="filatop_NOMBRE_ARTICULO"  ><td><div id="top_NOMBRE_ARTICULO" /></td><td></td><td></td></tr><tr   class="filahalf_NOMBRE_ARTICULO" ><td class="caption_NombreArtículo" >Nombre Artículo</td><td><input   name="NOMBRE_ARTICULO" style="border-style: solid; border-top-width:0px; border-left-width:0px; border-right-width:0px; border-color: coral;" class="input_NOMBRE_ARTICULO"  type="text" tabindex="5" id="NOMBRE_ARTICULO"/> </td><td>  <a href='javascript:startRecording("NOMBRE_ARTICULO");' > <img id="microphone_NOMBRE_ARTICULO" src="/static/iconos/mic.png"  /> </a>  <div id="left_NOMBRE_ARTICULO" /> </td></tr><tr  class="filabottom_NOMBRE_ARTICULO" ><td><div id="bottom_NOMBRE_ARTICULO" /></td><td><div  style="font-size:10px;margin-bottom: 5px;font-style: italic;color: navy;font-variant: all-small-caps;;" ></div></td><td></td></tr></div>
+<div  style="position:relative;left:10px" id="campoDESCRIPCION" ><tr   class="filatop_DESCRIPCION"  ><td><div id="top_DESCRIPCION" /></td><td></td><td></td></tr><tr   class="filahalf_DESCRIPCION" ><td valign="Top" class="caption_Descripción" >Descripción</td><td> <textarea   name="DESCRIPCION"   style=""  class="input_DESCRIPCION" tabindex="6" id="DESCRIPCION"></textarea></td><td><a href='javascript:startRecording("DESCRIPCION");' > <img id="microphone_DESCRIPCION" src="/static/iconos/mic.png"  /> </a> <div id="left_DESCRIPCION" /> </td></tr><tr  class="filabottom_DESCRIPCION" ><td><div id="bottom_DESCRIPCION" /></td><td><div  style="font-size:10px;margin-bottom: 5px;font-style: italic;color: navy;font-variant: all-small-caps;;" ></div> </td><td></td></tr></div>
+<div  style="position:relative;left:10px" id="campoOBSERVACIONES" ><tr   class="filatop_OBSERVACIONES"  ><td><div id="top_OBSERVACIONES" /></td><td></td><td></td></tr><tr   class="filahalf_OBSERVACIONES" ><td valign="Top" class="caption_Observaciones" >Observaciones</td><td> <textarea   name="OBSERVACIONES"   style=""  class="input_OBSERVACIONES" tabindex="7" id="OBSERVACIONES"></textarea></td><td><a href='javascript:startRecording("OBSERVACIONES");' > <img id="microphone_OBSERVACIONES" src="/static/iconos/mic.png"  /> </a> <div id="left_OBSERVACIONES" /> </td></tr><tr  class="filabottom_OBSERVACIONES" ><td><div id="bottom_OBSERVACIONES" /></td><td><div  style="font-size:10px;margin-bottom: 5px;font-style: italic;color: navy;font-variant: all-small-caps;;" ></div> </td><td></td></tr></div>
+<tr valign='top'   ><td  colspan='3'  ><h5>N. CATEGORIA</h5> </tr><script>    function formadeabrir_IDCATEGORIA1(){ if ($("#IDCATEGORIA1").attr("data-value")!=null) { window.open("formrender?form=tables/tblcategoria1_form&idobjeto=" + $("#IDCATEGORIA1").attr("data-value") ,"_blank"); } else { window.open("rendergrid?grid=tables/tblcategoria1","_blank"); }  }</script>  <script>   $(document).ready(function () { $("#combodown_IDCATEGORIA1").click(function () { $('#IDCATEGORIA1').focus();$('#IDCATEGORIA1').val('');$('#IDCATEGORIA1').focus();   simulateWrapper('#IDCATEGORIA1', "key-sequence", {sequence: " "});           });});</script><div  style="position:relative;left:10px" id="campoIDCATEGORIA1" ><tr   class="filatop_IDCATEGORIA1"  ><td><div id="top_IDCATEGORIA1" /></td><td></td><td></td></tr><tr   class="filahalf_IDCATEGORIA1" ><td class="caption_Categoría1" >Categoría 1</td><td> <input  name="IDCATEGORIA1"  style=""    class="input_IDCATEGORIA1"  type="text" tabindex="52" id="IDCATEGORIA1"/> </td><td> <img id="combodown_IDCATEGORIA1" src="/static/iconos/dropdown.png" height="25px" width="25px" /><a href="javascript:formadeabrir_IDCATEGORIA1(); " ><img  id="comboleft_IDCATEGORIA1"  src="/static/iconos/adelante.png" height="25px" width="25px" /></a></td><td><div id="left_IDCATEGORIA1" /> </td></tr><tr  class="filabottom_IDCATEGORIA1" ><td></td><td><div  style="font-size:10px;margin-bottom: 5px;font-style: italic;color: navy;font-variant: all-small-caps;;" > </div><div id="bottom_IDCATEGORIA1" /></td><td>    </td></tr></div>
+ <script>    function formadeabrir_IDCATEGORIA2(){ if ($("#IDCATEGORIA2").attr("data-value")!=null) { window.open("formrender?form=tables/tblcategoria2_form&idobjeto=" + $("#IDCATEGORIA2").attr("data-value") ,"_blank"); } else { window.open("rendergrid?grid=tables/tblcategoria2","_blank"); }  }</script>  <script>   $(document).ready(function () { $("#combodown_IDCATEGORIA2").click(function () { $('#IDCATEGORIA2').focus();$('#IDCATEGORIA2').val('');$('#IDCATEGORIA2').focus();   simulateWrapper('#IDCATEGORIA2', "key-sequence", {sequence: " "});           });});</script><div  style="position:relative;left:10px" id="campoIDCATEGORIA2" ><tr   class="filatop_IDCATEGORIA2"  ><td><div id="top_IDCATEGORIA2" /></td><td></td><td></td></tr><tr   class="filahalf_IDCATEGORIA2" ><td class="caption_Categoría2" >Categoría 2</td><td> <input  name="IDCATEGORIA2"  style=""    class="input_IDCATEGORIA2"  type="text" tabindex="53" id="IDCATEGORIA2"/> </td><td> <img id="combodown_IDCATEGORIA2" src="/static/iconos/dropdown.png" height="25px" width="25px" /><a href="javascript:formadeabrir_IDCATEGORIA2(); " ><img  id="comboleft_IDCATEGORIA2"  src="/static/iconos/adelante.png" height="25px" width="25px" /></a></td><td><div id="left_IDCATEGORIA2" /> </td></tr><tr  class="filabottom_IDCATEGORIA2" ><td></td><td><div  style="font-size:10px;margin-bottom: 5px;font-style: italic;color: navy;font-variant: all-small-caps;;" > </div><div id="bottom_IDCATEGORIA2" /></td><td>    </td></tr></div>
+ <script>  $(document).ready(function () { $("#combodown_IDESTATUS_tblarticulo").click(function () { $('#IDESTATUS_tblarticulo').focus();$('#IDESTATUS_tblarticulo').val('');   simulateWrapper('#IDESTATUS_tblarticulo', "key-sequence", {sequence: " "});           });});</script><div  style="position:relative;left:10px" id="campoIDESTATUS_tblarticulo" ><tr   class="filatop_IDESTATUS_tblarticulo"  ><td><div id="top_IDESTATUS_tblarticulo" /></td><td></td><td></td></tr><tr   class="filahalf_IDESTATUS_tblarticulo" ><td class="caption_Estatus" >Estatus</td><td> <input  name="IDESTATUS_tblarticulo"  style=""    class="input_IDESTATUS_tblarticulo"  type="text" tabindex="54" id="IDESTATUS_tblarticulo"/> </td><td> <img id="combodown_IDESTATUS_tblarticulo" src="/static/iconos/dropdown.png" height="25px" width="25px" /><a href="configstatus?tablename=tblarticulo" target="_blank" ><img  id="comboleft_IDESTATUS_tblarticulo"  src="/static/iconos/adelante.png" height="25px" width="25px" /></a></td><td><div id="left_IDESTATUS_tblarticulo" /> </td></tr><tr  class="filabottom_IDESTATUS_tblarticulo" ><td></td><td><div  style="font-size:10px;margin-bottom: 5px;font-style: italic;color: navy;font-variant: all-small-caps;;" > </div><div id="bottom_IDESTATUS_tblarticulo" /></td><td>    </td></tr></div>
+ <tr valign='top'   ><td  colspan='3'  ><h5>X. CONTROL</h5> </tr><div  style="position:relative;left:10px" id="campoELIMINADO" ><tr   class="filatop_ELIMINADO"  ><td><div id="top_ELIMINADO" /></td><td></td><td></td></tr><tr   class="filahalf_ELIMINADO" ><td class="caption_Eliminado" >Eliminado</td><td> <div  name="ELIMINADO"    style="border-radius:6px;"  class="input_ELIMINADO" tabindex="97" id="ELIMINADO"/> </td><td><div id="left_ELIMINADO" /> </td></tr><tr  class="filabottom_ELIMINADO" ><td><div id="bottom_ELIMINADO" /></td><td><div  style="font-size:10px;margin-bottom: 5px;font-style: italic;color: navy;font-variant: all-small-caps;;" ></div> </td><td></td></tr></div>
+<div  style="position:relative;left:10px" id="campoBLOQUEADO" ><tr   class="filatop_BLOQUEADO"  ><td><div id="top_BLOQUEADO" /></td><td></td><td></td></tr><tr   class="filahalf_BLOQUEADO" ><td class="caption_Bloqueado" >Bloqueado</td><td> <div  name="BLOQUEADO"    style="border-radius:6px;"  class="input_BLOQUEADO" tabindex="98" id="BLOQUEADO"/> </td><td><div id="left_BLOQUEADO" /> </td></tr><tr  class="filabottom_BLOQUEADO" ><td><div id="bottom_BLOQUEADO" /></td><td><div  style="font-size:10px;margin-bottom: 5px;font-style: italic;color: navy;font-variant: all-small-caps;;" ></div> </td><td></td></tr></div>
+<div  style="position:relative;left:10px" id="campoFECHAALTA" ><tr   class="filatop_FECHAALTA"  ><td><div id="top_FECHAALTA" /></td><td></td><td></td></tr><tr   class="filahalf_FECHAALTA" ><td class="caption_FechaAlta" >Fecha Alta</td><td> <div  name="FECHAALTA"    style="border-radius:6px;"  class="input_FECHAALTA" tabindex="99" id="FECHAALTA"/> </td><td><div id="left_FECHAALTA" /> </td></tr><tr  class="filabottom_FECHAALTA" ><td><div id="bottom_FECHAALTA" /></td><td><div  style="font-size:10px;margin-bottom: 5px;font-style: italic;color: navy;font-variant: all-small-caps;;" ></div></td><td></td></tr></div></div>
+<div  style="position:relative;left:10px" id="campoPROPIETARIO" ><tr   class="filatop_PROPIETARIO"  ><td><div id="top_PROPIETARIO" /></td><td></td><td></td></tr><tr   class="filahalf_PROPIETARIO" ><td class="caption_Propietario" >Propietario</td><td><input   name="PROPIETARIO" style="" class="input_PROPIETARIO"  type="text" tabindex="100" id="PROPIETARIO"/> </td><td>    <div id="left_PROPIETARIO" /> </td></tr><tr  class="filabottom_PROPIETARIO" ><td><div id="bottom_PROPIETARIO" /></td><td><div  style="font-size:10px;margin-bottom: 5px;font-style: italic;color: navy;font-variant: all-small-caps;;" ></div></td><td></td></tr></div>
+</table></td>
+                        <td valign="top"> <table class="ajustarposicion"><tr valign='top'   ><td  colspan='3'  ><h5>I. IMPORTES</h5> </tr><div  style="position:relative;left:10px" id="campoPORC_IVA" ><tr   class="filatop_PORC_IVA"  ><td><div id="top_PORC_IVA" /></td><td></td><td></td></tr><tr   class="filahalf_PORC_IVA" ><td class="caption_%Iva" >% Iva</td><td> <div  name="PORC_IVA"  style="border-radius:6px;"  class="input_PORC_IVA" tabindex="28" id="PORC_IVA"/> </td><td> <a href='javascript:startRecording("PORC_IVA");' > <img id="microphone_PORC_IVA" src="/static/iconos/mic.png"  /> </a> <div id="left_PORC_IVA" /> </td></tr><tr  class="filabottom_PORC_IVA" ><td></td><td align="right"  style="position:relative;left:-26px" ><div  style="font-size:10px;margin-bottom: 5px;font-style: italic;color: navy;font-variant: all-small-caps;position:relative;left:-150px;" ></div> <div style="display:None;" id="bottom_PORC_IVA" /></td><td></td></tr></div>
+<div  style="position:relative;left:10px" id="campoPRECIO_NETO" ><tr   class="filatop_PRECIO_NETO"  ><td><div id="top_PRECIO_NETO" /></td><td></td><td></td></tr><tr   class="filahalf_PRECIO_NETO" ><td class="caption_PrecioNeto(ConIva)" >Precio Neto (Con Iva)</td><td> <div  name="PRECIO_NETO"  style="border-radius:6px;"  class="input_PRECIO_NETO" tabindex="29" id="PRECIO_NETO"/> </td> <td> <a href='javascript:startRecording("PRECIO_NETO");' > <img id="microphone_PRECIO_NETO" src="/static/iconos/mic.png"  /> </a> <div id="left_PRECIO_NETO" /> </td></tr><tr  class="filabottom_PRECIO_NETO" ><td></td><td align="right"  style="position:relative;left:-26px" ><div  style="font-size:10px;margin-bottom: 5px;font-style: italic;color: navy;font-variant: all-small-caps;position:relative;left:-150px;" ></div> <div style="display:None;" id="bottom_PRECIO_NETO" /></td><td></td></tr></div>
+<div  style="position:relative;left:10px" id="campoIMPORTE_IVA" ><tr   class="filatop_IMPORTE_IVA"  ><td><div id="top_IMPORTE_IVA" /></td><td></td><td></td></tr><tr   class="filahalf_IMPORTE_IVA" ><td class="caption_ImporteIva" >Importe Iva</td><td> <div  name="IMPORTE_IVA"  style="border-radius:6px;"  class="input_IMPORTE_IVA" tabindex="30" id="IMPORTE_IVA"/> </td> <td>  <div id="left_IMPORTE_IVA" /> </td></tr><tr  class="filabottom_IMPORTE_IVA" ><td></td><td align="right"  style="position:relative;left:-26px" ><div  style="font-size:10px;margin-bottom: 5px;font-style: italic;color: navy;font-variant: all-small-caps;position:relative;left:-150px;" ></div> <div style="display:None;" id="bottom_IMPORTE_IVA" /></td><td></td></tr></div>
+<div  style="position:relative;left:10px" id="campoPRECIO_LISTA" ><tr   class="filatop_PRECIO_LISTA"  ><td><div id="top_PRECIO_LISTA" /></td><td></td><td></td></tr><tr   class="filahalf_PRECIO_LISTA" ><td class="caption_PrecioLista" >Precio Lista</td><td> <div  name="PRECIO_LISTA"  style="border-radius:6px;"  class="input_PRECIO_LISTA" tabindex="31" id="PRECIO_LISTA"/> </td> <td>  <div id="left_PRECIO_LISTA" /> </td></tr><tr  class="filabottom_PRECIO_LISTA" ><td></td><td align="right"  style="position:relative;left:-26px" ><div  style="font-size:10px;margin-bottom: 5px;font-style: italic;color: navy;font-variant: all-small-caps;position:relative;left:-150px;" ></div> <div style="display:None;" id="bottom_PRECIO_LISTA" /></td><td></td></tr></div>
+<tr valign='top'   ><td  colspan='3'  ><h5>P. PROVEEDOR</h5> </tr><script>    function formadeabrir_IDPROVEEDOR(){ if ($("#IDPROVEEDOR").attr("data-value")!=null) { window.open("formrender?form=tables/tblproveedor_form&idobjeto=" + $("#IDPROVEEDOR").attr("data-value") ,"_blank"); } else { window.open("rendergrid?grid=tables/tblproveedor","_blank"); }  }</script>  <script>   $(document).ready(function () { $("#combodown_IDPROVEEDOR").click(function () { $('#IDPROVEEDOR').focus();$('#IDPROVEEDOR').val('');$('#IDPROVEEDOR').focus();   simulateWrapper('#IDPROVEEDOR', "key-sequence", {sequence: " "});           });});</script><div  style="position:relative;left:10px" id="campoIDPROVEEDOR" ><tr   class="filatop_IDPROVEEDOR"  ><td><div id="top_IDPROVEEDOR" /></td><td></td><td></td></tr><tr   class="filahalf_IDPROVEEDOR" ><td class="caption_Proveedor" >Proveedor</td><td> <input  name="IDPROVEEDOR"  style=""    class="input_IDPROVEEDOR"  type="text" tabindex="75" id="IDPROVEEDOR"/> </td><td> <img id="combodown_IDPROVEEDOR" src="/static/iconos/dropdown.png" height="25px" width="25px" /><a href="javascript:formadeabrir_IDPROVEEDOR(); " ><img  id="comboleft_IDPROVEEDOR"  src="/static/iconos/adelante.png" height="25px" width="25px" /></a></td><td><div id="left_IDPROVEEDOR" /> </td></tr><tr  class="filabottom_IDPROVEEDOR" ><td></td><td><div  style="font-size:10px;margin-bottom: 5px;font-style: italic;color: navy;font-variant: all-small-caps;;" > </div><div id="bottom_IDPROVEEDOR" /></td><td>    </td></tr></div>
+ <div  style="position:relative;left:10px" id="campoMARCA" ><tr   class="filatop_MARCA"  ><td><div id="top_MARCA" /></td><td></td><td></td></tr><tr   class="filahalf_MARCA" ><td class="caption_Marca" >Marca</td><td><input   name="MARCA" style="" class="input_MARCA"  type="text" tabindex="76" id="MARCA"/> </td><td>  <a href='javascript:startRecording("MARCA");' > <img id="microphone_MARCA" src="/static/iconos/mic.png"  /> </a>  <div id="left_MARCA" /> </td></tr><tr  class="filabottom_MARCA" ><td><div id="bottom_MARCA" /></td><td><div  style="font-size:10px;margin-bottom: 5px;font-style: italic;color: navy;font-variant: all-small-caps;;" ></div></td><td></td></tr></div>
+</table></td>
+                    </tr>
+                </table>
+            </form>
+
+            <!--Espacio vacio-->
+            <div style="height:100px"></div>
+        </div>
+
+        <div style="height:1200px;overflow: hidden">
+            <div style="position:relative;left:30px">
+
+                <hr />
+                <h5>Archivos adjuntos asociados al registro</h5>
+
+                <hr>
+                <form action="upload" method="post" id="misfiles" enctype="multipart/form-data">
+                    <input type="file" multiple="" name="file[]" width="150" /><br /><br />
+                    <input type="button" onclick="enviardatos();" width="150" value="Subir archivos " />
+                </form>
+
+                <hr />
+
+                <h5>Lista de Archivos</h5>
+
+                <div id="misarchivosdiv"></div>
+
+                <script>
+
+                    function enviardatos() {
+
+            var url_string = window.location.href;
+            var url = new URL(url_string);
+                        var campo1 = url.searchParams.get("campo1");
+                        var valor1 = url.searchParams.get("valor1");
+                        var vistadetalle = url.searchParams.get("vistadetalle");
+
+                if ($('#IDOBJECT').val() != null) {
+                document.getElementById("misfiles").action = "upload?campo1=" + campo1 + "&valor1=" + valor1 + "&vistadetalle=" + vistadetalle + "&tabla=tblarticulo&objeto=" + $('#IDOBJECT').val();
+                document.getElementById("misfiles").submit();}
+
+                }
+
+                    function damefiles() {
+
+
+                $(document).ready(function () {
+                    $.ajax({
+                        url: "/damefiles" + '?tabla=tblarticulo&idobjeto=' + $('#IDOBJECT').val()
+                    }).then(function (data) {
+
+                        datos = String(data);
+
+                        datos = datos.replace('&para=', '&para=' + $("#EMAIL").val());
+
+
+
+                        document.getElementById('misarchivosdiv').innerHTML = datos;
+
+
+
+
+                    });
+                });
+
+
+
+                $(document).ready(function () {
+                    $.ajax({
+                        url: "/damefilesslider" + '?tabla=tblarticulo&idobjeto=' + $('#IDOBJECT').val()
+                    }).then(function (data) {
+
+                        $('#slider').css("'visibility': 'hidden'");
+                        if (data.length > 10) {
+
+                            document.getElementById('slider').innerHTML = data;
+                            $('#slider').css("'visibility': 'visible'");
+                        }
+
+
+                    });
+                });
+
+
+
+
+
+
+
+                }
+
+                //volcando archivos
+                 damefiles();
+                </script>
+
+
+            </div>
+
+
+        </div>
+
+        
+    </div>
+
+    <script>
+$(document).ready(function () { $("#IDARTICULO").on("change", 
+ function (event) { 
+ // var type = event.args.type; // keyboard, mouse or null depending on how the value was changed. 
+   // var value = $("#IDARTICULO").val(); 
+ });}); 
+
+ $(document).ready(function () { $("#IDTIPOARTICULO").on("change", 
+ function (event) { 
+ // var type = event.args.type; // keyboard, mouse or null depending on how the value was changed. 
+   // var value = $("#IDTIPOARTICULO").val(); 
+ });}); 
+
+ $(document).ready(function () { $("#CODIGO").on("change", 
+ function (event) { 
+ // var type = event.args.type; // keyboard, mouse or null depending on how the value was changed. 
+   // var value = $("#CODIGO").val(); 
+ });}); 
+
+ $(document).ready(function () { $("#NOMBRE_ARTICULO").on("change", 
+ function (event) { 
+ // var type = event.args.type; // keyboard, mouse or null depending on how the value was changed. 
+   // var value = $("#NOMBRE_ARTICULO").val(); 
+ });}); 
+
+ $(document).ready(function () { $("#DESCRIPCION").on("change", 
+ function (event) { 
+ // var type = event.args.type; // keyboard, mouse or null depending on how the value was changed. 
+   // var value = $("#DESCRIPCION").val(); 
+ });}); 
+
+ $(document).ready(function () { $("#OBSERVACIONES").on("change", 
+ function (event) { 
+ // var type = event.args.type; // keyboard, mouse or null depending on how the value was changed. 
+   // var value = $("#OBSERVACIONES").val(); 
+ });}); 
+
+ $(document).ready(function () { $("#COSTO_REFERENCIA").on("change", 
+ function (event) { 
+ // var type = event.args.type; // keyboard, mouse or null depending on how the value was changed. 
+   var value = $("#COSTO_REFERENCIA").val(); 
+  $("#bottom_COSTO_REFERENCIA").html(numberWithCommas(value));      });}); 
+
+ $(document).ready(function () { $("#PORC_UTILIDAD").on("change", 
+ function (event) { 
+ // var type = event.args.type; // keyboard, mouse or null depending on how the value was changed. 
+   var value = $("#PORC_UTILIDAD").val(); 
+  $("#bottom_PORC_UTILIDAD").html(numberWithCommas(value));      });}); 
+
+ $(document).ready(function () { $("#PORC_IVA").on("change", 
+ function (event) { 
+ // var type = event.args.type; // keyboard, mouse or null depending on how the value was changed. 
+   var value = $("#PORC_IVA").val(); 
+   
+   
+   var elvalor= String("1" + "." + $("#PORC_IVA").val());
+   var operable = parseFloat(elvalor);
+   
+  var precioneto = $("#PRECIO_NETO").val(); 
+  $("#PRECIO_LISTA").val( (precioneto/operable)  ); 
+  $("#IMPORTE_IVA").val( precioneto - $("#PRECIO_LISTA").val()  ); 
+   
+   
+   
+   
+   
+   
+   
+        });}); 
+
+ $(document).ready(function () { $("#PRECIO_LISTA").on("change", 
+ function (event) { 
+ // var type = event.args.type; // keyboard, mouse or null depending on how the value was changed. 
+   var value = $("#PRECIO_LISTA").val(); 
+  $("#bottom_PRECIO_LISTA").html(numberWithCommas(value));      });}); 
+
+ $(document).ready(function () { $("#PRECIO_NETO").on("change", 
+ function (event) { 
+ // var type = event.args.type; // keyboard, mouse or null depending on how the value was changed. 
+   var value = $("#PRECIO_NETO").val(); 
+   
+   
+    var elvalor= String("1" + "." + $("#PORC_IVA").val());
+   var operable = parseFloat(elvalor);
+   
+   
+   
+     var precioneto = $("#PRECIO_NETO").val(); 
+  $("#PRECIO_LISTA").val( (precioneto/operable)  ); 
+  $("#IMPORTE_IVA").val( precioneto - $("#PRECIO_LISTA").val()  ); 
+  
+  
+  
+  $("#bottom_PRECIO_NETO").html(numberWithCommas(value));      });}); 
+
+ $(document).ready(function () { $("#IDCATEGORIA1").on("change", 
+ function (event) { 
+ // var type = event.args.type; // keyboard, mouse or null depending on how the value was changed. 
+   // var value = $("#IDCATEGORIA1").val(); 
+ });}); 
+
+ $(document).ready(function () { $("#IDCATEGORIA2").on("change", 
+ function (event) { 
+ // var type = event.args.type; // keyboard, mouse or null depending on how the value was changed. 
+   // var value = $("#IDCATEGORIA2").val(); 
+ });}); 
+
+ $(document).ready(function () { $("#IDESTATUS_tblarticulo").on("change", 
+ function (event) { 
+ // var type = event.args.type; // keyboard, mouse or null depending on how the value was changed. 
+   // var value = $("#IDESTATUS_tblarticulo").val(); 
+ });}); 
+
+ $(document).ready(function () { $("#IDPROVEEDOR").on("change", 
+ function (event) { 
+ // var type = event.args.type; // keyboard, mouse or null depending on how the value was changed. 
+   // var value = $("#IDPROVEEDOR").val(); 
+ });}); 
+
+ $(document).ready(function () { $("#MARCA").on("change", 
+ function (event) { 
+ // var type = event.args.type; // keyboard, mouse or null depending on how the value was changed. 
+   // var value = $("#MARCA").val(); 
+ });}); 
+
+ $(document).ready(function () { $("#ELIMINADO").on("change", 
+ function (event) { 
+ // var type = event.args.type; // keyboard, mouse or null depending on how the value was changed. 
+   // var value = $("#ELIMINADO").val(); 
+ });}); 
+
+ $(document).ready(function () { $("#BLOQUEADO").on("change", 
+ function (event) { 
+ // var type = event.args.type; // keyboard, mouse or null depending on how the value was changed. 
+   // var value = $("#BLOQUEADO").val(); 
+ });}); 
+
+ $(document).ready(function () { $("#FECHAALTA").on("change", 
+ function (event) { 
+ // var type = event.args.type; // keyboard, mouse or null depending on how the value was changed. 
+   // var value = $("#FECHAALTA").val(); 
+ });}); 
+
+ $(document).ready(function () { $("#PROPIETARIO").on("change", 
+ function (event) { 
+ // var type = event.args.type; // keyboard, mouse or null depending on how the value was changed. 
+   // var value = $("#PROPIETARIO").val(); 
+ });}); 
+
+ </script>
+
+    
+
+    <div id="notificar">
+        <div id="textonotificacion">
+            Welcome to our website.
+        </div>
+    </div>
+
+
+
+
+
+    <script>
+
+        function delfile(ruta) {
+
+             $.ajax({
+            async: true,
+            url: ruta
+                    }).then(function (data) {
+
+                        if (data == 'ok') {
+                            aviso("Archivo Eliminado");
+                            document.getElementById('misarchivosdiv').innerHTML = '';
+                            damefiles();
+                        }
+
+                    });
+
+        }
+
+
+
+        $(document).ready(function () {
+
+            $("#notificar").jqxNotification({
+                width: 250, position: "top-right", opacity: 0.9,
+                autoOpen: false, animationOpenDelay: 800, autoClose: true, autoCloseDelay: 3000, theme:theme  , blink:false, template: "info"
+            });
+
+                var url_string = window.location.href;
+                var url = new URL(url_string);
+                var campo1 = url.searchParams.get("campo1");
+                var valor1 = url.searchParams.get("valor1");
+                var campo2 = url.searchParams.get("campo2");
+                var valor2 = url.searchParams.get("valor2");
+                var campo3 = url.searchParams.get("campo3");
+                var valor3 = url.searchParams.get("valor3");
+                var campo4 = url.searchParams.get("campo4");
+                var valor4 = url.searchParams.get("valor4");
+                var campo5 = url.searchParams.get("campo5");
+                var valor5 = url.searchParams.get("valor5");
+                var campo6 = url.searchParams.get("campo6");
+                var valor6 = url.searchParams.get("valor6");
+                var campo7 = url.searchParams.get("campo7");
+                var valor7 = url.searchParams.get("valor7");
+                var campo8 = url.searchParams.get("campo8");
+                var valor8 = url.searchParams.get("valor8");
+                var campo9 = url.searchParams.get("campo9");
+                var valor9 = url.searchParams.get("valor9");
+                var campo10 = url.searchParams.get("campo10");
+                var valor10 = url.searchParams.get("valor10");
+
+                if (campo1 != 'null' && campo1 != null ) { $("#" + campo1).jqxInput('val', valor1); }
+                if (campo2 != 'null' && campo2 != null ) { $("#" + campo2).jqxInput('val', valor2); }
+                if (campo3 != 'null' && campo3 != null ) { $("#" + campo3).jqxInput('val', valor3); }
+                if (campo4 != 'null' && campo4 != null ) { $("#" + campo4).jqxInput('val', valor4); }
+                if (campo5 != 'null' && campo5 != null ) { $("#" + campo5).jqxInput('val', valor5); }
+                if (campo6 != 'null' && campo6 != null ) { $("#" + campo6).jqxInput('val', valor6); }
+                if (campo7 != 'null' && campo7 != null ) { $("#" + campo7).jqxInput('val', valor7); }
+                if (campo8 != 'null' && campo8 != null ) { $("#" + campo8).jqxInput('val', valor8); }
+                if (campo9 != 'null' && campo9 != null ) { $("#" + campo9).jqxInput('val', valor9); }
+                if (campo10 != 'null' && campo10 != null ) { $("#" + campo10).jqxInput('val', valor10); }
+
+            var url_string = window.location.href;
+            var url = new URL(url_string);
+            var vistadetalle = url.searchParams.get("vistadetalle");
+
+           // if ( window.location !== window.parent.location ) {
+  // The page is in an iframe
+         //   } else {
+  // The page is not in an iframe
+       //     }
+
+                if (vistadetalle == 'true' && window.location !== window.parent.location  ) {
+
+               // document.getElementById('zonatitulo').style.display = 'none';
+                document.getElementById('zonamenu').style.display = 'none';
+            }
+
+                verificar();
+
+                checaradjuntos();
+
+            });
+
+            function verificar() {
+
+           //disable si no hay un IDOBJECT
+                
+
+            }
+
+           function checaradjuntos() {
+
+                        if ( $('#IDARTICULO').val()    != '') {
+                    $('#tabs').jqxTabs('enableAt', 1);
+                } else {
+                    $('#tabs').jqxTabs('disableAt', 1);
+                }
+
+            }
+    </script>
+
+    <style>	h5{	color: #982d2d;    font-family: pompadour; font-size: 19px;    font-variant: small-caps;}	td{		color:#0014ff	;    font-family: pompadour;}</style>
+
+
+
+
+
+
+
+    <script>
+
+
+        $(document).ready(function () {
+            document.getElementsByTagName("html")[0].style.visibility = "visible";
+
+
+
+
+
+
+
+
+
+
+
+        });
+
+window.parent.parent.tabtitle('Form Artículo');
+
+        //Cargando datos del objeto
+        var url_string = window.location.href;
+        var url = new URL(url_string);
+        var idobjeto = url.searchParams.get("idobjeto");
+
+
+
+        if (idobjeto != null && idobjeto != 'null'  && idobjeto != ''  && idobjeto != ' '  ) {
+         window.parent.parent.tabtitle('Form Artículo' + ' ' + idobjeto );
+        }
+
+
+
+
+    </script>
+
+
+   
+<script>
+  
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1 @@
+select * from tblaltanotify_tblpivotformat order by IDALTANOTIFY_tblpivotformat ASC 

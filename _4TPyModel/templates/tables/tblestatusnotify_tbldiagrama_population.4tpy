@@ -1,0 +1,1 @@
+select * from tblestatusnotify_tbldiagrama order by IDESTATUSNOTIFY_tbldiagrama ASC 
