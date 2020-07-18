@@ -1,0 +1,1 @@
+select * from tblaltanotify_view_ultimas_100_consultas order by IDALTANOTIFY_view_ultimas_100_consultas ASC 

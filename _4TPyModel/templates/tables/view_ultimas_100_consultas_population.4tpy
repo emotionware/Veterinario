@@ -1,0 +1,1 @@
+select cast( IDCONSULTA as UNSIGNED) as  IDCONSULTA ,NOMBRE,APELLIDO,MASCOTA,ESPECIE,CONVERT_TZ(FECHA,'+00:00','+06:00') as FECHA ,MOTIVO_CONSULTA,DIAGNOSTICO, concat('<a style="color:blue;" href="javascript:modoedicion(',IDCONSULTA,');">Editar</a>') as EDITAR from view_ultimas_100_consultas  order by IDCONSULTA desc

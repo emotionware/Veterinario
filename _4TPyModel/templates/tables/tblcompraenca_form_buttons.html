@@ -15,6 +15,8 @@
 
             $('#Button1').on('click', function () {
 
+window.open('/static/stimulsoft/reportviewer.html?reporte=reporte_compra.mrt&campofiltro=IDCOMPRAENCA&idobjetofiltro=' + $('#IDOBJECT').val() ,'_blank');
+
 
             });
             $('#Button2').on('click', function () {
@@ -40,10 +42,10 @@
         });
 </script>
 
-<div style="margin-top:10px;margin-bottom:10px;position:relative;left:500px;top:-25px;display:none">
+<div style="margin-top:10px;margin-bottom:10px;position:relative;left:500px;top:-25px">
     <table>
         <tr>
-            <td><input type="button" style="visibility:visible;position:relative;top:13px;" value="Afectar Almacén" id='Button1' /></td>
+            <td><input type="button" style="visibility:visible;position:relative;top:13px;" value="Reporte Compra" id='Button1' /></td>
             <td><input type="button" style="visibility:hidden;position:relative;top:13px;" value="TextButton" id='Button2' /></td>
             <td><input type="button" style="visibility:hidden;position:relative;top:13px;" value="TextButton" id='Button3' /></td>
             <td><input type="button" style="visibility:hidden;position:relative;top:13px;" value="TextButton" id='Button4' /></td>

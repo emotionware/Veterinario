@@ -3,12 +3,12 @@ var user = 'root';
 var userPwd = 'ks2106';
 var db = 'veterinario';
 function formbuild() { 
-var form = FormApp.create("Agentes"); 
+var form = FormApp.create("Médicos"); 
 var conexion=conectar_mysql(); //realizo conexion con mysql
 
 
 
-var guardar = SpreadsheetApp.create('Agentes');
+var guardar = SpreadsheetApp.create('Médicos');
 form.setDestination(FormApp.DestinationType.SPREADSHEET, guardar.getId());
 
 

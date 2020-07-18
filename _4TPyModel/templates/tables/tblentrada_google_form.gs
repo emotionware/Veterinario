@@ -24,16 +24,6 @@ item.setTitle("Fecha");
 
 
 var form = FormApp.openById(form.getId());
-var item = form.addTextItem(); //
-item.setTitle("Cantidad");
-
-
-var textValidation = FormApp.createTextValidation()
-.requireNumber()
-.setHelpText('No es un número válido')
-.build();
-item.setValidation(textValidation);
-var form = FormApp.openById(form.getId());
 var item = form.addParagraphTextItem(); //
 item.setTitle("Observaciones");
 
@@ -49,6 +39,36 @@ var item = form.addDateItem() //
 item.setTitle("Caducidad");
 
 
+var form = FormApp.openById(form.getId());
+var item = form.addTextItem(); //
+item.setTitle("Precio Unitario Sin Iva");
+
+
+var textValidation = FormApp.createTextValidation()
+.requireNumber()
+.setHelpText('No es un número válido')
+.build();
+item.setValidation(textValidation);
+var form = FormApp.openById(form.getId());
+var item = form.addTextItem(); //
+item.setTitle("Cantidad");
+
+
+var textValidation = FormApp.createTextValidation()
+.requireNumber()
+.setHelpText('No es un número válido')
+.build();
+item.setValidation(textValidation);
+var form = FormApp.openById(form.getId());
+var item = form.addTextItem(); //
+item.setTitle("% Iva");
+
+
+var textValidation = FormApp.createTextValidation()
+.requireNumber()
+.setHelpText('No es un número válido')
+.build();
+item.setValidation(textValidation);
 function conectar_mysql(){
 var instanceUrl = 'jdbc:mysql://' + address;
 var dbUrl = instanceUrl + '/' + db;
@@ -64,7 +84,7 @@ return conn;
 function enviar2database(e){
 var conn = Jdbc.getConnection('jdbc:mysql://' + address + ':3306/' + db, user, userPwd);
 var itemResponses = e.response.getItemResponses();
-var sentencia="insert into tblentrada(FECHA,CANTIDAD,OBSERVACIONES,LOTE,CADUCIDAD) values ('"  + itemResponses[0].getResponse() + "','"  + itemResponses[1].getResponse() + "','"  + itemResponses[2].getResponse() + "','"  + itemResponses[3].getResponse() + "','"  + itemResponses[4].getResponse() + "')";
+var sentencia="insert into tblentrada(FECHA,OBSERVACIONES,LOTE,CADUCIDAD,PRECIO_UNITARIO,CANTIDAD,PORC_IVA) values ('"  + itemResponses[0].getResponse() + "','"  + itemResponses[1].getResponse() + "','"  + itemResponses[2].getResponse() + "','"  + itemResponses[3].getResponse() + "','"  + itemResponses[4].getResponse() + "','"  + itemResponses[5].getResponse() + "','"  + itemResponses[6].getResponse() + "')";
 var stmt = conn.prepareStatement(sentencia);
 Logger.log("%s", sentencia);
 stmt.execute();

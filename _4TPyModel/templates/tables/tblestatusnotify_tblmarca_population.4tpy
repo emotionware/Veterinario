@@ -1,0 +1,1 @@
+select * from tblestatusnotify_tblmarca order by IDESTATUSNOTIFY_tblmarca ASC 

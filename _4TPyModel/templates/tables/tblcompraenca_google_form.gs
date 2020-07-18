@@ -58,6 +58,17 @@ var item = form.addParagraphTextItem(); //
 item.setTitle("Observaciones");
 
 
+var form = FormApp.openById(form.getId());
+var item = form.addTextItem(); //
+item.setTitle("Folio Factura");
+
+
+var form = FormApp.openById(form.getId());
+var item = form.addDateItem() //
+.setRequired(true) //
+item.setTitle("Fecha Factura");
+
+
 function conectar_mysql(){
 var instanceUrl = 'jdbc:mysql://' + address;
 var dbUrl = instanceUrl + '/' + db;
@@ -73,7 +84,7 @@ return conn;
 function enviar2database(e){
 var conn = Jdbc.getConnection('jdbc:mysql://' + address + ':3306/' + db, user, userPwd);
 var itemResponses = e.response.getItemResponses();
-var sentencia="insert into tblcompraenca(FECHA,SUBTOTAL,IMPORTE_IVA,TOTAL,OBSERVACIONES) values ('"  + itemResponses[0].getResponse() + "','"  + itemResponses[1].getResponse() + "','"  + itemResponses[2].getResponse() + "','"  + itemResponses[3].getResponse() + "','"  + itemResponses[4].getResponse() + "')";
+var sentencia="insert into tblcompraenca(FECHA,SUBTOTAL,IMPORTE_IVA,TOTAL,OBSERVACIONES,FOLIO_FACTURA,FECHA_FACTURA) values ('"  + itemResponses[0].getResponse() + "','"  + itemResponses[1].getResponse() + "','"  + itemResponses[2].getResponse() + "','"  + itemResponses[3].getResponse() + "','"  + itemResponses[4].getResponse() + "','"  + itemResponses[5].getResponse() + "','"  + itemResponses[6].getResponse() + "')";
 var stmt = conn.prepareStatement(sentencia);
 Logger.log("%s", sentencia);
 stmt.execute();

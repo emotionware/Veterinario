@@ -503,7 +503,7 @@ $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  concat(FECHA,' +
          </li>
           
           
-          
+          	<li><a href="javascript:addtabplus('rendergrid?grid=tables/tblmascota')">Mascotas</a></li>
           
           <li>Ventas
          <ul>
@@ -522,17 +522,34 @@ $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  concat(FECHA,' +
           	 <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblalmacen')">Almacén</a></li>
           	  <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblcompraenca')">Compras</a></li>
           	 <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblarticulo')">Artículos</a></li>
-          	  <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblentrada')">Entradas</a></li>
-          	   <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblsalida')">Salidas</a></li>
-          	    <li><a href="javascript:addtabplus('rendergrid?grid=tables/tbltipoentrada')">Tipo Entrada</a></li>
-          	     <li><a href="javascript:addtabplus('rendergrid?grid=tables/tbltiposalida')">Tipo Salida</a></li>
-          	      <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblkardex')">Kardex</a></li>
-          	           <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblproveedor')">Proveedores</a></li>
+          	 <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblentrada')">Entradas</a></li>
+          	 <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblsalida')">Salidas</a></li>
+
+          	 <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblkardex')">Kardex</a></li>
+          	 <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblproveedor')">Proveedores</a></li>
+          	 <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblmarca')">Marcas</a></li>   
+          	 
+          	 
+          	 	<li>Movimientos
+          	 	
+          	 	<ul>
+          	 		
+             <li><a href="javascript:addtabplus('rendergrid?grid=tables/tbltipoentrada')">Tipo Entrada</a></li>
+          	 <li><a href="javascript:addtabplus('rendergrid?grid=tables/tbltiposalida')">Tipo Salida</a></li>
+          	 		
+          	 	</ul>
+          	 	
+          	 	</li>
+          	 	
+          	 
+          	 
+          	 
+          	 
           </ul>
           </li>
           
         
-            <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblagente')">Agentes</a></li>
+            <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblagente')">Médicos</a></li>
           
               <li><a href="javascript:addtabplus('rendergrid?grid=tables/tbldocumento')">Documentos</a></li>
              
@@ -545,7 +562,8 @@ $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  concat(FECHA,' +
    <li><a href="javascript:addtabplus('/static/stimulsoft/reportviewer.html?reporte=view_existencia_general')">Existencia General</a></li>
 <li><a href="javascript:addtabplus('/static/stimulsoft/reportviewer.html?reporte=view_existencias_por_lote')">Existencia por Lotes</a></li>
 <li><a href="javascript:addtabplus('/static/stimulsoft/dashboardviewer.html?dashboard=view_analisis_caducidad')">Análisis de la Caducidad</a></li> 
-           
+<li><a href="javascript:addtabplus('rendergrid?grid=tables/view_entradas_pendientes')">Entradas Pendientes de Procesar</a></li>  
+<li><a href="javascript:addtabplus('rendergrid?grid=tables/view_ultimas_100_consultas')">Revisión Consultas</a></li> 
            
            
            
@@ -560,6 +578,7 @@ $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  concat(FECHA,' +
   <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblmascota')">Mascota</a></li>                	
  <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblespecie')">Especie</a></li>   
  <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblraza')">Raza</a></li>   
+
 
   
              </ul>

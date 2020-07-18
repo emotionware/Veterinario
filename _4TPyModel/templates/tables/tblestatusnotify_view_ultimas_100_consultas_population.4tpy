@@ -1,0 +1,1 @@
+select * from tblestatusnotify_view_ultimas_100_consultas order by IDESTATUSNOTIFY_view_ultimas_100_consultas ASC 

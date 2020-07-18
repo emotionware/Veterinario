@@ -1,0 +1,1 @@
+select cast( IDENTRADA as UNSIGNED) as  IDENTRADA ,CANTIDAD,ESTATUS,NOMBRE_ARTICULO,CONVERT_TZ(FECHA,'+00:00','+06:00') as FECHA , concat('<a style="color:blue;" href="javascript:modoedicion(',IDENTRADA,');">Editar</a>') as EDITAR from view_entradas_pendientes  order by IDENTRADA desc

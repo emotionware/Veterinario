@@ -1,0 +1,1 @@
+select * from tblaltanotify_view_entradas_pendientes order by IDALTANOTIFY_view_entradas_pendientes ASC 
