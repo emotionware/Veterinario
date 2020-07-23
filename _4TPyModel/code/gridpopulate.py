@@ -1542,7 +1542,7 @@ def damehijos(tablename):
     )
     mycursor = mydb.cursor()
     mycursor.execute(
-        "SELECT t1.detail from tblsysmasterdetail t1 inner JOIN tblsystable t2 on t2.TABLA=t1.DETAIL where t1.master='" + tablename.lower() + "'  order by t2.CAPTION_DETAIL asc    ;")
+        "SELECT t1.detail from tblsysmaindetail t1 inner JOIN tblsystable t2 on t2.TABLA=t1.DETAIL where t1.main='" + tablename.lower() + "'  order by t2.CAPTION_DETAIL asc    ;")
     myresult = mycursor.fetchall()
 
     # payload = []
