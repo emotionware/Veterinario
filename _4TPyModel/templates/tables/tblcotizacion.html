@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title>Cotizaciones/Ventas</title>
+    <title>Ventas Articulos/Servicios</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -461,7 +461,7 @@ window.parent.parent.addtabplus(data);
         <table>
             <tr>
                 <td><img src="/static/iconos/grid.png" height="32" /></td>
-                <td><a style="color:darkblue" href="rendergrid?grid=tables/tblcotizacion">Cotizaciones/Ventas</a></td>
+                <td><a style="color:darkblue" href="rendergrid?grid=tables/tblcotizacion">Ventas Articulos/Servicios</a></td>
                 <td>
                 </td>
             </tr>
@@ -623,7 +623,7 @@ window.parent.parent.addtabplus(data);
                 datatype: "json",
                 datafields: [
 
-                     {name: 'EDITAR', type:'string'},{name: 'IDCOTIZACION', type: 'float'},{name: 'IDCOTIZACION', type: 'string'},{name: 'IDPROSPECTO', type: 'string'},{name: 'IDESTATUS_tblcotizacion', type: 'string'},{name: 'PROCESADO', type: 'bool'},{name: 'FECHA', type: 'date', format: 'yyyy-MM-ddTHH:mm:ss-HH:mm'},{name: 'OBSERVACIONES', type: 'string'},{name: 'SUBTOTAL', type: 'number'},{name: 'IMPORTE_IVA', type: 'number'},{name: 'TOTAL', type: 'number'},{name: 'IDCANALCOMERCIAL', type: 'string'},{name: 'ELIMINADO', type: 'bool'},{name: 'BLOQUEADO', type: 'bool'},{name: 'FECHAALTA', type: 'date', format: 'yyyy-MM-ddTHH:mm:ss-HH:mm'},{name: 'PROPIETARIO', type: 'string'},{name: 'TOTAL_ABONOS', type: 'number'},{name: 'TOTAL_ADEUDO', type: 'number'}
+                     {name: 'EDITAR', type:'string'},{name: 'IDCOTIZACION', type: 'float'},{name: 'IDCOTIZACION', type: 'string'},{name: 'IDPROSPECTO', type: 'string'},{name: 'CAMPODISPLAY', type: 'string'},{name: 'IDESTATUS_tblcotizacion', type: 'string'},{name: 'PROCESADO', type: 'bool'},{name: 'FECHA', type: 'date', format: 'yyyy-MM-ddTHH:mm:ss-HH:mm'},{name: 'OBSERVACIONES', type: 'string'},{name: 'SUBTOTAL', type: 'number'},{name: 'IMPORTE_IVA', type: 'number'},{name: 'TOTAL', type: 'number'},{name: 'IDCANALCOMERCIAL', type: 'string'},{name: 'ELIMINADO', type: 'bool'},{name: 'BLOQUEADO', type: 'bool'},{name: 'FECHAALTA', type: 'date', format: 'yyyy-MM-ddTHH:mm:ss-HH:mm'},{name: 'PROPIETARIO', type: 'string'},{name: 'TOTAL_ABONOS', type: 'number'},{name: 'TOTAL_ADEUDO', type: 'number'}
 
                 ],
                 id: 'IDCOTIZACION',
@@ -634,8 +634,7 @@ window.parent.parent.addtabplus(data);
                 {
                     width: getWidth('Grid'),
                     width: '99%',
-                height: '100%',
-
+                	height: '100%',
                     theme: theme,
                     source: dataAdapter,
                     columnsresize: true,
@@ -659,7 +658,7 @@ window.parent.parent.addtabplus(data);
 
                     columns: [
 
-                        { text: 'Editar', datafield: 'EDITAR', width: 60,  filterable: false, textPosition: 'left', theme:theme, columntype:'text', cellclassname: cellclass },{text: 'Id', editable: false, columngroup: 'A.DATOS', datafield: 'IDCOTIZACION', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Prospecto', editable: true, columngroup: 'A.DATOS',  hidden: true, datafield: 'IDPROSPECTO', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Estatus', editable: true, columngroup: 'A.DATOS',  hidden: true, datafield: 'IDESTATUS_tblcotizacion', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Procesado', editable: true, columngroup: 'A.DATOS', datafield: 'PROCESADO', theme:theme , columntype: 'checkbox' , width: '110'},{text: 'Fecha', editable: true , columngroup: 'A.DATOS', theme:theme  , filtertype: 'range',  datafield: 'FECHA', width: '110',  cellsformat: 'dd.MM.yyyy', columntype: 'datetimeinput', createeditor: function (rowIndex, cellValue, editor) { editor.jqxDateTimeInput({ min: new Date(1000, 1, 1), max: new Date(5100, 1, 1), culture: 'es-ES' }); }, initeditor: function (rowindex, cellvalue, editor) { editor.jqxDateTimeInput({ value: cellvalue });}  },{text: 'Observaciones', editable: true, columngroup: 'A.DATOS',  hidden: true, datafield: 'OBSERVACIONES', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Subtotal', editable: true, columngroup: 'B.IMPORTES', datafield: 'SUBTOTAL', theme:theme ,  cellsformat: 'c2', aggregates: ['sum'], columntype: 'string' , width: '110'},{text: 'Importe Iva', editable: true, columngroup: 'B.IMPORTES',  hidden: true, datafield: 'IMPORTE_IVA', theme:theme ,  aggregates: ['sum'], cellsformat: 'c2', columntype: 'string' , width: '110'},{text: 'Total', editable: true, columngroup: 'B.IMPORTES', datafield: 'TOTAL', theme:theme ,  cellsformat: 'c2', aggregates: ['sum'], columntype: 'string' , width: '110'},{text: 'Canal Comercial', editable: true, columngroup: 'C.CANAL',  hidden: true, datafield: 'IDCANALCOMERCIAL', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Eliminado', editable: false, columngroup: 'X.CONTROL', datafield: 'ELIMINADO', theme:theme , columntype: 'checkbox' , width: '110'},{text: 'Bloqueado', editable: false, columngroup: 'X.CONTROL', datafield: 'BLOQUEADO', theme:theme , columntype: 'checkbox' , width: '110'},{text: 'Fecha Alta', editable: false , columngroup: 'X.CONTROL', theme:theme  , filtertype: 'range',  datafield: 'FECHAALTA', width: '110',  cellsformat: 'dd.MM.yyyy', columntype: 'datetimeinput', createeditor: function (rowIndex, cellValue, editor) { editor.jqxDateTimeInput({ min: new Date(1000, 1, 1), max: new Date(5100, 1, 1), culture: 'es-ES' }); }, initeditor: function (rowindex, cellvalue, editor) { editor.jqxDateTimeInput({ value: cellvalue });}  },{text: 'Propietario', editable: true, columngroup: 'X.CONTROL', datafield: 'PROPIETARIO', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Total Abonos', editable: true, columngroup: 'Z.ABONOS',  hidden: true, datafield: 'TOTAL_ABONOS', theme:theme ,  aggregates: ['sum'], cellsformat: 'c2', columntype: 'string' , width: '110'},{text: 'Total Adeudo', editable: true, columngroup: 'Z.ABONOS',  hidden: true, datafield: 'TOTAL_ADEUDO', theme:theme ,  aggregates: ['sum'], cellsformat: 'c2', columntype: 'string' , width: '110'}
+                        { text: 'Editar', datafield: 'EDITAR', width: 60,  filterable: false, textPosition: 'left', theme:theme, columntype:'text', cellclassname: cellclass },{text: 'Id', editable: false, columngroup: 'A.DATOS', datafield: 'IDCOTIZACION', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Cliente', editable: true, columngroup: 'A.DATOS',  hidden: true, datafield: 'IDPROSPECTO', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Campodisplay', editable: true, columngroup: 'A.DATOS', datafield: 'CAMPODISPLAY', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Estatus', editable: true, columngroup: 'A.DATOS',  hidden: true, datafield: 'IDESTATUS_tblcotizacion', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Procesado', editable: true, columngroup: 'A.DATOS', datafield: 'PROCESADO', theme:theme , columntype: 'checkbox' , width: '110'},{text: 'Fecha', editable: true , columngroup: 'A.DATOS', theme:theme  , filtertype: 'range',  datafield: 'FECHA', width: '110',  cellsformat: 'dd.MM.yyyy', columntype: 'datetimeinput', createeditor: function (rowIndex, cellValue, editor) { editor.jqxDateTimeInput({ min: new Date(1000, 1, 1), max: new Date(5100, 1, 1), culture: 'es-ES' }); }, initeditor: function (rowindex, cellvalue, editor) { editor.jqxDateTimeInput({ value: cellvalue });}  },{text: 'Observaciones', editable: true, columngroup: 'A.DATOS',  hidden: true, datafield: 'OBSERVACIONES', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Subtotal', editable: true, columngroup: 'B.IMPORTES', datafield: 'SUBTOTAL', theme:theme ,  cellsformat: 'c2', aggregates: ['sum'], columntype: 'string' , width: '110'},{text: 'Importe Iva', editable: true, columngroup: 'B.IMPORTES',  hidden: true, datafield: 'IMPORTE_IVA', theme:theme ,  aggregates: ['sum'], cellsformat: 'c2', columntype: 'string' , width: '110'},{text: 'Total', editable: true, columngroup: 'B.IMPORTES', datafield: 'TOTAL', theme:theme ,  cellsformat: 'c2', aggregates: ['sum'], columntype: 'string' , width: '110'},{text: 'Motivo Venta', editable: true, columngroup: 'C.MotivoVenta', datafield: 'IDCANALCOMERCIAL', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Eliminado', editable: false, columngroup: 'X.CONTROL', datafield: 'ELIMINADO', theme:theme , columntype: 'checkbox' , width: '110'},{text: 'Bloqueado', editable: false, columngroup: 'X.CONTROL', datafield: 'BLOQUEADO', theme:theme , columntype: 'checkbox' , width: '110'},{text: 'Fecha Alta', editable: false , columngroup: 'X.CONTROL', theme:theme  , filtertype: 'range',  datafield: 'FECHAALTA', width: '110',  cellsformat: 'dd.MM.yyyy', columntype: 'datetimeinput', createeditor: function (rowIndex, cellValue, editor) { editor.jqxDateTimeInput({ min: new Date(1000, 1, 1), max: new Date(5100, 1, 1), culture: 'es-ES' }); }, initeditor: function (rowindex, cellvalue, editor) { editor.jqxDateTimeInput({ value: cellvalue });}  },{text: 'Propietario', editable: true, columngroup: 'X.CONTROL', datafield: 'PROPIETARIO', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Total Abonos', editable: true, columngroup: 'Z.ABONOS',  hidden: true, datafield: 'TOTAL_ABONOS', theme:theme ,  aggregates: ['sum'], cellsformat: 'c2', columntype: 'string' , width: '110'},{text: 'Total Adeudo', editable: true, columngroup: 'Z.ABONOS',  hidden: true, datafield: 'TOTAL_ADEUDO', theme:theme ,  aggregates: ['sum'], cellsformat: 'c2', columntype: 'string' , width: '110'}
 
 
 
@@ -668,7 +667,7 @@ window.parent.parent.addtabplus(data);
 
                 columngroups:
                 [
-                    { text: 'A. DATOS', align: 'center', name: 'A.DATOS' },{ text: 'B. IMPORTES', align: 'center', name: 'B.IMPORTES' },{ text: 'C. CANAL', align: 'center', name: 'C.CANAL' },{ text: 'X. CONTROL', align: 'center', name: 'X.CONTROL' },{ text: 'Z. ABONOS', align: 'center', name: 'Z.ABONOS' }
+                    { text: 'A. DATOS', align: 'center', name: 'A.DATOS' },{ text: 'B. IMPORTES', align: 'center', name: 'B.IMPORTES' },{ text: 'C. Motivo Venta', align: 'center', name: 'C.MotivoVenta' },{ text: 'X. CONTROL', align: 'center', name: 'X.CONTROL' },{ text: 'Z. ABONOS', align: 'center', name: 'Z.ABONOS' }
                 ]
 
 
@@ -806,7 +805,7 @@ window.parent.parent.addtabplus(data);
 
 
 
-                       {name: 'IDCOTIZACION', type: ''},{name: 'IDPROSPECTO', type: '*'},{name: 'IDESTATUS_tblcotizacion', type: '*'},{name: 'PROCESADO', type: 'checkbox'},{name: 'FECHA', type: 'date'},{name: 'OBSERVACIONES', type: 'memo'},{name: 'SUBTOTAL', type: 'money'},{name: 'IMPORTE_IVA', type: 'money'},{name: 'TOTAL', type: 'money'},{name: 'IDCANALCOMERCIAL', type: '*'},{name: 'ELIMINADO', type: 'checkbox'},{name: 'BLOQUEADO', type: 'checkbox'},{name: 'FECHAALTA', type: 'date'},{name: 'PROPIETARIO', type: 'texto'},{name: 'TOTAL_ABONOS', type: 'money'},{name: 'TOTAL_ADEUDO', type: 'money'}
+                       {name: 'IDCOTIZACION', type: ''},{name: 'IDPROSPECTO', type: '*'},{name: 'CAMPODISPLAY', type: 'texto'},{name: 'IDESTATUS_tblcotizacion', type: '*'},{name: 'PROCESADO', type: 'checkbox'},{name: 'FECHA', type: 'date'},{name: 'OBSERVACIONES', type: 'memo'},{name: 'SUBTOTAL', type: 'money'},{name: 'IMPORTE_IVA', type: 'money'},{name: 'TOTAL', type: 'money'},{name: 'IDCANALCOMERCIAL', type: '*'},{name: 'ELIMINADO', type: 'checkbox'},{name: 'BLOQUEADO', type: 'checkbox'},{name: 'FECHAALTA', type: 'date'},{name: 'PROPIETARIO', type: 'texto'},{name: 'TOTAL_ABONOS', type: 'money'},{name: 'TOTAL_ADEUDO', type: 'money'}
 
 
 
@@ -1075,7 +1074,7 @@ setTimeout(function(){
 
 
 
-     window.parent.parent.tabtitle('Cotizaciones/Ventas');
+     window.parent.parent.tabtitle('Ventas Articulos/Servicios');
 
 
 

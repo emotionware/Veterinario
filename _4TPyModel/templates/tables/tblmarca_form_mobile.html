@@ -914,7 +914,7 @@ $('#theform').on('validationSuccess', function (event) {
     </div>
 
     <!--Zona de Botones-->
-    ﻿<script type="text/javascript">
+    <script type="text/javascript">
         $(document).ready(function () {
             // Create jqxButton widgets.
             $("#Button1").jqxButton({ textPosition: "center", width: 120, theme: theme });
@@ -930,6 +930,8 @@ $('#theform').on('validationSuccess', function (event) {
 
 
             $('#Button1').on('click', function () {
+
+alert("Hola Mundo");
 
 
             });
@@ -956,7 +958,7 @@ $('#theform').on('validationSuccess', function (event) {
         });
 </script>
 
-<div style="margin-top:10px;margin-bottom:10px;position:relative;left:50px;top:-35px;display:none">
+<div style="margin-top:10px;margin-bottom:10px;position:relative;left:50px;top:-35px;">
     <table>
         <tr>
             <td><input type="button" style="visibility:hidden;position:relative;top:13px;" value="Nuevo..." id='Button1' /></td>

@@ -1,8 +1,8 @@
-﻿<script type="text/javascript">
+<script type="text/javascript">
         $(document).ready(function () {
             // Create jqxButton widgets.
             $("#Button1").jqxButton({ textPosition: "center", width: 120, theme: theme });
-            $("#Button2").jqxButton({ textPosition: "center", width: 200, theme: theme });
+            $("#Button2").jqxButton({ textPosition: "center", width: 120, theme: theme });
             $("#Button3").jqxButton({ textPosition: "center", width: 120, theme: theme });
             $("#Button4").jqxButton({ textPosition: "center", width: 120, theme: theme });
             $("#Button5").jqxButton({ textPosition: "center", width: 60,  theme: theme });
@@ -32,38 +32,14 @@
 
             });
             $('#Button2').on('click', function () {
-
-/*
-			var elnuevo=prompt('Indique el ID del nuevo propietario. Si tiene dudas, consulta la tabla de usuarios para conocer el ID');
-
-			if (elnuevo!=null){
-
-               var rowindexes = $('#grid').jqxGrid('getselectedrowindexes');
-
-               //indices separados por comas aplicar split
-               partes = String(rowindexes).split(",");
-
-               var arrayLength = partes.length;
-               for (var i = 0; i < arrayLength; i++) {
-                   console.log(partes[i]);
-
-                   var rowID = $('#grid').jqxGrid('getrowid', partes[i]);
-                   var data = $('#grid').jqxGrid('getrowdatabyid', rowID);
+            
+      				window.parent.parent.addtabplus('rendergrid?grid=tables/view_resumen_kardex');
+            	
+            	
+});
 
 
-                $.ajax({
-                    url: "/cambiaprop" + '?tablename=tblkardex&idobjeto=' + data.IDPROSPECTO + '&nuevoprop=' + elnuevo + '&campokey='
-                }).then(function (data) {
 
-                });
-               }
-			}
-
-
- $("#refresh").click();
-*/
-
-            });
             $('#Button3').on('click', function () {   });
             $('#Button4').on('click', function () {   });
             $('#Button5').on('click', function () {
@@ -86,11 +62,11 @@
         });
 </script>
 
-<div style="position:relative;left:10px; top:20px; margin-bottom:20px"  >
+<div style="position:relative;left:50px; top:20px; margin-bottom:20px"  >
     <table>
         <tr>
             <td><input type="button" style="visibility:visible" value="Nuevo" id='Button1' /></td>
-            <td><input type="button" style="visibility:hidden" value="Reasignar Propietario" id='Button2' /></td>
+            <td><input type="button" style="visibility:visible" value="Resumen Kardex" id='Button2' /></td>
             <td><input type="button" style="visibility:hidden" value="TextButton" id='Button3' /></td>
             <td><input type="button" style="visibility:hidden" value="TextButton" id='Button4' /></td>
             <td> <input type="text" id="buscador" name="buscador" style="border-radius: 15px;position:relative;top:24px;left:48px" width="40" height="20" /> </td>

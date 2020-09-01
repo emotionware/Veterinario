@@ -1,5 +1,5 @@
 var address = 'localhost';
-var user = 'root';
+var user = 'fer';
 var userPwd = 'ks2106';
 var db = 'veterinario';
 function formbuild() { 
@@ -19,6 +19,11 @@ ScriptApp.newTrigger('enviar2database')
 
 var form = FormApp.openById(form.getId());
 var item = form.addTextItem(); //
+item.setTitle("Código");
+
+
+var form = FormApp.openById(form.getId());
+var item = form.addTextItem(); //
 item.setTitle("% Iva");
 
 
@@ -28,8 +33,8 @@ var textValidation = FormApp.createTextValidation()
 .build();
 item.setValidation(textValidation);
 var form = FormApp.openById(form.getId());
-var item = form.addParagraphTextItem(); //
-item.setTitle("Componente Principal");
+var item = form.addTextItem(); //
+item.setTitle("Descripción");
 
 
 var form = FormApp.openById(form.getId());
@@ -43,18 +48,13 @@ var textValidation = FormApp.createTextValidation()
 .build();
 item.setValidation(textValidation);
 var form = FormApp.openById(form.getId());
-var item = form.addTextItem(); //
-item.setTitle("Código");
-
-
-var form = FormApp.openById(form.getId());
-var item = form.addTextItem(); //
-item.setTitle("Nombre Artículo");
+var item = form.addParagraphTextItem(); //
+item.setTitle("Descripción Detallada");
 
 
 var form = FormApp.openById(form.getId());
 var item = form.addParagraphTextItem(); //
-item.setTitle("Descripción");
+item.setTitle("Descripción Sal/Componente");
 
 
 var form = FormApp.openById(form.getId());
@@ -77,7 +77,7 @@ return conn;
 function enviar2database(e){
 var conn = Jdbc.getConnection('jdbc:mysql://' + address + ':3306/' + db, user, userPwd);
 var itemResponses = e.response.getItemResponses();
-var sentencia="insert into tblarticulo(PORC_IVA,COMPONENTE_PRINCIPAL,PRECIO_NETO,CODIGO,NOMBRE_ARTICULO,DESCRIPCION,OBSERVACIONES) values ('"  + itemResponses[0].getResponse() + "','"  + itemResponses[1].getResponse() + "','"  + itemResponses[2].getResponse() + "','"  + itemResponses[3].getResponse() + "','"  + itemResponses[4].getResponse() + "','"  + itemResponses[5].getResponse() + "','"  + itemResponses[6].getResponse() + "')";
+var sentencia="insert into tblarticulo(CODIGO,PORC_IVA,NOMBRE_ARTICULO,PRECIO_NETO,DESCRIPCION,AUXILIAR1_char,COMPONENTE_PRINCIPAL,OBSERVACIONES,AUXILIAR1_Memo) values ('"  + itemResponses[0].getResponse() + "','"  + itemResponses[1].getResponse() + "','"  + itemResponses[2].getResponse() + "','"  + itemResponses[3].getResponse() + "','"  + itemResponses[4].getResponse() + "','"  + itemResponses[5].getResponse() + "','"  + itemResponses[6].getResponse() + "','"  + itemResponses[7].getResponse() + "','"  + itemResponses[8].getResponse() + "')";
 var stmt = conn.prepareStatement(sentencia);
 Logger.log("%s", sentencia);
 stmt.execute();

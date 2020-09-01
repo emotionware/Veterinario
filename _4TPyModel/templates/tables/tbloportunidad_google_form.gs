@@ -1,5 +1,5 @@
 var address = 'localhost';
-var user = 'root';
+var user = 'fer';
 var userPwd = 'ks2106';
 var db = 'veterinario';
 function formbuild() { 

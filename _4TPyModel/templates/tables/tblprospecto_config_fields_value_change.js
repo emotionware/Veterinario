@@ -9,6 +9,15 @@ $(document).ready(function () { $("#IDPROSPECTO").on("change",
  function (event) { 
  // var type = event.args.type; // keyboard, mouse or null depending on how the value was changed. 
    // var value = $("#NOMBRE").val(); 
+   
+   
+  // alert('Hola  ' +  $('#NOMBRE').val()  );
+  
+ // value=$('#NOMBRE').val();
+  //elvalor=value.value;
+   
+   
+   
  });}); 
 
  $(document).ready(function () { $("#APELLIDO").on("change", 

@@ -1000,7 +1000,6 @@ $('#theform').on('validationSuccess', function (event) {
              var nombrex = 'hijo_' + (tabclicked-2);
 
              if (nombrex=='hijo_0') { document.getElementById('hijo_0').setAttribute('src','rendergrid?campofiltro=IDAGENTE&idobjetofiltro=' + document.getElementById('IDOBJECT').value + '&vistadetalle=true&grid=tables/tblprospecto'); } 
-if (nombrex=='hijo_1') { document.getElementById('hijo_1').setAttribute('src','rendergrid?campofiltro=IDAGENTE&idobjetofiltro=' + document.getElementById('IDOBJECT').value + '&vistadetalle=true&grid=tables/tblsupervisor'); } 
 
 
          });
@@ -1031,7 +1030,6 @@ $("#PROPIETARIO").jqxInput({  theme:theme , disabled:false, height: 25, width: 2
          $(document).ready(function () {
 
            document.getElementById('hijo_0').src = 'rendergrid?campofiltro=IDAGENTE&idobjetofiltro=' + document.getElementById('IDOBJECT').value + '&vistadetalle=true&grid=tables/tblprospecto';  
-document.getElementById('hijo_1').src = 'rendergrid?campofiltro=IDAGENTE&idobjetofiltro=' + document.getElementById('IDOBJECT').value + '&vistadetalle=true&grid=tables/tblsupervisor';  
 
 
 
@@ -1057,7 +1055,6 @@ document.getElementById('hijo_1').src = 'rendergrid?campofiltro=IDAGENTE&idobjet
             <li>Adjuntos</li>
 
             <li>Prospectos/Clientes</li> 
-<li>Supervisores</li> 
 
 
 
@@ -1247,7 +1244,6 @@ document.getElementById('hijo_1').src = 'rendergrid?campofiltro=IDAGENTE&idobjet
         </div>
 
         <div> <embed  src='rendergrid?campofiltro=IDAGENTE&idobjetofiltro=' + document.getElementById('IDOBJECT').value + '&vistadetalle=true&grid=tables/tblprospecto'  id='hijo_0' style='width:100%' height='1200'  />  </div> 
-<div> <embed  src='rendergrid?campofiltro=IDAGENTE&idobjetofiltro=' + document.getElementById('IDOBJECT').value + '&vistadetalle=true&grid=tables/tblsupervisor'  id='hijo_1' style='width:100%' height='1200'  />  </div> 
 
     </div>
 
@@ -1420,7 +1416,6 @@ $(document).ready(function () { $("#IDAGENTE").on("change",
 
            //disable si no hay un IDOBJECT
                  if (document.getElementById('IDOBJECT').value=='') { $('#tabs').jqxTabs('disableAt', 2);  } 
- if (document.getElementById('IDOBJECT').value=='') { $('#tabs').jqxTabs('disableAt', 3);  } 
 
 
             }

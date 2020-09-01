@@ -1,14 +1,14 @@
 var address = 'localhost';
-var user = 'root';
+var user = 'fer';
 var userPwd = 'ks2106';
 var db = 'veterinario';
 function formbuild() { 
-var form = FormApp.create("Cotizaciones/Ventas"); 
+var form = FormApp.create("Ventas Articulos/Servicios"); 
 var conexion=conectar_mysql(); //realizo conexion con mysql
 
 
 
-var guardar = SpreadsheetApp.create('Cotizaciones/Ventas');
+var guardar = SpreadsheetApp.create('Ventas Articulos/Servicios');
 form.setDestination(FormApp.DestinationType.SPREADSHEET, guardar.getId());
 
 
@@ -47,6 +47,11 @@ var textValidation = FormApp.createTextValidation()
 .setHelpText('No es un número válido')
 .build();
 item.setValidation(textValidation);
+var form = FormApp.openById(form.getId());
+var item = form.addTextItem(); //
+item.setTitle("Campodisplay");
+
+
 var form = FormApp.openById(form.getId());
 var item = form.addTextItem(); //
 item.setTitle("Total Abonos");
@@ -93,7 +98,7 @@ return conn;
 function enviar2database(e){
 var conn = Jdbc.getConnection('jdbc:mysql://' + address + ':3306/' + db, user, userPwd);
 var itemResponses = e.response.getItemResponses();
-var sentencia="insert into tblcotizacion(SUBTOTAL,IMPORTE_IVA,TOTAL,TOTAL_ABONOS,TOTAL_ADEUDO,FECHA,OBSERVACIONES) values ('"  + itemResponses[0].getResponse() + "','"  + itemResponses[1].getResponse() + "','"  + itemResponses[2].getResponse() + "','"  + itemResponses[3].getResponse() + "','"  + itemResponses[4].getResponse() + "','"  + itemResponses[5].getResponse() + "','"  + itemResponses[6].getResponse() + "')";
+var sentencia="insert into tblcotizacion(SUBTOTAL,IMPORTE_IVA,TOTAL,CAMPODISPLAY,TOTAL_ABONOS,TOTAL_ADEUDO,FECHA,OBSERVACIONES) values ('"  + itemResponses[0].getResponse() + "','"  + itemResponses[1].getResponse() + "','"  + itemResponses[2].getResponse() + "','"  + itemResponses[3].getResponse() + "','"  + itemResponses[4].getResponse() + "','"  + itemResponses[5].getResponse() + "','"  + itemResponses[6].getResponse() + "','"  + itemResponses[7].getResponse() + "')";
 var stmt = conn.prepareStatement(sentencia);
 Logger.log("%s", sentencia);
 stmt.execute();

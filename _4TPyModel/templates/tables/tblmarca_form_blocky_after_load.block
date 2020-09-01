@@ -1,0 +1,51 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <block type="html_boton" id="`R#E`FLZs;XWfx^~ay#V" x="50" y="-10">
+    <value name="VALOR">
+      <block type="text" id="*Bwja)*r[!c~RvQ-ta$p">
+        <field name="TEXT">Púlsame</field>
+      </block>
+    </value>
+    <value name="ESTILO">
+      <block type="text" id="3m%m=o}ieD*QY4?tRmy3">
+        <field name="TEXT">color:red;position:relative;left:270px</field>
+      </block>
+    </value>
+    <value name="PADRE">
+      <block type="text" id="cP%kWtxvo+:f!I):bl[A">
+        <field name="TEXT">MARCA</field>
+      </block>
+    </value>
+    <value name="POSICION">
+      <block type="text" id="H%w:Ar%X7G3R{b#1~X4g">
+        <field name="TEXT">Bottom</field>
+      </block>
+    </value>
+    <value name="Función">
+      <block type="text" id="+Z@$I@)+J_MbChu+khO=">
+        <field name="TEXT">ejecutar</field>
+      </block>
+    </value>
+  </block>
+  <block type="procedures_defnoreturn" id="uz-BkwDQ:3y/u7BSxXX_" x="50" y="150">
+    <field name="NAME">ejecutar</field>
+    <comment pinned="false" h="80" w="160">Describe esta función...</comment>
+    <statement name="STACK">
+      <block type="ir_url" id="Sw/Bkmrp8!9t+;+B0h`,">
+        <value name="laurl">
+          <block type="valor_objeto" id="RznFTX1Fid+rxL?$Y`u2">
+            <value name="VALOR_OBJETO">
+              <block type="text" id="oOPx`7hbavaSp=te,=jG">
+                <field name="TEXT">MARCA</field>
+              </block>
+            </value>
+          </block>
+        </value>
+        <value name="eltarget">
+          <block type="text" id="aqThAFEFT~9hN+h=B9={">
+            <field name="TEXT">_blank</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+</xml>

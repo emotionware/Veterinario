@@ -1,5 +1,5 @@
 hostx="localhost"
-userx="root"
+userx="fer"
 passwdx="ks2106"
 databasex="veterinario"
 portx="3306"

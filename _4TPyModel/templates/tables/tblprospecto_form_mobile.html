@@ -1029,9 +1029,10 @@ $('#theform').on('validationSuccess', function (event) {
 
              var nombrex = 'hijo_' + (tabclicked-2);
 
-             if (nombrex=='hijo_0') { document.getElementById('hijo_0').setAttribute('src','rendergrid?campofiltro=IDPROSPECTO&idobjetofiltro=' + document.getElementById('IDOBJECT').value + '&vistadetalle=true&grid=tables/tblcotizacion'); } 
+             if (nombrex=='hijo_0') { document.getElementById('hijo_0').setAttribute('src','rendergrid?campofiltro=IDPROSPECTO&idobjetofiltro=' + document.getElementById('IDOBJECT').value + '&vistadetalle=true&grid=tables/tbldireccion'); } 
 if (nombrex=='hijo_1') { document.getElementById('hijo_1').setAttribute('src','rendergrid?campofiltro=IDPROSPECTO&idobjetofiltro=' + document.getElementById('IDOBJECT').value + '&vistadetalle=true&grid=tables/tblmascota'); } 
 if (nombrex=='hijo_2') { document.getElementById('hijo_2').setAttribute('src','rendergrid?campofiltro=IDPROSPECTO&idobjetofiltro=' + document.getElementById('IDOBJECT').value + '&vistadetalle=true&grid=tables/tblrecordatorio'); } 
+if (nombrex=='hijo_3') { document.getElementById('hijo_3').setAttribute('src','rendergrid?campofiltro=IDPROSPECTO&idobjetofiltro=' + document.getElementById('IDOBJECT').value + '&vistadetalle=true&grid=tables/tblcotizacion'); } 
 
 
          });
@@ -1074,9 +1075,10 @@ $("#RFC").jqxInput({  theme:theme , disabled:false, height: 25, width: 250 });
 
          $(document).ready(function () {
 
-           document.getElementById('hijo_0').src = 'rendergrid?campofiltro=IDPROSPECTO&idobjetofiltro=' + document.getElementById('IDOBJECT').value + '&vistadetalle=true&grid=tables/tblcotizacion';  
+           document.getElementById('hijo_0').src = 'rendergrid?campofiltro=IDPROSPECTO&idobjetofiltro=' + document.getElementById('IDOBJECT').value + '&vistadetalle=true&grid=tables/tbldireccion';  
 document.getElementById('hijo_1').src = 'rendergrid?campofiltro=IDPROSPECTO&idobjetofiltro=' + document.getElementById('IDOBJECT').value + '&vistadetalle=true&grid=tables/tblmascota';  
 document.getElementById('hijo_2').src = 'rendergrid?campofiltro=IDPROSPECTO&idobjetofiltro=' + document.getElementById('IDOBJECT').value + '&vistadetalle=true&grid=tables/tblrecordatorio';  
+document.getElementById('hijo_3').src = 'rendergrid?campofiltro=IDPROSPECTO&idobjetofiltro=' + document.getElementById('IDOBJECT').value + '&vistadetalle=true&grid=tables/tblcotizacion';  
 
 
 
@@ -1101,9 +1103,10 @@ document.getElementById('hijo_2').src = 'rendergrid?campofiltro=IDPROSPECTO&idob
             <li style="margin-left: 30px;">Form</li>
             <li>Adjuntos</li>
 
-            <li>Cotizaciones/Ventas Relacionadas</li> 
+            <li>Direcciones Adicionales</li> 
 <li>Mascota</li> 
 <li>Recordatorios</li> 
+<li>Ventas Relacionadas</li> 
 
 
 
@@ -1305,9 +1308,10 @@ document.getElementById('hijo_2').src = 'rendergrid?campofiltro=IDPROSPECTO&idob
 
         </div>
 
-        <div> <embed  src='rendergrid?campofiltro=IDPROSPECTO&idobjetofiltro=' + document.getElementById('IDOBJECT').value + '&vistadetalle=true&grid=tables/tblcotizacion'  id='hijo_0' style='width:100%' height='1200'  />  </div> 
+        <div> <embed  src='rendergrid?campofiltro=IDPROSPECTO&idobjetofiltro=' + document.getElementById('IDOBJECT').value + '&vistadetalle=true&grid=tables/tbldireccion'  id='hijo_0' style='width:100%' height='1200'  />  </div> 
 <div> <embed  src='rendergrid?campofiltro=IDPROSPECTO&idobjetofiltro=' + document.getElementById('IDOBJECT').value + '&vistadetalle=true&grid=tables/tblmascota'  id='hijo_1' style='width:100%' height='1200'  />  </div> 
 <div> <embed  src='rendergrid?campofiltro=IDPROSPECTO&idobjetofiltro=' + document.getElementById('IDOBJECT').value + '&vistadetalle=true&grid=tables/tblrecordatorio'  id='hijo_2' style='width:100%' height='1200'  />  </div> 
+<div> <embed  src='rendergrid?campofiltro=IDPROSPECTO&idobjetofiltro=' + document.getElementById('IDOBJECT').value + '&vistadetalle=true&grid=tables/tblcotizacion'  id='hijo_3' style='width:100%' height='1200'  />  </div> 
 
     </div>
 
@@ -1322,6 +1326,15 @@ $(document).ready(function () { $("#IDPROSPECTO").on("change",
  function (event) { 
  // var type = event.args.type; // keyboard, mouse or null depending on how the value was changed. 
    // var value = $("#NOMBRE").val(); 
+   
+   
+  // alert('Hola  ' +  $('#NOMBRE').val()  );
+  
+ // value=$('#NOMBRE').val();
+  //elvalor=value.value;
+   
+   
+   
  });}); 
 
  $(document).ready(function () { $("#APELLIDO").on("change", 
@@ -1554,6 +1567,7 @@ $(document).ready(function () { $("#IDPROSPECTO").on("change",
                  if (document.getElementById('IDOBJECT').value=='') { $('#tabs').jqxTabs('disableAt', 2);  } 
  if (document.getElementById('IDOBJECT').value=='') { $('#tabs').jqxTabs('disableAt', 3);  } 
  if (document.getElementById('IDOBJECT').value=='') { $('#tabs').jqxTabs('disableAt', 4);  } 
+ if (document.getElementById('IDOBJECT').value=='') { $('#tabs').jqxTabs('disableAt', 5);  } 
 
 
             }

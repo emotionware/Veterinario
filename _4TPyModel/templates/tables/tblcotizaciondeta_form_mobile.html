@@ -3,7 +3,7 @@
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title>Formulario de Detalle de Cotización</title>
+    <title>Detalles de Partidas</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -972,7 +972,7 @@ $('#theform').on('validationSuccess', function (event) {
 
     <!--Titulo de la pagina-->
     <div id="zonatitulo">
-        <h5 id="titulopagina" style="position:relative; top:5px;left:10px"> <table><tr><td> <a href="home"> <img src="/static/iconos/form.png" height="32" />  </a>    </td></td><td>Formulario de Detalle de Cotización</td><td>/Id:</td><td><input class="inputx_idobject" id="IDOBJECT" type="text" style="width:125px;height:23px;font-size:19px;border-width: 0px;color:#2fa4e7;font-weight: 500;" /></td></tr></table></h5>
+        <h5 id="titulopagina" style="position:relative; top:5px;left:10px"> <table><tr><td> <a href="home"> <img src="/static/iconos/form.png" height="32" />  </a>    </td></td><td>Detalles de Partidas</td><td>/Id:</td><td><input class="inputx_idobject" id="IDOBJECT" type="text" style="width:125px;height:23px;font-size:19px;border-width: 0px;color:#2fa4e7;font-weight: 500;" /></td></tr></table></h5>
     </div>
 
     <!--Zona de Botones-->
@@ -1190,7 +1190,7 @@ $("#PROPIETARIO").jqxInput({  theme:theme , disabled:false, height: 25, width: 2
                 <table valign="top">
                     <tr valign="top">
                         <td valign="top"> <tr valign='top'   ><td  colspan='3'  ><h5>A. DATOS</h5> </tr><div  style="position:relative;left:10px" id="campoIDCOTIZACIONDETA" ><tr   class="filatop_IDCOTIZACIONDETA"  ><td><div id="top_IDCOTIZACIONDETA" /></td><td> <div id="slider" />  </td><td></td></tr><tr   class="filahalf_IDCOTIZACIONDETA" ><td class="caption_Id" >Id</td><td><input disabled  name="IDCOTIZACIONDETA" style="" class="input_IDCOTIZACIONDETA"  type="text" tabindex="1" id="IDCOTIZACIONDETA"/> </td><td> <div id="left_IDCOTIZACIONDETA" /> </td></tr><tr  class="filabottom_IDCOTIZACIONDETA" ><td><div id="bottom_IDCOTIZACIONDETA" /></td><td><div  style="font-size:10px;margin-bottom: 5px;font-style: italic;color: navy;font-variant: all-small-caps;;" ></div></td><td></td></tr></div>
-<script>    function formadeabrir_IDCOTIZACION(){ if ($("#IDCOTIZACION").attr("data-value")!=null) { window.open("formrender?form=tables/tblcotizacion_form&idobjeto=" + $("#IDCOTIZACION").attr("data-value") ,"_blank"); } else { window.open("rendergrid?grid=tables/tblcotizacion","_blank"); }  }</script>  <script>   $(document).ready(function () { $("#combodown_IDCOTIZACION").click(function () { $('#IDCOTIZACION').focus();$('#IDCOTIZACION').val('');$('#IDCOTIZACION').focus();   simulateWrapper('#IDCOTIZACION', "key-sequence", {sequence: " "});           });});</script><div  style="position:relative;left:10px" id="campoIDCOTIZACION" ><tr   class="filatop_IDCOTIZACION"  ><td><div id="top_IDCOTIZACION" /></td><td></td><td></td></tr><tr   class="filahalf_IDCOTIZACION" ><td class="caption_IdCotización" >Id Cotización</td><td> <input  name="IDCOTIZACION"  style=""    class="input_IDCOTIZACION"  type="text" tabindex="2" id="IDCOTIZACION"/> </td><td> <img id="combodown_IDCOTIZACION" src="/static/iconos/dropdown.png" height="25px" width="25px" /><a href="javascript:formadeabrir_IDCOTIZACION(); " ><img  id="comboleft_IDCOTIZACION"  src="/static/iconos/adelante.png" height="25px" width="25px" /></a></td><td><div id="left_IDCOTIZACION" /> </td></tr><tr  class="filabottom_IDCOTIZACION" ><td></td><td><div  style="font-size:10px;margin-bottom: 5px;font-style: italic;color: navy;font-variant: all-small-caps;;" > </div><div id="bottom_IDCOTIZACION" /></td><td>    </td></tr></div>
+<script>    function formadeabrir_IDCOTIZACION(){ if ($("#IDCOTIZACION").attr("data-value")!=null) { window.open("formrender?form=tables/tblcotizacion_form&idobjeto=" + $("#IDCOTIZACION").attr("data-value") ,"_blank"); } else { window.open("rendergrid?grid=tables/tblcotizacion","_blank"); }  }</script>  <script>   $(document).ready(function () { $("#combodown_IDCOTIZACION").click(function () { $('#IDCOTIZACION').focus();$('#IDCOTIZACION').val('');$('#IDCOTIZACION').focus();   simulateWrapper('#IDCOTIZACION', "key-sequence", {sequence: " "});           });});</script><div  style="position:relative;left:10px" id="campoIDCOTIZACION" ><tr   class="filatop_IDCOTIZACION"  ><td><div id="top_IDCOTIZACION" /></td><td></td><td></td></tr><tr   class="filahalf_IDCOTIZACION" ><td class="caption_IdPartida" >Id Partida</td><td> <input  name="IDCOTIZACION"  style=""    class="input_IDCOTIZACION"  type="text" tabindex="2" id="IDCOTIZACION"/> </td><td> <img id="combodown_IDCOTIZACION" src="/static/iconos/dropdown.png" height="25px" width="25px" /><a href="javascript:formadeabrir_IDCOTIZACION(); " ><img  id="comboleft_IDCOTIZACION"  src="/static/iconos/adelante.png" height="25px" width="25px" /></a></td><td><div id="left_IDCOTIZACION" /> </td></tr><tr  class="filabottom_IDCOTIZACION" ><td></td><td><div  style="font-size:10px;margin-bottom: 5px;font-style: italic;color: navy;font-variant: all-small-caps;;" > </div><div id="bottom_IDCOTIZACION" /></td><td>    </td></tr></div>
  <script>    function formadeabrir_IDARTICULO(){ if ($("#IDARTICULO").attr("data-value")!=null) { window.open("formrender?form=tables/tblarticulo_form&idobjeto=" + $("#IDARTICULO").attr("data-value") ,"_blank"); } else { window.open("rendergrid?grid=tables/tblarticulo","_blank"); }  }</script>  <script>   $(document).ready(function () { $("#combodown_IDARTICULO").click(function () { $('#IDARTICULO').focus();$('#IDARTICULO').val('');$('#IDARTICULO').focus();   simulateWrapper('#IDARTICULO', "key-sequence", {sequence: " "});           });});</script><div  style="position:relative;left:10px" id="campoIDARTICULO" ><tr   class="filatop_IDARTICULO"  ><td><div id="top_IDARTICULO" /></td><td></td><td></td></tr><tr   class="filahalf_IDARTICULO" ><td class="caption_Artículo" >Artículo</td><td> <input  name="IDARTICULO"  style=""    class="input_IDARTICULO"  type="text" tabindex="3" id="IDARTICULO"/> </td><td> <img id="combodown_IDARTICULO" src="/static/iconos/dropdown.png" height="25px" width="25px" /><a href="javascript:formadeabrir_IDARTICULO(); " ><img  id="comboleft_IDARTICULO"  src="/static/iconos/adelante.png" height="25px" width="25px" /></a></td><td><div id="left_IDARTICULO" /> </td></tr><tr  class="filabottom_IDARTICULO" ><td></td><td><div  style="font-size:10px;margin-bottom: 5px;font-style: italic;color: navy;font-variant: all-small-caps;;" > </div><div id="bottom_IDARTICULO" /></td><td>    </td></tr></div>
  <div  style="position:relative;left:10px" id="campoNOMBRE_ARTICULO" ><tr   class="filatop_NOMBRE_ARTICULO"  ><td><div id="top_NOMBRE_ARTICULO" /></td><td></td><td></td></tr><tr   class="filahalf_NOMBRE_ARTICULO" ><td class="caption_NombreArtículo" >Nombre Artículo</td><td><input disabled  name="NOMBRE_ARTICULO" style="" class="input_NOMBRE_ARTICULO"  type="text" tabindex="4" id="NOMBRE_ARTICULO"/> </td><td>    <div id="left_NOMBRE_ARTICULO" /> </td></tr><tr  class="filabottom_NOMBRE_ARTICULO" ><td><div id="bottom_NOMBRE_ARTICULO" /></td><td><div  style="font-size:10px;margin-bottom: 5px;font-style: italic;color: navy;font-variant: all-small-caps;;" >Se rellena automáticamente</div></td><td></td></tr></div>
 <div  style="position:relative;left:10px" id="campoLOTE" ><tr   class="filatop_LOTE"  ><td><div id="top_LOTE" /></td><td></td><td></td></tr><tr   class="filahalf_LOTE" ><td class="caption_Lote" >Lote</td><td><input   name="LOTE" style="" class="input_LOTE"  type="text" tabindex="5" id="LOTE"/> </td><td>  <a href='javascript:startRecording("LOTE");' > <img id="microphone_LOTE" src="/static/iconos/mic.png"  /> </a>  <div id="left_LOTE" /> </td></tr><tr  class="filabottom_LOTE" ><td><div id="bottom_LOTE" /></td><td><div  style="font-size:10px;margin-bottom: 5px;font-style: italic;color: navy;font-variant: all-small-caps;;" ></div></td><td></td></tr></div>
@@ -1769,7 +1769,7 @@ document.getElementById('top_IDARTICULO').appendChild(element);})
 
         });
 
-//window.parent.parent.tabtitle('Formulario de Detalle de Cotización');
+//window.parent.parent.tabtitle('Detalles de Partidas');
 
         //Cargando datos del objeto
         var url_string = window.location.href;
@@ -1779,7 +1779,7 @@ document.getElementById('top_IDARTICULO').appendChild(element);})
 
 
         if (idobjeto != null && idobjeto != 'null'  && idobjeto != ''  && idobjeto != ' '  ) {
-         //window.parent.parent.tabtitle('Formulario de Detalle de Cotización' + ' ' + idobjeto );
+         //window.parent.parent.tabtitle('Detalles de Partidas' + ' ' + idobjeto );
         }
 
 

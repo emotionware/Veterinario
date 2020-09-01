@@ -1,14 +1,14 @@
 var address = 'localhost';
-var user = 'root';
+var user = 'fer';
 var userPwd = 'ks2106';
 var db = 'veterinario';
 function formbuild() { 
-var form = FormApp.create("Detalles de Cotizaciones"); 
+var form = FormApp.create("Detalles de Partidas"); 
 var conexion=conectar_mysql(); //realizo conexion con mysql
 
 
 
-var guardar = SpreadsheetApp.create('Detalles de Cotizaciones');
+var guardar = SpreadsheetApp.create('Detalles de Partidas');
 form.setDestination(FormApp.DestinationType.SPREADSHEET, guardar.getId());
 
 

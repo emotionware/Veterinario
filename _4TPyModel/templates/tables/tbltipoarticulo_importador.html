@@ -488,13 +488,20 @@ $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  TIPOARTICULO  fr
         
         
         
-         <li>Clientes
+         <li>Catálogos
          <ul>
          	<li><a href="javascript:addtabplus('rendergrid?grid=tables/tblprospecto')">Clientes</a></li>
+         	<li><a href="javascript:addtabplus('rendergrid?grid=tables/tblproveedor')">Proveedores</a></li>
+         	<li><a href="javascript:addtabplus('rendergrid?grid=tables/tblagente')">Médicos</a></li>
+         	<li><a href="javascript:addtabplus('rendergrid?grid=tables/tblmascota')">Mascota</a></li>                	
+            <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblraza')">Raza</a></li>  
+            <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblespecie')">Especie</a></li> 
+         	<li><a href="javascript:addtabplus('rendergrid?grid=tables/tblmarca')">Marcas</a></li>  
+         	<li><a href="javascript:addtabplus('rendergrid?grid=tables/tblunidadmedida')">Unidades de Medida</a></li> 
          	<li>Vistas
          	<ul>
          		 
-         	<li><a href="javascript:addtabplus('/static/stimulsoft/reportviewer.html?reporte=view_estatus_prospectos.mrt')">Estatus</a></li>
+         	    <li><a href="javascript:addtabplus('/static/stimulsoft/reportviewer.html?reporte=view_estatus_prospectos.mrt')">Estatus</a></li>
          		<li><a href="javascript:addtabplus('/static/stimulsoft/reportviewer.html?reporte=view_ver_origenes.mrt')">Origenes</a></li>
          	</ul>
          	</li>
@@ -503,31 +510,35 @@ $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  TIPOARTICULO  fr
          </li>
           
           
-          	<li><a href="javascript:addtabplus('rendergrid?grid=tables/tblmascota')">Mascotas</a></li>
-          
-          <li>Ventas
-         <ul>
-         	<li><a href="javascript:addtabplus('rendergrid?grid=tables/tblcotizacion')">Ventas</a></li>
+           <li>Ventas
+          <ul>
+         	<li><a href="javascript:addtabplus('rendergrid?grid=tables/tblcotizacion')">Ventas Articulos/Servicios</a></li>
          	<li>Vistas
          	<ul>
          		<li><a href="javascript:addtabplus('static/stimulsoft/reportviewer.html?reporte=view_estatus_tblcotizacion.mrt')">Estatus</a></li>
           	<li><a href="javascript:addtabplus('static/stimulsoft/reportviewer.html?reporte=view_canal_comercial.mrt')">Canales Comerciales</a></li>
+          	
          	</ul>
          	</li>
          </ul>
          </li>
+          <li>Compras
+          <ul>
+          <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblcompraenca')">Compras</a></li>
           
+          </ul>
+         	</li>
           <li>Almacenes
           <ul>
           	 <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblalmacen')">Almacén</a></li>
-          	  <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblcompraenca')">Compras</a></li>
+          	  
           	 <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblarticulo')">Artículos</a></li>
           	 <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblentrada')">Entradas</a></li>
           	 <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblsalida')">Salidas</a></li>
 
           	 <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblkardex')">Kardex</a></li>
-          	 <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblproveedor')">Proveedores</a></li>
-          	 <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblmarca')">Marcas</a></li>   
+          	 
+          	  
           	 
           	 
           	 	<li>Movimientos
@@ -549,9 +560,10 @@ $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  TIPOARTICULO  fr
           </li>
           
         
-            <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblagente')">Médicos</a></li>
+            
           
-              <li><a href="javascript:addtabplus('rendergrid?grid=tables/tbldocumento')">Documentos</a></li>
+          
+
              
              
              
@@ -564,6 +576,7 @@ $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  TIPOARTICULO  fr
 <li><a href="javascript:addtabplus('/static/stimulsoft/dashboardviewer.html?dashboard=view_analisis_caducidad')">Análisis de la Caducidad</a></li> 
 <li><a href="javascript:addtabplus('rendergrid?grid=tables/view_entradas_pendientes')">Entradas Pendientes de Procesar</a></li>  
 <li><a href="javascript:addtabplus('rendergrid?grid=tables/view_ultimas_100_consultas')">Revisión Consultas</a></li> 
+
            
            
            
@@ -573,16 +586,7 @@ $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  TIPOARTICULO  fr
              
              
            
-             <li>Config
-             <ul>
-  <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblmascota')">Mascota</a></li>                	
- <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblespecie')">Especie</a></li>   
- <li><a href="javascript:addtabplus('rendergrid?grid=tables/tblraza')">Raza</a></li>   
-
-
-  
-             </ul>
-             </li>             
+                     
              
              
            <li>Reportes
@@ -593,6 +597,8 @@ $.ajax({async: false,url: "/obtenervalor" + "?sentencia=select  TIPOARTICULO  fr
            <li><a href="javascript:addtabplus('/static/stimulsoft/reportviewer.html?cuerpo=&asunto=&para=&reporte=deudaactiva.mrt')" >Deuda Activa</a></li>
            <li><a href="javascript:addtabplus('/static/stimulsoft/dashboardviewer.html?dashboard=productividad.mrt')" >Productividad</a></li>
         <li><a href="javascript:addtabplus('/static/pivot/index.html?query=view_reporte_cotizacion&perspectiva=general')" target="_blank" >Pivot Gral Operaciones</a></li>
+        <li><a href="javascript:addtabplus('rendergrid?grid=tables/view_existencias_por_lote')">Existencias por Lote Grid</a></li>
+          	<li><a href="javascript:addtabplus('rendergrid?grid=tables/view_existencias2_porlote')">Existencias2 por Lote Grid</a></li>
         
            
            </ul>

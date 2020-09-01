@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="es" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -471,11 +471,11 @@ window.parent.parent.addtabplus(data);
 
         <div id="zonadebotones">
             <!--Zona de Botones-->
-            ﻿<script type="text/javascript">
+            <script type="text/javascript">
         $(document).ready(function () {
             // Create jqxButton widgets.
             $("#Button1").jqxButton({ textPosition: "center", width: 120, theme: theme });
-            $("#Button2").jqxButton({ textPosition: "center", width: 200, theme: theme });
+            $("#Button2").jqxButton({ textPosition: "center", width: 120, theme: theme });
             $("#Button3").jqxButton({ textPosition: "center", width: 120, theme: theme });
             $("#Button4").jqxButton({ textPosition: "center", width: 120, theme: theme });
             $("#Button5").jqxButton({ textPosition: "center", width: 60,  theme: theme });
@@ -505,38 +505,14 @@ window.parent.parent.addtabplus(data);
 
             });
             $('#Button2').on('click', function () {
-
-/*
-			var elnuevo=prompt('Indique el ID del nuevo propietario. Si tiene dudas, consulta la tabla de usuarios para conocer el ID');
-
-			if (elnuevo!=null){
-
-               var rowindexes = $('#grid').jqxGrid('getselectedrowindexes');
-
-               //indices separados por comas aplicar split
-               partes = String(rowindexes).split(",");
-
-               var arrayLength = partes.length;
-               for (var i = 0; i < arrayLength; i++) {
-                   console.log(partes[i]);
-
-                   var rowID = $('#grid').jqxGrid('getrowid', partes[i]);
-                   var data = $('#grid').jqxGrid('getrowdatabyid', rowID);
+            
+      				window.parent.parent.addtabplus('rendergrid?grid=tables/view_resumen_kardex');
+            	
+            	
+});
 
 
-                $.ajax({
-                    url: "/cambiaprop" + '?tablename=tblkardex&idobjeto=' + data.IDPROSPECTO + '&nuevoprop=' + elnuevo + '&campokey='
-                }).then(function (data) {
 
-                });
-               }
-			}
-
-
- $("#refresh").click();
-*/
-
-            });
             $('#Button3').on('click', function () {   });
             $('#Button4').on('click', function () {   });
             $('#Button5').on('click', function () {
@@ -559,11 +535,11 @@ window.parent.parent.addtabplus(data);
         });
 </script>
 
-<div style="position:relative;left:10px; top:20px; margin-bottom:20px"  >
+<div style="position:relative;left:50px; top:20px; margin-bottom:20px"  >
     <table>
         <tr>
             <td><input type="button" style="visibility:visible" value="Nuevo" id='Button1' /></td>
-            <td><input type="button" style="visibility:hidden" value="Reasignar Propietario" id='Button2' /></td>
+            <td><input type="button" style="visibility:visible" value="Resumen Kardex" id='Button2' /></td>
             <td><input type="button" style="visibility:hidden" value="TextButton" id='Button3' /></td>
             <td><input type="button" style="visibility:hidden" value="TextButton" id='Button4' /></td>
             <td> <input type="text" id="buscador" name="buscador" style="border-radius: 15px;position:relative;top:24px;left:48px" width="40" height="20" /> </td>
@@ -623,7 +599,7 @@ window.parent.parent.addtabplus(data);
                 datatype: "json",
                 datafields: [
 
-                     {name: 'EDITAR', type:'string'},{name: 'IDKARDEX', type: 'float'},{name: 'IDKARDEX', type: 'string'},{name: 'IDARTICULO', type: 'string'},{name: 'LOTE', type: 'string'},{name: 'CADUCIDAD', type: 'date', format: 'yyyy-MM-ddTHH:mm:ss-HH:mm'},{name: 'CANTIDAD', type: 'number'},{name: 'OBSERVACIONES', type: 'string'},{name: 'IDALMACEN', type: 'string'},{name: 'IDENTRADA', type: 'string'},{name: 'IDSALIDA', type: 'string'},{name: 'IDCOTIZACION', type: 'string'},{name: 'IDCOMPRAENCA', type: 'string'},{name: 'COSTO_UNITARIO', type: 'string'},{name: 'TIPOMOV', type: 'string'},{name: 'ELIMINADO', type: 'bool'},{name: 'BLOQUEADO', type: 'bool'},{name: 'FECHAALTA', type: 'date', format: 'yyyy-MM-ddTHH:mm:ss-HH:mm'},{name: 'PROPIETARIO', type: 'string'}
+                     {name: 'EDITAR', type:'string'},{name: 'IDKARDEX', type: 'float'},{name: 'IDKARDEX', type: 'string'},{name: 'IDARTICULO', type: 'string'},{name: 'LOTE', type: 'string'},{name: 'CADUCIDAD', type: 'date', format: 'yyyy-MM-ddTHH:mm:ss-HH:mm'},{name: 'CANTIDAD', type: 'number'},{name: 'OBSERVACIONES', type: 'string'},{name: 'IDALMACEN', type: 'string'},{name: 'IDENTRADA', type: 'string'},{name: 'IDSALIDA', type: 'string'},{name: 'IDCOTIZACION', type: 'string'},{name: 'IDCOMPRAENCA', type: 'string'},{name: 'COSTO_UNITARIO', type: 'string'},{name: 'TIPOMOV', type: 'string'},{name: 'DESCRIP_ARTICULO', type: 'string'},{name: 'ELIMINADO', type: 'bool'},{name: 'BLOQUEADO', type: 'bool'},{name: 'FECHAALTA', type: 'date', format: 'yyyy-MM-ddTHH:mm:ss-HH:mm'},{name: 'PROPIETARIO', type: 'string'}
 
                 ],
                 id: 'IDKARDEX',
@@ -634,8 +610,7 @@ window.parent.parent.addtabplus(data);
                 {
                     width: getWidth('Grid'),
                     width: '99%',
-                height: '100%',
-
+                	height: '100%',
                     theme: theme,
                     source: dataAdapter,
                     columnsresize: true,
@@ -659,7 +634,7 @@ window.parent.parent.addtabplus(data);
 
                     columns: [
 
-                        { text: 'Editar', datafield: 'EDITAR', width: 60,  filterable: false, textPosition: 'left', theme:theme, columntype:'text', cellclassname: cellclass },{text: 'Id', editable: false, columngroup: 'A.DATOS', datafield: 'IDKARDEX', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Idarticulo', editable: true, columngroup: 'A.DATOS', datafield: 'IDARTICULO', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Lote', editable: true, columngroup: 'A.DATOS', datafield: 'LOTE', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Caducidad', editable: true , columngroup: 'A.DATOS', theme:theme  , filtertype: 'range',  datafield: 'CADUCIDAD', width: '110',  cellsformat: 'dd.MM.yyyy', columntype: 'datetimeinput', createeditor: function (rowIndex, cellValue, editor) { editor.jqxDateTimeInput({ min: new Date(1000, 1, 1), max: new Date(5100, 1, 1), culture: 'es-ES' }); }, initeditor: function (rowindex, cellvalue, editor) { editor.jqxDateTimeInput({ value: cellvalue });}  },{text: 'Cantidad', editable: true, columngroup: 'A.DATOS', datafield: 'CANTIDAD', theme:theme ,  cellsformat: 'n1', aggregates: ['sum'], columntype: 'string' , width: '110'},{text: 'Observaciones', editable: true, columngroup: 'A.DATOS', datafield: 'OBSERVACIONES', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Idalmacen', editable: true, columngroup: 'A.DATOS', datafield: 'IDALMACEN', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Identrada', editable: true, columngroup: 'A.DATOS', datafield: 'IDENTRADA', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Idsalida', editable: true, columngroup: 'A.DATOS', datafield: 'IDSALIDA', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Idcotizacion', editable: true, columngroup: 'A.DATOS', datafield: 'IDCOTIZACION', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Idcompraenca', editable: true, columngroup: 'A.DATOS', datafield: 'IDCOMPRAENCA', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Costo_Unitario', editable: true, columngroup: 'A.DATOS', datafield: 'COSTO_UNITARIO', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Tipomov', editable: true, columngroup: 'A.DATOS', datafield: 'TIPOMOV', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Eliminado', editable: false, columngroup: 'X.CONTROL', datafield: 'ELIMINADO', theme:theme , columntype: 'checkbox' , width: '110'},{text: 'Bloqueado', editable: false, columngroup: 'X.CONTROL', datafield: 'BLOQUEADO', theme:theme , columntype: 'checkbox' , width: '110'},{text: 'Fecha Alta', editable: false , columngroup: 'X.CONTROL', theme:theme  , filtertype: 'range',  datafield: 'FECHAALTA', width: '110',  cellsformat: 'dd.MM.yyyy', columntype: 'datetimeinput', createeditor: function (rowIndex, cellValue, editor) { editor.jqxDateTimeInput({ min: new Date(1000, 1, 1), max: new Date(5100, 1, 1), culture: 'es-ES' }); }, initeditor: function (rowindex, cellvalue, editor) { editor.jqxDateTimeInput({ value: cellvalue });}  },{text: 'Propietario', editable: true, columngroup: 'X.CONTROL', datafield: 'PROPIETARIO', theme:theme ,  columntype: 'text' , width: '110'}
+                        { text: 'Editar', datafield: 'EDITAR', width: 60,  filterable: false, textPosition: 'left', theme:theme, columntype:'text', cellclassname: cellclass },{text: 'Id', editable: false, columngroup: 'A.DATOS', datafield: 'IDKARDEX', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Idarticulo', editable: true, columngroup: 'A.DATOS', datafield: 'IDARTICULO', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Lote', editable: true, columngroup: 'A.DATOS', datafield: 'LOTE', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Caducidad', editable: true , columngroup: 'A.DATOS', theme:theme  , filtertype: 'range',  datafield: 'CADUCIDAD', width: '110',  cellsformat: 'dd.MM.yyyy', columntype: 'datetimeinput', createeditor: function (rowIndex, cellValue, editor) { editor.jqxDateTimeInput({ min: new Date(1000, 1, 1), max: new Date(5100, 1, 1), culture: 'es-ES' }); }, initeditor: function (rowindex, cellvalue, editor) { editor.jqxDateTimeInput({ value: cellvalue });}  },{text: 'Cantidad', editable: true, columngroup: 'A.DATOS', datafield: 'CANTIDAD', theme:theme ,  cellsformat: 'n1', aggregates: ['sum'], columntype: 'string' , width: '110'},{text: 'Observaciones', editable: true, columngroup: 'A.DATOS', datafield: 'OBSERVACIONES', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Idalmacen', editable: true, columngroup: 'A.DATOS', datafield: 'IDALMACEN', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Identrada', editable: true, columngroup: 'A.DATOS', datafield: 'IDENTRADA', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Idsalida', editable: true, columngroup: 'A.DATOS', datafield: 'IDSALIDA', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Idcotizacion', editable: true, columngroup: 'A.DATOS', datafield: 'IDCOTIZACION', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Idcompraenca', editable: true, columngroup: 'A.DATOS', datafield: 'IDCOMPRAENCA', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Costo_Unitario', editable: true, columngroup: 'A.DATOS', datafield: 'COSTO_UNITARIO', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Tipomov', editable: true, columngroup: 'A.DATOS', datafield: 'TIPOMOV', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Descripción', editable: true, columngroup: 'A.DATOS', datafield: 'DESCRIP_ARTICULO', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Eliminado', editable: false, columngroup: 'X.CONTROL', datafield: 'ELIMINADO', theme:theme , columntype: 'checkbox' , width: '110'},{text: 'Bloqueado', editable: false, columngroup: 'X.CONTROL', datafield: 'BLOQUEADO', theme:theme , columntype: 'checkbox' , width: '110'},{text: 'Fecha Alta', editable: false , columngroup: 'X.CONTROL', theme:theme  , filtertype: 'range',  datafield: 'FECHAALTA', width: '110',  cellsformat: 'dd.MM.yyyy', columntype: 'datetimeinput', createeditor: function (rowIndex, cellValue, editor) { editor.jqxDateTimeInput({ min: new Date(1000, 1, 1), max: new Date(5100, 1, 1), culture: 'es-ES' }); }, initeditor: function (rowindex, cellvalue, editor) { editor.jqxDateTimeInput({ value: cellvalue });}  },{text: 'Propietario', editable: true, columngroup: 'X.CONTROL', datafield: 'PROPIETARIO', theme:theme ,  columntype: 'text' , width: '110'}
 
 
 
@@ -806,7 +781,7 @@ window.parent.parent.addtabplus(data);
 
 
 
-                       {name: 'IDKARDEX', type: ''},{name: 'IDARTICULO', type: '*'},{name: 'LOTE', type: ''},{name: 'CADUCIDAD', type: 'date'},{name: 'CANTIDAD', type: 'number'},{name: 'OBSERVACIONES', type: 'memo'},{name: 'IDALMACEN', type: '*'},{name: 'IDENTRADA', type: ''},{name: 'IDSALIDA', type: '*'},{name: 'IDCOTIZACION', type: '*'},{name: 'IDCOMPRAENCA', type: '*'},{name: 'COSTO_UNITARIO', type: ''},{name: 'TIPOMOV', type: ''},{name: 'ELIMINADO', type: 'checkbox'},{name: 'BLOQUEADO', type: 'checkbox'},{name: 'FECHAALTA', type: 'date'},{name: 'PROPIETARIO', type: 'texto'}
+                       {name: 'IDKARDEX', type: ''},{name: 'IDARTICULO', type: '*'},{name: 'LOTE', type: ''},{name: 'CADUCIDAD', type: 'date'},{name: 'CANTIDAD', type: 'number'},{name: 'OBSERVACIONES', type: 'memo'},{name: 'IDALMACEN', type: '*'},{name: 'IDENTRADA', type: ''},{name: 'IDSALIDA', type: '*'},{name: 'IDCOTIZACION', type: '*'},{name: 'IDCOMPRAENCA', type: '*'},{name: 'COSTO_UNITARIO', type: ''},{name: 'TIPOMOV', type: ''},{name: 'DESCRIP_ARTICULO', type: ''},{name: 'ELIMINADO', type: 'checkbox'},{name: 'BLOQUEADO', type: 'checkbox'},{name: 'FECHAALTA', type: 'date'},{name: 'PROPIETARIO', type: 'texto'}
 
 
 

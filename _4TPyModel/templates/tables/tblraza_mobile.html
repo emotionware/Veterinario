@@ -644,7 +644,7 @@ window.parent.parent.addtabplus(data);
                 datatype: "json",
                 datafields: [
 
-                     {name: 'EDITAR', type:'string'},{name: 'IDRAZA', type: 'float'},{name: 'IDRAZA', type: 'string'},{name: 'RAZA', type: 'string'},{name: 'OBSERVACIONES', type: 'string'},{name: 'ELIMINADO', type: 'bool'},{name: 'BLOQUEADO', type: 'bool'},{name: 'FECHAALTA', type: 'date', format: 'yyyy-MM-ddTHH:mm:ss-HH:mm'},{name: 'PROPIETARIO', type: 'string'}
+                     {name: 'EDITAR', type:'string'},{name: 'IDRAZA', type: 'float'},{name: 'IDRAZA', type: 'string'},{name: 'RAZA', type: 'string'},{name: 'OBSERVACIONES', type: 'string'},{name: 'IDESPECIE', type: 'string'},{name: 'ELIMINADO', type: 'bool'},{name: 'BLOQUEADO', type: 'bool'},{name: 'FECHAALTA', type: 'date', format: 'yyyy-MM-ddTHH:mm:ss-HH:mm'},{name: 'PROPIETARIO', type: 'string'}
 
                 ],
                 id: 'IDRAZA',
@@ -680,7 +680,7 @@ window.parent.parent.addtabplus(data);
 
                     columns: [
 
-                        { text: 'Editar', datafield: 'EDITAR', width: 60,  filterable: false, textPosition: 'left', theme:theme, columntype:'text', cellclassname: cellclass },{text: 'Idraza', editable: false, columngroup: 'A.DATOS', datafield: 'IDRAZA', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Raza', editable: true, columngroup: 'A.DATOS', datafield: 'RAZA', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Observaciones', editable: true, columngroup: 'A.DATOS', datafield: 'OBSERVACIONES', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Eliminado', editable: false, columngroup: 'X.CONTROL', datafield: 'ELIMINADO', theme:theme , columntype: 'checkbox' , width: '110'},{text: 'Bloqueado', editable: false, columngroup: 'X.CONTROL', datafield: 'BLOQUEADO', theme:theme , columntype: 'checkbox' , width: '110'},{text: 'Fecha Alta', editable: false , columngroup: 'X.CONTROL', theme:theme  , filtertype: 'range',  datafield: 'FECHAALTA', width: '110',  cellsformat: 'dd.MM.yyyy', columntype: 'datetimeinput', createeditor: function (rowIndex, cellValue, editor) { editor.jqxDateTimeInput({ min: new Date(1000, 1, 1), max: new Date(5100, 1, 1), culture: 'es-ES' }); }, initeditor: function (rowindex, cellvalue, editor) { editor.jqxDateTimeInput({ value: cellvalue });}  },{text: 'Propietario', editable: true, columngroup: 'X.CONTROL', datafield: 'PROPIETARIO', theme:theme ,  columntype: 'text' , width: '110'}
+                        { text: 'Editar', datafield: 'EDITAR', width: 60,  filterable: false, textPosition: 'left', theme:theme, columntype:'text', cellclassname: cellclass },{text: 'Idraza', editable: false, columngroup: 'A.DATOS', datafield: 'IDRAZA', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Raza', editable: true, columngroup: 'A.DATOS', datafield: 'RAZA', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Observaciones', editable: true, columngroup: 'A.DATOS', datafield: 'OBSERVACIONES', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Idespecie', editable: true, columngroup: 'A.DATOS', datafield: 'IDESPECIE', theme:theme ,  columntype: 'text' , width: '110'},{text: 'Eliminado', editable: false, columngroup: 'X.CONTROL', datafield: 'ELIMINADO', theme:theme , columntype: 'checkbox' , width: '110'},{text: 'Bloqueado', editable: false, columngroup: 'X.CONTROL', datafield: 'BLOQUEADO', theme:theme , columntype: 'checkbox' , width: '110'},{text: 'Fecha Alta', editable: false , columngroup: 'X.CONTROL', theme:theme  , filtertype: 'range',  datafield: 'FECHAALTA', width: '110',  cellsformat: 'dd.MM.yyyy', columntype: 'datetimeinput', createeditor: function (rowIndex, cellValue, editor) { editor.jqxDateTimeInput({ min: new Date(1000, 1, 1), max: new Date(5100, 1, 1), culture: 'es-ES' }); }, initeditor: function (rowindex, cellvalue, editor) { editor.jqxDateTimeInput({ value: cellvalue });}  },{text: 'Propietario', editable: true, columngroup: 'X.CONTROL', datafield: 'PROPIETARIO', theme:theme ,  columntype: 'text' , width: '110'}
 
 
 
@@ -827,7 +827,7 @@ window.parent.parent.addtabplus(data);
 
 
 
-                       {name: 'IDRAZA', type: ''},{name: 'RAZA', type: ''},{name: 'OBSERVACIONES', type: 'memo'},{name: 'ELIMINADO', type: 'checkbox'},{name: 'BLOQUEADO', type: 'checkbox'},{name: 'FECHAALTA', type: 'date'},{name: 'PROPIETARIO', type: 'texto'}
+                       {name: 'IDRAZA', type: ''},{name: 'RAZA', type: ''},{name: 'OBSERVACIONES', type: 'memo'},{name: 'IDESPECIE', type: '*'},{name: 'ELIMINADO', type: 'checkbox'},{name: 'BLOQUEADO', type: 'checkbox'},{name: 'FECHAALTA', type: 'date'},{name: 'PROPIETARIO', type: 'texto'}
 
 
 
