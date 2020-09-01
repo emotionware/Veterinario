@@ -1,0 +1,1 @@
+select * from tblaltanotify_tbldireccion order by IDALTANOTIFY_tbldireccion ASC 

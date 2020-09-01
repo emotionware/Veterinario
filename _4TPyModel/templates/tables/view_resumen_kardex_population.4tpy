@@ -1,0 +1,1 @@
+select cast( IDKARDEX as UNSIGNED) as  IDKARDEX ,CODIGO,NOMBRE_ARTICULO,DESCRIPCION,CANTIDAD,LOTE,CONVERT_TZ(CADUCIDAD,'+00:00','+06:00') as CADUCIDAD ,TIPOMOV,ALMACEN, concat('<a style="color:blue;" href="javascript:modoedicion(',IDKARDEX,');">Editar</a>') as EDITAR from view_resumen_kardex  order by IDKARDEX desc

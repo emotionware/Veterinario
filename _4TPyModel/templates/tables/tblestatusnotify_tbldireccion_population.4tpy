@@ -1,0 +1,1 @@
+select * from tblestatusnotify_tbldireccion order by IDESTATUSNOTIFY_tbldireccion ASC 

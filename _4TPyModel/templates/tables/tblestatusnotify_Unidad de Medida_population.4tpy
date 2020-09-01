@@ -1,0 +1,1 @@
+select * from tblestatusnotify_Unidad de Medida order by IDESTATUSNOTIFY_Unidad de Medida ASC 

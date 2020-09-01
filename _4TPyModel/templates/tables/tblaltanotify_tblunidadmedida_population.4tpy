@@ -1,0 +1,1 @@
+select * from tblaltanotify_tblunidadmedida order by IDALTANOTIFY_tblunidadmedida ASC 
